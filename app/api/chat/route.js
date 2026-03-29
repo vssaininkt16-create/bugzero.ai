@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Lead from '@/lib/models/Lead';
-import Groq from 'groq-sdk';
+import { Groq } from 'groq-sdk';
 
 const SYSTEM_PROMPT = `You are BugZero's AI cybersecurity assistant. You are helpful, professional, and knowledgeable.
 
@@ -68,7 +68,7 @@ export async function POST(request) {
       console.error('GROQ_API_KEY is not set');
     }
 
-    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+    const groq = new Groq();
 
     let reply;
     try {
