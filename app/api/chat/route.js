@@ -3,10 +3,6 @@ import connectDB from '@/lib/mongodb';
 import Lead from '@/lib/models/Lead';
 import Groq from 'groq-sdk';
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
-
 const SYSTEM_PROMPT = `You are BugZero's AI cybersecurity assistant. You are helpful, professional, and knowledgeable.
 
 Company: BugZero Cyber Solutions (bugzero.solutions)
@@ -68,6 +64,12 @@ export async function POST(request) {
     }
     messages.push({ role: 'user', content: message });
 
+    if (!process.env.GROQ_API_KEY) {
+      console.error('GROQ_API_KEY is not set');
+    }
+
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
     let reply;
     try {
       const completion = await groq.chat.completions.create({
@@ -77,7 +79,7 @@ export async function POST(request) {
       });
       reply = completion.choices[0].message.content;
     } catch (groqErr) {
-      console.error('Groq API error:', groqErr.message);
+      console.error('Groq API error:', groqErr.message, groqErr.status, groqErr.error);
       reply = "I apologize, I'm experiencing a brief issue. Please try again in a moment, or contact us directly at contact@bugzero.solutions for immediate assistance.";
     }
 
