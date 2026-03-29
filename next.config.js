@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['mongoose'],
+  serverExternalPackages: ['mongoose'],
+  turbopack: {
+    root: __dirname,
   },
   images: {
     remotePatterns: [
@@ -12,5 +13,8 @@ const nextConfig = {
     ],
   },
 };
+
+
+
 
 module.exports = nextConfig;

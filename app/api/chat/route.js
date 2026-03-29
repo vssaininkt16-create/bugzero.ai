@@ -1,6 +1,11 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Lead from '@/lib/models/Lead';
+import Groq from 'groq-sdk';
+
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
 
 const SYSTEM_PROMPT = `You are BugZero's AI cybersecurity assistant. You are helpful, professional, and knowledgeable.
 
@@ -44,7 +49,8 @@ Rules:
 - If asked something unrelated, politely redirect to cybersecurity topics
 - End responses with a relevant CTA (book consultation, visit /contact, etc.)
 - Keep responses concise but informative (under 200 words)
-- Use ₹ for Indian Rupee pricing`;
+- Use ₹ for Indian Rupee pricing
+- Always end with a CTA to visit bugzero.solutions/contact`;
 
 export async function POST(request) {
   try {
@@ -56,45 +62,22 @@ export async function POST(request) {
     }
 
     // Build conversation messages
-    const messages = [];
+    const messages = [{ role: 'system', content: SYSTEM_PROMPT }];
     for (const msg of history.slice(-10)) {
       messages.push({ role: msg.role, content: msg.content });
     }
     messages.push({ role: 'user', content: message });
 
-    // Call Claude via Python emergentintegrations bridge
-    const { execSync, spawnSync } = require('child_process');
-    const fs = require('fs');
-    const path = require('path');
-    const os = require('os');
-
-    const inputData = {
-      api_key: process.env.EMERGENT_LLM_KEY,
-      session_id: 'bugzero-chat-' + Date.now(),
-      system_message: SYSTEM_PROMPT,
-      message,
-      history: history.slice(-10),
-    };
-
     let reply;
     try {
-      const tmpFile = path.join(os.tmpdir(), `chat-${Date.now()}.json`);
-      fs.writeFileSync(tmpFile, JSON.stringify(inputData));
-      const result = spawnSync('/root/.venv/bin/python3', ['/app/lib/chat_helper.py'], {
-        input: fs.readFileSync(tmpFile, 'utf-8'),
-        timeout: 30000,
-        encoding: 'utf-8',
+      const completion = await groq.chat.completions.create({
+        model: 'llama3-8b-8192',
+        messages,
+        max_tokens: 500,
       });
-      fs.unlinkSync(tmpFile);
-      if (result.stdout) {
-        const parsed = JSON.parse(result.stdout.trim());
-        reply = parsed.reply;
-      } else {
-        console.error('Python stderr:', result.stderr);
-        reply = "I apologize, I'm experiencing a brief issue. Please try again or contact us at contact@bugzero.solutions.";
-      }
-    } catch (execErr) {
-      console.error('Claude bridge error:', execErr.message);
+      reply = completion.choices[0].message.content;
+    } catch (groqErr) {
+      console.error('Groq API error:', groqErr.message);
       reply = "I apologize, I'm experiencing a brief issue. Please try again in a moment, or contact us directly at contact@bugzero.solutions for immediate assistance.";
     }
 
