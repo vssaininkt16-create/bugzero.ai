@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 export async function POST(request) {
   const { url } = await request.json();
 

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { ImageResponse } from 'next/og';
 
 export const size = { width: 180, height: 180 };
