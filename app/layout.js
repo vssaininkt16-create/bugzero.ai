@@ -3,15 +3,98 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#000d1a',
+};
+
 export const metadata = {
-  title: 'BugZero Cyber Solutions | Securing India\'s Digital Future',
-  description: 'India\'s most trusted cybersecurity startup. DPIIT Recognized. VAPT, penetration testing, cloud security, and compliance services for enterprises and government.',
-  keywords: 'cybersecurity company India, VAPT testing India, penetration testing startup India, bug bounty India, cybersecurity services',
+  metadataBase: new URL('https://bugzero.ai'),
+  title: {
+    default: 'BugZero Cyber Solutions | #1 Cybersecurity Company India | VAPT & Pen Testing',
+    template: '%s | BugZero Cyber Solutions',
+  },
+  description:
+    "India's most trusted cybersecurity startup. DPIIT Recognized. Expert VAPT, penetration testing, cloud security, bug bounty, and compliance services for enterprises and government organizations.",
+  keywords: [
+    'cybersecurity company India',
+    'VAPT testing India',
+    'penetration testing India',
+    'bug bounty India',
+    'cloud security audit India',
+    'web application security testing',
+    'network security assessment India',
+    'cybersecurity startup India',
+    'ethical hacking services India',
+    'information security consulting India',
+    'DPIIT recognized cybersecurity',
+    'ISO 27001 compliance India',
+  ],
+  authors: [{ name: 'BugZero Cyber Solutions', url: 'https://bugzero.ai' }],
+  creator: 'BugZero Cyber Solutions',
+  publisher: 'BugZero Cyber Solutions',
+  category: 'Cybersecurity',
+  classification: 'Business/Technology',
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: 'BugZero Cyber Solutions | Securing India\'s Digital Future',
-    description: 'India\'s most trusted cybersecurity startup offering VAPT, penetration testing, and comprehensive security solutions.',
     type: 'website',
     locale: 'en_IN',
+    url: 'https://bugzero.ai',
+    siteName: 'BugZero Cyber Solutions',
+    title: 'BugZero Cyber Solutions | #1 Cybersecurity Company India',
+    description:
+      "India's most trusted cybersecurity startup. Expert VAPT, penetration testing, cloud security & bug bounty services. DPIIT Recognized.",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'BugZero Cyber Solutions - Securing India\'s Digital Future',
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@bugzerocyber',
+    creator: '@bugzerocyber',
+    title: 'BugZero Cyber Solutions | #1 Cybersecurity Company India',
+    description:
+      "India's most trusted cybersecurity startup. Expert VAPT, penetration testing, cloud security & bug bounty services.",
+    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://bugzero.ai',
+  },
+  verification: {
+    google: 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
+    // bing: 'REPLACE_WITH_BING_WEBMASTER_CODE',
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+  },
+  manifest: '/site.webmanifest',
+  other: {
+    'msapplication-TileColor': '#000d1a',
+    'format-detection': 'telephone=no',
   },
 };
 

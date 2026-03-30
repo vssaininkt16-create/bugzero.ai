@@ -1,0 +1,19 @@
+{
+  "name": "BugZero Cyber Solutions",
+  "short_name": "BugZero",
+  "description": "India's most trusted cybersecurity startup. VAPT, penetration testing, cloud security & bug bounty services.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000d1a",
+  "theme_color": "#00BFFF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "security"]
+}

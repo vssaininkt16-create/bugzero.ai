@@ -6,25 +6,30 @@ import NewsletterForm from '@/components/NewsletterForm';
 
 const footerLinks = {
   services: [
-    { label: 'Web Application VAPT', href: '/services' },
-    { label: 'API Security Testing', href: '/services' },
-    { label: 'Network Security', href: '/services' },
-    { label: 'Cloud Security Audit', href: '/services' },
-    { label: 'Mobile App Security', href: '/services' },
+    { label: 'Web Application VAPT', href: '/services/web-application-vapt' },
+    { label: 'Penetration Testing', href: '/services/penetration-testing' },
+    { label: 'API Security Testing', href: '/services/api-security-testing' },
+    { label: 'Network Security', href: '/services/network-security' },
+    { label: 'Cloud Security Audit', href: '/services/cloud-security-audit' },
+    { label: 'Mobile App Security', href: '/services/mobile-app-security' },
+    { label: 'Bug Bounty Management', href: '/services/bug-bounty-management' },
+    { label: 'Compliance Consulting', href: '/services/compliance-consulting' },
   ],
   company: [
     { label: 'About Us', href: '/about' },
-    { label: 'Our Services', href: '/services' },
+    { label: 'All Services', href: '/services' },
+    { label: 'Solutions', href: '/solutions' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Government Funding', href: '/funding' },
-    { label: 'Pitch Deck', href: '/pitch-deck' },
     { label: 'Contact Us', href: '/contact' },
   ],
   resources: [
     { label: 'Free Security Scan', href: '/free-security-scan' },
     { label: 'Get Proposal', href: '/get-proposal' },
     { label: 'Book Consultation', href: '/contact' },
-    { label: 'Pitch Deck', href: '/pitch-deck' },
-    { label: 'Admin Dashboard', href: '/admin' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms of Service', href: '/terms-of-service' },
+    { label: 'Responsible Disclosure', href: '/responsible-disclosure' },
   ],
 };
 
@@ -82,10 +87,17 @@ export default function Footer() {
             </div>
             {/* Social links */}
             <div className="flex items-center gap-3 mt-4">
-              {[Linkedin, Twitter, Github].map((Icon, i) => (
+              {[
+                { Icon: Linkedin, href: 'https://linkedin.com/company/bugzerocyber', label: 'LinkedIn' },
+                { Icon: Twitter, href: 'https://twitter.com/bugzerocyber', label: 'Twitter' },
+                { Icon: Github, href: 'https://github.com/bugzerocyber', label: 'GitHub' },
+              ].map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                   className="w-9 h-9 rounded-lg bg-cyber-card border border-cyber-border flex items-center justify-center text-gray-400 hover:text-cyber-blue hover:border-cyber-blue/30 transition-all"
                 >
                   <Icon className="w-4 h-4" />
@@ -149,9 +161,9 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} BugZero Cyber Solutions. All rights reserved. Made with pride in India.
           </p>
           <div className="flex items-center gap-4 text-xs text-gray-500">
-            <Link href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
-            <Link href="#" className="hover:text-gray-300 transition-colors">Responsible Disclosure</Link>
+            <Link href="/privacy-policy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
+            <Link href="/responsible-disclosure" className="hover:text-gray-300 transition-colors">Responsible Disclosure</Link>
           </div>
         </div>
       </div>
