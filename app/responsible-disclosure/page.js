@@ -11,8 +11,8 @@ export const metadata = {
 };
 
 const scope = [
-  'bugzero.ai — main website and all subdomains',
-  'bugzero.solutions — company domain',
+  'bugzero.solutions — main website and all subdomains',
+  'bugzero.ai — company brand domain',
   'All BugZero-owned web applications and APIs',
   'BugZero client portal and dashboard systems',
 ];

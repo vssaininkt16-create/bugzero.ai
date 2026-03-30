@@ -11,7 +11,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  metadataBase: new URL('https://bugzero.ai'),
+  metadataBase: new URL('https://bugzero.solutions'),
   title: {
     default: 'BugZero Cyber Solutions | #1 Cybersecurity Company India | VAPT & Pen Testing',
     template: '%s | BugZero Cyber Solutions',
@@ -32,7 +32,7 @@ export const metadata = {
     'DPIIT recognized cybersecurity',
     'ISO 27001 compliance India',
   ],
-  authors: [{ name: 'BugZero Cyber Solutions', url: 'https://bugzero.ai' }],
+  authors: [{ name: 'BugZero Cyber Solutions', url: 'https://bugzero.solutions' }],
   creator: 'BugZero Cyber Solutions',
   publisher: 'BugZero Cyber Solutions',
   category: 'Cybersecurity',
@@ -53,17 +53,17 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://bugzero.ai',
+    url: 'https://bugzero.solutions',
     siteName: 'BugZero Cyber Solutions',
     title: 'BugZero Cyber Solutions | #1 Cybersecurity Company India',
     description:
       "India's most trusted cybersecurity startup. Expert VAPT, penetration testing, cloud security & bug bounty services. DPIIT Recognized.",
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image.png',
         width: 1200,
         height: 630,
-        alt: 'BugZero Cyber Solutions - Securing India\'s Digital Future',
+        alt: "BugZero Cyber Solutions - Securing India's Digital Future",
         type: 'image/png',
       },
     ],
@@ -75,10 +75,10 @@ export const metadata = {
     title: 'BugZero Cyber Solutions | #1 Cybersecurity Company India',
     description:
       "India's most trusted cybersecurity startup. Expert VAPT, penetration testing, cloud security & bug bounty services.",
-    images: ['/og-image.png'],
+    images: ['/opengraph-image.png'],
   },
   alternates: {
-    canonical: 'https://bugzero.ai',
+    canonical: 'https://bugzero.solutions',
   },
   verification: {
     google: 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
@@ -86,10 +86,19 @@ export const metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
     ],
-    shortcut: '/favicon.svg',
-    apple: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: ['/favicon.ico'],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/favicon.svg', color: '#00BFFF' },
+    ],
   },
   manifest: '/site.webmanifest',
   other: {

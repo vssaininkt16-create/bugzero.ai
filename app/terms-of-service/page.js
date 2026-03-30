@@ -13,7 +13,7 @@ export const metadata = {
 const sections = [
   {
     title: '1. Acceptance of Terms',
-    content: `By accessing the BugZero Cyber Solutions website (bugzero.ai) or engaging our cybersecurity services, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please do not use our services.
+    content: `By accessing the BugZero Cyber Solutions website (bugzero.solutions) or engaging our cybersecurity services, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please do not use our services.
 
 These terms constitute a legally binding agreement between you (the client or website visitor) and BugZero Cyber Solutions, a DPIIT-recognized startup incorporated under Indian law.`,
   },
