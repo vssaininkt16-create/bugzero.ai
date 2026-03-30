@@ -9,6 +9,7 @@ import {
   Zap, TrendingUp, Building2, Heart, Star, Quote, Flag
 } from 'lucide-react';
 import MatrixRain from '@/components/MatrixRain';
+import SecurityScanPopup from '@/components/SecurityScanPopup';
 import TrustBadges from '@/components/TrustBadges';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import SectionWrapper from '@/components/SectionWrapper';
@@ -139,6 +140,7 @@ const clientSectors = [
 export default function HomePageClient() {
   return (
     <div className="relative overflow-hidden">
+      <SecurityScanPopup />
       <MatrixRain />
 
       {/* ─── HERO ─── */}
