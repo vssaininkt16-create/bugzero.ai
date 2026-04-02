@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Shield, Menu, X, ChevronRight, ChevronDown, Globe, Server, Cloud, Smartphone, Bug, Code, Database } from 'lucide-react';
+import { Shield, Menu, X, ChevronRight, ChevronDown, Globe, Server, Cloud, Smartphone, Bug, Code, Database, LogIn } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -151,8 +151,15 @@ export default function Navigation() {
               )}
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
+              <Link
+                href="/login"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+              >
+                <LogIn className="w-4 h-4" />
+                Login
+              </Link>
               <Link
                 href="/contact"
                 className="btn-primary text-sm"
@@ -226,8 +233,15 @@ export default function Navigation() {
                     </Link>
                   )
                 )}
-                <div className="pt-3 pb-1">
-                  <Link href="/free-security-scan" className="btn-secondary text-sm w-full justify-center mb-2">
+                <div className="pt-3 pb-1 space-y-2">
+                  <Link
+                    href="/login"
+                    className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-cyber-blue bg-cyber-blue/10 border border-cyber-blue/20 hover:bg-cyber-blue/20 transition-colors w-full"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    Login
+                  </Link>
+                  <Link href="/free-security-scan" className="btn-secondary text-sm w-full justify-center">
                     Free Security Scan
                   </Link>
                   <Link href="/contact" className="btn-primary text-sm w-full justify-center">
