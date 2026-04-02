@@ -29,9 +29,6 @@ const securityHeaders = [
 
 const nextConfig = {
   serverExternalPackages: ['mongoose'],
-  turbopack: {
-    root: __dirname,
-  },
   images: {
     remotePatterns: [
       {
