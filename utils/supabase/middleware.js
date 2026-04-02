@@ -10,6 +10,10 @@ export async function updateSession(request) {
     request,
   })
 
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !supabaseKey) {
+    return supabaseResponse
+  }
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     supabaseKey,
