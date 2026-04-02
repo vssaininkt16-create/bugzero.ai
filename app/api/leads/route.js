@@ -1,8 +1,8 @@
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Lead from '@/lib/models/Lead';
+import { getServerSession } from 'next-auth';
+import { createAdminClient } from '@/utils/supabase/admin';
 import { sendLeadNotification } from '@/lib/email';
 
 function scoreLead(data) {
@@ -19,24 +19,26 @@ function scoreLead(data) {
 
 export async function GET(request) {
   try {
-    await connectDB();
+    const session = await getServerSession();
+    if (!session?.user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
     const priority = searchParams.get('priority');
     const search = searchParams.get('search');
 
-    let query = {};
-    if (status) query.status = status;
-    if (priority) query.priority = priority;
-    if (search) {
-      query.$or = [
-        { name: { $regex: search, $options: 'i' } },
-        { email: { $regex: search, $options: 'i' } },
-        { company: { $regex: search, $options: 'i' } },
-      ];
-    }
+    const supabase = createAdminClient();
+    let query = supabase.from('leads').select('*').order('created_at', { ascending: false });
 
-    const leads = await Lead.find(query).sort({ createdAt: -1 }).lean();
+    if (status) query = query.eq('status', status);
+    if (priority) query = query.eq('priority', priority);
+    if (search) query = query.or(`name.ilike.%${search}%,email.ilike.%${search}%,company.ilike.%${search}%`);
+
+    const { data: leads, error } = await query;
+    if (error) throw error;
+
     return NextResponse.json({ success: true, data: leads, count: leads.length });
   } catch (error) {
     console.error('GET /api/leads error:', error);
@@ -46,7 +48,6 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
-    await connectDB();
     const body = await request.json();
     const { name, email } = body;
 
@@ -55,15 +56,34 @@ export async function POST(request) {
     }
 
     const priority = scoreLead(body);
-    const lead = await Lead.create({ ...body, priority });
+    const supabase = createAdminClient();
 
-    // Send email notifications (async, don't block response)
-    sendLeadNotification(lead).catch(err => console.error('Email error:', err));
+    const { data: lead, error } = await supabase
+      .from('leads')
+      .insert({
+        name,
+        email,
+        phone: body.phone || '',
+        company: body.company || '',
+        website: body.website || '',
+        message: body.message || '',
+        service: body.service || '',
+        budget: body.budget || '',
+        source: body.source || 'contact_form',
+        status: 'new',
+        priority,
+      })
+      .select('id, priority')
+      .single();
+
+    if (error) throw error;
+
+    sendLeadNotification({ ...body, id: lead.id, priority }).catch(err => console.error('Email error:', err));
 
     return NextResponse.json({
       success: true,
       message: 'Thank you! We will get back to you within 2 hours.',
-      data: { id: lead._id, priority },
+      data: { id: lead.id, priority },
     }, { status: 201 });
   } catch (error) {
     console.error('POST /api/leads error:', error);

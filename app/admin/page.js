@@ -77,7 +77,7 @@ export default function AdminDashboard() {
     if (!data?.leads) return;
     const headers = ['Name', 'Email', 'Phone', 'Company', 'Service', 'Budget', 'Status', 'Priority', 'Source', 'Date'];
     const rows = data.leads.map(l => [
-      l.name, l.email, l.phone, l.company, l.service, l.budget, l.status, l.priority, l.source, new Date(l.createdAt).toLocaleDateString()
+      l.name, l.email, l.phone, l.company, l.service, l.budget, l.status, l.priority, l.source, new Date(l.created_at).toLocaleDateString()
     ]);
     const csv = [headers, ...rows].map(r => r.map(c => `"${c || ''}"`).join(',')).join('\n');
     const blob = new Blob([csv], { type: 'text/csv' });
@@ -185,7 +185,7 @@ export default function AdminDashboard() {
                   </thead>
                   <tbody>
                     {(data.leads || []).slice(0, 10).map((lead) => (
-                      <tr key={lead._id} className="border-b border-cyber-border/50 hover:bg-white/5">
+                      <tr key={lead.id} className="border-b border-cyber-border/50 hover:bg-white/5">
                         <td className="px-4 py-3 text-white">{lead.name}</td>
                         <td className="px-4 py-3 text-gray-300">{lead.email}</td>
                         <td className="px-4 py-3 text-gray-300">{lead.company || '-'}</td>
@@ -243,7 +243,7 @@ export default function AdminDashboard() {
                   </thead>
                   <tbody>
                     {filteredLeads.map((lead) => (
-                      <tr key={lead._id} className="border-b border-cyber-border/50 hover:bg-white/5">
+                      <tr key={lead.id} className="border-b border-cyber-border/50 hover:bg-white/5">
                         <td className="px-3 py-2 text-white font-medium">{lead.name}</td>
                         <td className="px-3 py-2 text-gray-300 text-xs">{lead.email}</td>
                         <td className="px-3 py-2 text-gray-300 text-xs">{lead.company || '-'}</td>
@@ -251,14 +251,14 @@ export default function AdminDashboard() {
                         <td className="px-3 py-2 text-gray-400 text-xs">{lead.source}</td>
                         <td className="px-3 py-2"><span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${PRIORITY_COLORS[lead.priority]}`}>{lead.priority?.toUpperCase()}</span></td>
                         <td className="px-3 py-2">
-                          <select value={lead.status} onChange={e => updateLeadStatus(lead._id, { status: e.target.value })}
+                          <select value={lead.status} onChange={e => updateLeadStatus(lead.id, { status: e.target.value })}
                             className="bg-transparent text-xs font-medium outline-none cursor-pointer" style={{ color: STATUS_COLORS[lead.status]?.replace('text-', '') }}>
                             {['new', 'contacted', 'qualified', 'converted', 'lost'].map(s => <option key={s} value={s} className="bg-cyber-bg text-white">{s}</option>)}
                           </select>
                         </td>
-                        <td className="px-3 py-2 text-gray-500 text-xs">{new Date(lead.createdAt).toLocaleDateString()}</td>
+                        <td className="px-3 py-2 text-gray-500 text-xs">{new Date(lead.created_at).toLocaleDateString()}</td>
                         <td className="px-3 py-2">
-                          <button onClick={() => deleteLead(lead._id)} className="p-1 rounded hover:bg-red-500/20 text-gray-500 hover:text-red-400">
+                          <button onClick={() => deleteLead(lead.id)} className="p-1 rounded hover:bg-red-500/20 text-gray-500 hover:text-red-400">
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
                         </td>

@@ -14,21 +14,21 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https:",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.supabase.co",
-      "frame-src https://accounts.google.com",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://checkout.razorpay.com https://cdn.razorpay.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://checkout.razorpay.com",
+      "font-src 'self' https://fonts.gstatic.com https://checkout.razorpay.com",
+      "img-src 'self' data: blob: https: https://*.razorpay.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.supabase.co https://api.razorpay.com https://lumberjack.razorpay.com https://*.razorpay.com",
+      "frame-src https://accounts.google.com https://api.razorpay.com https://*.razorpay.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
-      "form-action 'self'",
+      "form-action 'self' https://*.razorpay.com",
     ].join('; '),
   },
 ];
 
 const nextConfig = {
-  serverExternalPackages: ['mongoose'],
+  experimental: {},
   images: {
     remotePatterns: [
       {

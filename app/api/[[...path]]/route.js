@@ -1,8 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Lead from '@/lib/models/Lead';
+import { createAdminClient } from '@/utils/supabase/admin';
 
 function getPath(request) {
   const url = new URL(request.url);
@@ -20,8 +19,9 @@ export async function GET(request) {
     }
 
     if (path === '/leads') {
-      await connectDB();
-      const leads = await Lead.find().sort({ createdAt: -1 }).lean();
+      const supabase = createAdminClient();
+      const { data: leads, error } = await supabase.from('leads').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
       return NextResponse.json({ success: true, data: leads });
     }
 
@@ -37,35 +37,29 @@ export async function POST(request) {
 
   try {
     if (path === '/contact') {
-      await connectDB();
       const body = await request.json();
-
       const { name, email, phone, company, message, service, source } = body;
 
       if (!name || !email) {
         return NextResponse.json({ error: 'Name and email are required' }, { status: 400 });
       }
 
-      const lead = await Lead.create({
-        name,
-        email,
-        phone: phone || '',
-        company: company || '',
-        message: message || '',
-        service: service || '',
-        source: source || 'contact_form',
-        status: 'new',
-      });
+      const supabase = createAdminClient();
+      const { data: lead, error } = await supabase
+        .from('leads')
+        .insert({ name, email, phone: phone || '', company: company || '', message: message || '', service: service || '', source: source || 'contact_form', status: 'new', priority: 'warm' })
+        .select('id')
+        .single();
+      if (error) throw error;
 
       return NextResponse.json({ 
         success: true, 
         message: 'Thank you! We will get back to you within 2 hours.',
-        data: { id: lead._id }
+        data: { id: lead.id }
       }, { status: 201 });
     }
 
     if (path === '/newsletter') {
-      await connectDB();
       const body = await request.json();
       const { email } = body;
 
@@ -73,17 +67,18 @@ export async function POST(request) {
         return NextResponse.json({ error: 'Email is required' }, { status: 400 });
       }
 
-      const lead = await Lead.create({
-        name: 'Newsletter Subscriber',
-        email,
-        source: 'newsletter',
-        status: 'new',
-      });
+      const supabase = createAdminClient();
+      const { data: sub, error } = await supabase
+        .from('subscribers')
+        .insert({ email, name: 'Newsletter Subscriber', source: 'newsletter', is_active: true })
+        .select('id')
+        .single();
+      if (error && error.code !== '23505') throw error;
 
       return NextResponse.json({ 
         success: true, 
         message: 'Successfully subscribed to our newsletter!',
-        data: { id: lead._id }
+        data: { id: sub?.id }
       }, { status: 201 });
     }
 

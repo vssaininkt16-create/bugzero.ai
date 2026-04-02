@@ -1,14 +1,17 @@
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Booking from '@/lib/models/Booking';
+import { createAdminClient } from '@/utils/supabase/admin';
 import { sendBookingConfirmation } from '@/lib/email';
 
 export async function GET() {
   try {
-    await connectDB();
-    const bookings = await Booking.find().sort({ createdAt: -1 }).lean();
+    const supabase = createAdminClient();
+    const { data: bookings, error } = await supabase
+      .from('bookings')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
     return NextResponse.json({ success: true, data: bookings });
   } catch (error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
@@ -17,7 +20,6 @@ export async function GET() {
 
 export async function POST(request) {
   try {
-    await connectDB();
     const body = await request.json();
     const { name, email, date, time } = body;
 
@@ -25,14 +27,34 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Name, email, date, and time are required' }, { status: 400 });
     }
 
-    const booking = await Booking.create(body);
+    const bookingId = 'BZ-BOOK-' + Date.now().toString(36).toUpperCase();
+    const supabase = createAdminClient();
 
-    sendBookingConfirmation(booking).catch(err => console.error('Booking email error:', err));
+    const { data: booking, error } = await supabase
+      .from('bookings')
+      .insert({
+        booking_id: bookingId,
+        name,
+        email,
+        phone: body.phone || '',
+        company: body.company || '',
+        service: body.service || '',
+        date,
+        time,
+        message: body.message || '',
+        status: 'pending',
+      })
+      .select('id, booking_id')
+      .single();
+
+    if (error) throw error;
+
+    sendBookingConfirmation({ ...body, bookingId, id: booking.id }).catch(err => console.error('Booking email error:', err));
 
     return NextResponse.json({
       success: true,
       message: 'Consultation booked! Check your email for confirmation.',
-      data: { id: booking._id, bookingId: booking.bookingId },
+      data: { id: booking.id, bookingId: booking.booking_id },
     }, { status: 201 });
   } catch (error) {
     console.error('POST /api/bookings error:', error);

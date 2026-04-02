@@ -1,17 +1,27 @@
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Lead from '@/lib/models/Lead';
+import { getServerSession } from 'next-auth';
+import { createAdminClient } from '@/utils/supabase/admin';
 
 export async function PATCH(request, { params }) {
   try {
-    await connectDB();
+    const session = await getServerSession();
+    if (!session?.user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
     const id = params.id;
     const body = await request.json();
+    const supabase = createAdminClient();
 
-    const lead = await Lead.findByIdAndUpdate(id, body, { new: true }).lean();
-    if (!lead) return NextResponse.json({ error: 'Lead not found' }, { status: 404 });
+    const { data: lead, error } = await supabase
+      .from('leads')
+      .update({ ...body, updated_at: new Date().toISOString() })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error || !lead) return NextResponse.json({ error: 'Lead not found' }, { status: 404 });
 
     return NextResponse.json({ success: true, data: lead });
   } catch (error) {
@@ -22,11 +32,15 @@ export async function PATCH(request, { params }) {
 
 export async function DELETE(request, { params }) {
   try {
-    await connectDB();
+    const session = await getServerSession();
+    if (!session?.user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
     const id = params.id;
+    const supabase = createAdminClient();
 
-    const lead = await Lead.findByIdAndDelete(id);
-    if (!lead) return NextResponse.json({ error: 'Lead not found' }, { status: 404 });
+    const { error } = await supabase.from('leads').delete().eq('id', id);
+    if (error) return NextResponse.json({ error: 'Lead not found' }, { status: 404 });
 
     return NextResponse.json({ success: true, message: 'Lead deleted' });
   } catch (error) {

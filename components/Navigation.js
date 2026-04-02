@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Shield, Menu, X, ChevronRight, ChevronDown, Globe, Server, Cloud, Smartphone, Bug, Code, Database, LogIn } from 'lucide-react';
+import { Shield, Menu, X, ChevronRight, ChevronDown, Globe, Server, Cloud, Smartphone, Bug, Code, Database, LogIn, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -14,6 +14,8 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
+
+const VAPT_BADGE_STYLE = 'ml-1.5 inline-flex items-center gap-0.5 text-[10px] font-bold px-1.5 py-0.5 rounded bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/30';
 
 const serviceDropdown = [
   { href: '/services/web-application-vapt', label: 'Web Application VAPT', icon: Globe },
@@ -151,11 +153,18 @@ export default function Navigation() {
               )}
             </div>
 
-            {/* CTA Buttons */}
+            {/* VAPT CTA */}
             <div className="hidden lg:flex items-center gap-3">
+              <a
+                href="/vapt-basic-999"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-cyber-blue bg-cyber-blue/10 border border-cyber-blue/20 rounded-lg hover:bg-cyber-blue/20 transition-all duration-300"
+              >
+                <Zap className="w-3.5 h-3.5" />
+                VAPT ₹999
+              </a>
               <Link
                 href="/login"
-                className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
               >
                 <LogIn className="w-4 h-4" />
                 Login
@@ -241,7 +250,11 @@ export default function Navigation() {
                     <LogIn className="w-4 h-4" />
                     Login
                   </Link>
-                  <Link href="/free-security-scan" className="btn-secondary text-sm w-full justify-center">
+                  <a href="/vapt-basic-999" className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-semibold text-cyber-blue bg-cyber-blue/10 border border-cyber-blue/20 hover:bg-cyber-blue/20 transition-colors w-full">
+                    <Zap className="w-4 h-4" />
+                    VAPT Package ₹999
+                  </a>
+                <Link href="/free-security-scan" className="btn-secondary text-sm w-full justify-center">
                     Free Security Scan
                   </Link>
                   <Link href="/contact" className="btn-primary text-sm w-full justify-center">

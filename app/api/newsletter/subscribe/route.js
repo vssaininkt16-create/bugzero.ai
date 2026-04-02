@@ -1,13 +1,11 @@
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Subscriber from '@/lib/models/Subscriber';
+import { createAdminClient } from '@/utils/supabase/admin';
 import { sendWelcomeNewsletter } from '@/lib/email';
 
 export async function POST(request) {
   try {
-    await connectDB();
     const body = await request.json();
     const { email, name, source } = body;
 
@@ -15,17 +13,27 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    const existing = await Subscriber.findOne({ email });
+    const supabase = createAdminClient();
+
+    const { data: existing } = await supabase
+      .from('subscribers')
+      .select('id, is_active')
+      .eq('email', email)
+      .maybeSingle();
+
     if (existing) {
-      if (!existing.isActive) {
-        existing.isActive = true;
-        await existing.save();
+      if (!existing.is_active) {
+        await supabase.from('subscribers').update({ is_active: true }).eq('id', existing.id);
         return NextResponse.json({ success: true, message: 'Welcome back! You have been re-subscribed.' });
       }
       return NextResponse.json({ success: true, message: 'You are already subscribed!' });
     }
 
-    await Subscriber.create({ email, name: name || '', source: source || 'footer' });
+    const { error } = await supabase
+      .from('subscribers')
+      .insert({ email, name: name || '', source: source || 'footer', is_active: true });
+    if (error) throw error;
+
     sendWelcomeNewsletter(email).catch(err => console.error('Welcome email error:', err));
 
     return NextResponse.json({ success: true, message: 'Successfully subscribed!' }, { status: 201 });

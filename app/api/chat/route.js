@@ -1,8 +1,6 @@
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Lead from '@/lib/models/Lead';
 
 const SYSTEM_PROMPT = `You are the official AI chat assistant for BugZero Cyber Solutions (bugzero.solutions).
 
@@ -188,27 +186,9 @@ export async function POST(request) {
       }
     }
 
-    // Save lead info if email is captured
+    // Log captured email
     if (leadInfo?.email) {
-      try {
-        await connectDB();
-        await Lead.findOneAndUpdate(
-          { email: leadInfo.email },
-          {
-            $setOnInsert: {
-              name: leadInfo.name || 'Chatbot Lead',
-              email: leadInfo.email,
-              company: leadInfo.company || '',
-              website: leadInfo.website || '',
-              source: 'chatbot',
-              priority: 'warm',
-            },
-          },
-          { upsert: true, new: true }
-        );
-      } catch (e) {
-        console.error('[chat] Lead save error:', e);
-      }
+      console.log('[chat] Captured email:', leadInfo.email);
     }
 
     return NextResponse.json({ reply, success: true });

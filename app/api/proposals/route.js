@@ -1,13 +1,11 @@
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Lead from '@/lib/models/Lead';
+import { createAdminClient } from '@/utils/supabase/admin';
 import { sendEmail } from '@/lib/email';
 
 export async function POST(request) {
   try {
-    await connectDB();
     const body = await request.json();
     const { name, email, company, website, services, companySize, budget, timeline, description } = body;
 
@@ -46,12 +44,14 @@ export async function POST(request) {
     };
 
     // Save as HOT lead
-    await Lead.create({
+    const supabase = createAdminClient();
+    await supabase.from('leads').insert({
       name, email, company: company || '', website: website || '',
       service: (services || []).join(', '),
       budget: budget || '',
       message: `Proposal request: ${proposalId}. Size: ${companySize}. Timeline: ${timeline}. ${description}`,
       source: 'proposal_generator',
+      status: 'new',
       priority: 'hot',
     });
 
