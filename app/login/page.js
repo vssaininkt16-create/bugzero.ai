@@ -14,6 +14,8 @@ function LoginForm() {
   const [success, setSuccess] = useState(null)
   const [showPassword, setShowPassword] = useState(false)
   const [form, setForm] = useState({ email: '', password: '', fullName: '' })
+  const [emailUnconfirmed, setEmailUnconfirmed] = useState(false)
+  const [resendLoading, setResendLoading] = useState(false)
 
   useEffect(() => {
     if (searchParams.get('error') === 'auth_failed') {
@@ -28,6 +30,27 @@ function LoginForm() {
     setTab(t)
     setError(null)
     setSuccess(null)
+    setEmailUnconfirmed(false)
+  }
+
+  const handleResendConfirmation = async () => {
+    setResendLoading(true)
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: form.email,
+        options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      })
+      if (error) throw error
+      setSuccess('Confirmation email resent! Please check your inbox.')
+      setEmailUnconfirmed(false)
+      setError(null)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setResendLoading(false)
+    }
   }
 
   const handleGoogleLogin = async () => {
@@ -65,7 +88,15 @@ function LoginForm() {
           email: form.email,
           password: form.password,
         })
-        if (error) throw error
+        if (error) {
+          if (error.message.toLowerCase().includes('email not confirmed')) {
+            setEmailUnconfirmed(true)
+            setError('Your email is not confirmed yet. Please check your inbox.')
+          } else {
+            throw error
+          }
+          return
+        }
         router.push('/dashboard')
         router.refresh()
       } else {
@@ -135,6 +166,19 @@ function LoginForm() {
           {error && (
             <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm text-center">
               {error}
+              {emailUnconfirmed && (
+                <button
+                  onClick={handleResendConfirmation}
+                  disabled={resendLoading}
+                  className="mt-2 flex items-center justify-center gap-2 w-full py-2 rounded-lg
+                             bg-red-500/10 border border-red-500/30 text-red-300
+                             hover:bg-red-500/20 transition-all duration-200 text-xs font-medium
+                             disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {resendLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : null}
+                  {resendLoading ? 'Sending...' : 'Resend confirmation email'}
+                </button>
+              )}
             </div>
           )}
           {success && (
