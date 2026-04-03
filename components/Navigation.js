@@ -34,6 +34,10 @@ export default function Navigation() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
 
+  // Hide nav on portal and auth pages
+  const hideNav = pathname.startsWith('/portal') || pathname.startsWith('/forgot-password') || pathname.startsWith('/reset-password');
+  if (hideNav) return null;
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -52,11 +56,10 @@ export default function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
             ? 'bg-cyber-bg/90 backdrop-blur-xl border-b border-cyber-border shadow-lg shadow-black/20'
             : 'bg-transparent'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -83,11 +86,10 @@ export default function Navigation() {
                     onMouseLeave={() => setServicesOpen(false)}
                   >
                     <button
-                      className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                        pathname.startsWith('/services')
+                      className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${pathname.startsWith('/services')
                           ? 'text-cyber-blue bg-cyber-blue/10'
                           : 'text-gray-300 hover:text-white hover:bg-white/5'
-                      }`}
+                        }`}
                     >
                       {link.label}
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
@@ -134,11 +136,10 @@ export default function Navigation() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                      pathname === link.href
+                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${pathname === link.href
                         ? 'text-cyber-blue bg-cyber-blue/10'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'
-                    }`}
+                      }`}
                   >
                     {link.label}
                     {pathname === link.href && (
@@ -207,11 +208,10 @@ export default function Navigation() {
                     <div key={link.href}>
                       <Link
                         href={link.href}
-                        className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                          pathname.startsWith('/services')
+                        className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${pathname.startsWith('/services')
                             ? 'text-cyber-blue bg-cyber-blue/10'
                             : 'text-gray-300 hover:text-white hover:bg-white/5'
-                        }`}
+                          }`}
                       >
                         {link.label}
                       </Link>
@@ -232,11 +232,10 @@ export default function Navigation() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                        pathname === link.href
+                      className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${pathname === link.href
                           ? 'text-cyber-blue bg-cyber-blue/10'
                           : 'text-gray-300 hover:text-white hover:bg-white/5'
-                      }`}
+                        }`}
                     >
                       {link.label}
                     </Link>

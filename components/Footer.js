@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Shield, Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowUpRight } from 'lucide-react';
 import NewsletterForm from '@/components/NewsletterForm';
 
@@ -42,6 +43,10 @@ const trustBadges = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const hideFooter = pathname.startsWith('/portal') || pathname.startsWith('/forgot-password') || pathname.startsWith('/reset-password');
+  if (hideFooter) return null;
+
   return (
     <footer className="relative bg-cyber-bg border-t border-cyber-border">
       {/* Gradient top line */}

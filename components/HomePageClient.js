@@ -13,6 +13,7 @@ import SecurityScanPopup from '@/components/SecurityScanPopup';
 import TrustBadges from '@/components/TrustBadges';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import SectionWrapper from '@/components/SectionWrapper';
+import TrustedLogoStrip from '@/components/TrustedLogoStrip';
 
 function TypingEffect({ texts, speed = 80, pause = 2000 }) {
   const [displayText, setDisplayText] = useState('');
@@ -328,6 +329,8 @@ export default function HomePageClient() {
           </div>
         </div>
       </SectionWrapper>
+
+      <TrustedLogoStrip />
 
       {/* ─── CTA ─── */}
       <SectionWrapper>

@@ -97,7 +97,7 @@ function LoginForm() {
           }
           return
         }
-        router.push('/dashboard')
+        router.push('/portal/dashboard')
         router.refresh()
       } else {
         if (!form.fullName.trim()) throw new Error('Please enter your full name.')
@@ -242,6 +242,14 @@ function LoginForm() {
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
+
+            {tab === 'signin' && (
+              <div className="flex justify-end">
+                <a href="/forgot-password" className="text-xs text-cyber-muted hover:text-cyber-blue transition-colors">
+                  Forgot password?
+                </a>
+              </div>
+            )}
 
             <button
               type="submit"
