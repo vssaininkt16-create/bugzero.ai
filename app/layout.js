@@ -81,8 +81,7 @@ export const metadata = {
     canonical: 'https://bugzero.solutions',
   },
   verification: {
-    google: 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
-    // bing: 'REPLACE_WITH_BING_WEBMASTER_CODE',
+    // google: 'YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
   },
   icons: {
     icon: [

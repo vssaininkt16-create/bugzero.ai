@@ -18,13 +18,6 @@ export async function GET(request) {
       return NextResponse.json({ status: 'ok', service: 'BugZero API', timestamp: new Date().toISOString() });
     }
 
-    if (path === '/leads') {
-      const supabase = createAdminClient();
-      const { data: leads, error } = await supabase.from('leads').select('*').order('created_at', { ascending: false });
-      if (error) throw error;
-      return NextResponse.json({ success: true, data: leads });
-    }
-
     return NextResponse.json({ error: 'Not found' }, { status: 404 });
   } catch (error) {
     console.error('GET Error:', error);

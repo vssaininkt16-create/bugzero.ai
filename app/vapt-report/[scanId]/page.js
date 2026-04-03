@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import {
   Shield, Download, AlertTriangle, CheckCircle, XCircle,
@@ -183,7 +183,7 @@ async function generatePDF(scanData) {
   doc.save(`BugZero_VAPT_${domain}_${new Date().toISOString().slice(0, 10)}.pdf`);
 }
 
-export default function VaptReportPage() {
+function VaptReportContent() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -383,5 +383,17 @@ export default function VaptReportPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function VaptReportPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-cyber-bg flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-cyber-blue animate-spin" />
+      </div>
+    }>
+      <VaptReportContent />
+    </Suspense>
   );
 }

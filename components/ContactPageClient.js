@@ -124,8 +124,12 @@ export default function ContactPageClient() {
               </motion.div>
 
               <div className="flex items-center gap-3 mt-6">
-                {[Linkedin, Twitter, Globe].map((Icon, i) => (
-                  <a key={i} href="#" className="w-10 h-10 rounded-lg bg-cyber-card border border-cyber-border flex items-center justify-center text-gray-400 hover:text-cyber-blue hover:border-cyber-blue/30 transition-all">
+                {[
+                  { Icon: Linkedin, href: 'https://linkedin.com/company/bugzerocyber', label: 'LinkedIn' },
+                  { Icon: Twitter, href: 'https://twitter.com/bugzerocyber', label: 'Twitter' },
+                  { Icon: Globe, href: 'https://bugzero.solutions', label: 'Website' },
+                ].map(({ Icon, href, label }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="w-10 h-10 rounded-lg bg-cyber-card border border-cyber-border flex items-center justify-center text-gray-400 hover:text-cyber-blue hover:border-cyber-blue/30 transition-all">
                     <Icon className="w-5 h-5" />
                   </a>
                 ))}
