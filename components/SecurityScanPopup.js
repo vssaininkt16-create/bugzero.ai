@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Shield, Scan, Globe, Zap, Lock } from 'lucide-react';
 
 const STORAGE_KEY = 'bz_scan_popup_shown';
 
 export default function SecurityScanPopup() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [url, setUrl] = useState('');
   const [isScanning, setIsScanning] = useState(false);
@@ -47,10 +49,12 @@ export default function SecurityScanPopup() {
     e.preventDefault();
     if (!url.trim()) return;
     setIsScanning(true);
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    const target = url.trim().startsWith('http') ? url.trim() : `https://${url.trim()}`;
     setTimeout(() => {
-      setIsScanning(false);
-      setScanned(true);
-    }, 1800);
+      setIsOpen(false);
+      router.push(`/free-security-scan?url=${encodeURIComponent(target)}`);
+    }, 600);
   };
 
   return (

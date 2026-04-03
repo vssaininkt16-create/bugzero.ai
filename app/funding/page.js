@@ -84,7 +84,7 @@ export default function FundingPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, source: 'funding_page', service: 'Investment Inquiry' }),
+        body: JSON.stringify({ ...formData, company: formData.organization, source: 'funding_page', service: 'Investment Inquiry' }),
       });
       if (res.ok) setSubmitted(true);
     } catch (err) {

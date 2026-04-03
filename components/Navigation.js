@@ -254,7 +254,7 @@ export default function Navigation() {
                     <Zap className="w-4 h-4" />
                     VAPT Package ₹999
                   </a>
-                <Link href="/free-security-scan" className="btn-secondary text-sm w-full justify-center">
+                  <Link href="/free-security-scan" className="btn-secondary text-sm w-full justify-center">
                     Free Security Scan
                   </Link>
                   <Link href="/contact" className="btn-primary text-sm w-full justify-center">

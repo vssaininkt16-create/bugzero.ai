@@ -11,10 +11,15 @@ export default function AnimatedCounter({ target, suffix = '', prefix = '', labe
   useEffect(() => {
     if (!isInView) return;
 
+    if (target === 0) {
+      setCount(0);
+      return;
+    }
+
     let start = 0;
     const end = target;
-    const stepTime = (duration * 1000) / end;
     const increment = Math.max(1, Math.floor(end / 60));
+    const stepTime = Math.max(16, (duration * 1000) / (end / increment));
 
     const timer = setInterval(() => {
       start += increment;
@@ -24,7 +29,7 @@ export default function AnimatedCounter({ target, suffix = '', prefix = '', labe
       } else {
         setCount(start);
       }
-    }, stepTime * increment);
+    }, stepTime);
 
     return () => clearInterval(timer);
   }, [isInView, target, duration]);

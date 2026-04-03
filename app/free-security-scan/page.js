@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, ShieldCheck, ShieldAlert, Globe, Lock, Search, ArrowRight,
@@ -68,7 +69,8 @@ function CheckItem({ check, label }) {
   );
 }
 
-export default function SecurityScanPage() {
+function SecurityScanPage() {
+  const searchParams = useSearchParams();
   const [url, setUrl] = useState('');
   const [scanning, setScanning] = useState(false);
   const [result, setResult] = useState(null);
@@ -77,20 +79,27 @@ export default function SecurityScanPage() {
   const [emailForm, setEmailForm] = useState({ name: '', email: '', company: '' });
   const [emailSaved, setEmailSaved] = useState(false);
 
-  const handleScan = async (e) => {
-    e.preventDefault();
-    if (!url.trim()) return;
+  useEffect(() => {
+    const paramUrl = searchParams.get('url');
+    if (paramUrl && !url) {
+      setUrl(paramUrl);
+      runScan(paramUrl);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const runScan = async (targetUrl) => {
+    if (!targetUrl?.trim()) return;
     setScanning(true);
     setResult(null);
     setError('');
     setShowEmailForm(false);
     setEmailSaved(false);
-
     try {
       const res = await fetch('/api/security-scan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: url.trim() }),
+        body: JSON.stringify({ url: targetUrl.trim() }),
       });
       const data = await res.json();
       if (res.ok) {
@@ -102,6 +111,11 @@ export default function SecurityScanPage() {
       setError('Network error. Please try again.');
     }
     setScanning(false);
+  };
+
+  const handleScan = async (e) => {
+    e.preventDefault();
+    await runScan(url);
   };
 
   const handleEmailSubmit = async (e) => {
@@ -334,5 +348,13 @@ export default function SecurityScanPage() {
 
       <TrustBadges />
     </div>
+  );
+}
+
+export default function SecurityScanPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-cyber-bg flex items-center justify-center"><div className="w-8 h-8 border-2 border-cyber-blue border-t-transparent rounded-full animate-spin" /></div>}>
+      <SecurityScanPage />
+    </Suspense>
   );
 }

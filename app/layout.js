@@ -80,9 +80,7 @@ export const metadata = {
   alternates: {
     canonical: 'https://bugzero.solutions',
   },
-  verification: {
-    // google: 'YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
-  },
+  verification: {},
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },

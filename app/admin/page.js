@@ -16,6 +16,7 @@ import {
 
 const COLORS = ['#00d4ff', '#7c3aed', '#10b981', '#ff6b00', '#ef4444', '#eab308'];
 const STATUS_COLORS = { new: 'text-cyber-blue', contacted: 'text-yellow-400', qualified: 'text-cyber-purple', converted: 'text-cyber-green', lost: 'text-red-400' };
+const STATUS_CSS_COLORS = { new: '#00d4ff', contacted: '#facc15', qualified: '#a78bfa', converted: '#10b981', lost: '#f87171' };
 const PRIORITY_COLORS = { hot: 'bg-red-500/20 text-red-400 border-red-500/30', warm: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30', cold: 'bg-blue-500/20 text-blue-400 border-blue-500/30' };
 
 export default function AdminDashboard() {
@@ -252,7 +253,7 @@ export default function AdminDashboard() {
                         <td className="px-3 py-2"><span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${PRIORITY_COLORS[lead.priority]}`}>{lead.priority?.toUpperCase()}</span></td>
                         <td className="px-3 py-2">
                           <select value={lead.status} onChange={e => updateLeadStatus(lead.id, { status: e.target.value })}
-                            className="bg-transparent text-xs font-medium outline-none cursor-pointer" style={{ color: STATUS_COLORS[lead.status]?.replace('text-', '') }}>
+                            className="bg-transparent text-xs font-medium outline-none cursor-pointer" style={{ color: STATUS_CSS_COLORS[lead.status] || '#94a3b8' }}>
                             {['new', 'contacted', 'qualified', 'converted', 'lost'].map(s => <option key={s} value={s} className="bg-cyber-bg text-white">{s}</option>)}
                           </select>
                         </td>

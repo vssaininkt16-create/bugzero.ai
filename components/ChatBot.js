@@ -47,7 +47,7 @@ export default function ChatBot() {
         }),
       });
       const data = await res.json();
-      setMessages(prev => [...prev, { role: 'assistant', content: data.reply }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: data.reply || 'Sorry, I could not get a response. Please try again.' }]);
 
       // Try to extract lead info from conversation
       if (!leadCaptured) {
@@ -135,7 +135,7 @@ export default function ChatBot() {
                     </div>
                   )}
                   <div
-                    className={`max-w-[80%] px-3 py-2 rounded-xl text-sm leading-relaxed ${
+                    className={`max-w-[80%] px-3 py-2 rounded-xl text-sm leading-relaxed whitespace-pre-wrap ${
                       msg.role === 'user'
                         ? 'bg-cyber-blue/20 text-white border border-cyber-blue/20'
                         : 'bg-cyber-card border border-cyber-border text-gray-200'

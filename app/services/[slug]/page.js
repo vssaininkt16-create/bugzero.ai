@@ -4,7 +4,6 @@ import { getServiceBySlug, getAllServiceSlugs } from '@/lib/servicesData';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import {
   generateServiceSchema,
-  generateBreadcrumbSchema,
   generateFAQSchema,
   generateWebPageSchema,
   siteConfig,
@@ -12,7 +11,7 @@ import {
 import {
   Globe, Server, Cloud, Smartphone, Bug, Code, Database,
   Shield, ShieldCheck, CheckCircle, ArrowRight, ChevronRight,
-  Star, Award, Building2, Lock, Phone, Mail
+  Star, Lock, Mail
 } from 'lucide-react';
 
 const iconMap = { Globe, Server, Cloud, Smartphone, Bug, Code, Database, Shield, ShieldCheck, Lock };
