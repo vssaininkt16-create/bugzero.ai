@@ -21,7 +21,7 @@ create policy "Users can view own profile"
   using (auth.uid() = id);
 
 -- Users can update their own profile
-create policy "Users can update own profile"
+create policy "Users can update own profile" 
   on public.profiles for update
   using (auth.uid() = id);
 
