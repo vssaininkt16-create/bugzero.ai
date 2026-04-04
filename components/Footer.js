@@ -93,7 +93,7 @@ export default function Footer() {
             {/* Social links */}
             <div className="flex items-center gap-3 mt-4">
               {[
-                { Icon: Linkedin, href: 'https://linkedin.com/company/bugzerocyber', label: 'LinkedIn' },
+                { Icon: Linkedin, href: 'https://www.linkedin.com/company/bugzero-cyber-solutions/', label: 'LinkedIn' },
                 { Icon: Twitter, href: 'https://twitter.com/bugzerocyber', label: 'Twitter' },
                 { Icon: Github, href: 'https://github.com/bugzerocyber', label: 'GitHub' },
               ].map(({ Icon, href, label }) => (

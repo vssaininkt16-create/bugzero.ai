@@ -125,7 +125,7 @@ export default function ContactPageClient() {
 
               <div className="flex items-center gap-3 mt-6">
                 {[
-                  { Icon: Linkedin, href: 'https://linkedin.com/company/bugzerocyber', label: 'LinkedIn' },
+                  { Icon: Linkedin, href: 'https://www.linkedin.com/company/bugzero-cyber-solutions/', label: 'LinkedIn' },
                   { Icon: Twitter, href: 'https://twitter.com/bugzerocyber', label: 'Twitter' },
                   { Icon: Globe, href: 'https://bugzero.solutions', label: 'Website' },
                 ].map(({ Icon, href, label }) => (
