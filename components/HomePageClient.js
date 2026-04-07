@@ -14,6 +14,7 @@ import TrustBadges from '@/components/TrustBadges';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import SectionWrapper from '@/components/SectionWrapper';
 import TrustedLogoStrip from '@/components/TrustedLogoStrip';
+import SkillsSection from '@/components/SkillsSection';
 
 function TypingEffect({ texts, speed = 80, pause = 2000 }) {
   const [displayText, setDisplayText] = useState('');
@@ -252,6 +253,9 @@ export default function HomePageClient() {
           </div>
         </div>
       </SectionWrapper>
+
+      {/* ─── SKILLS ─── */}
+      <SkillsSection />
 
       {/* ─── GOVERNMENT ALIGNMENT ─── */}
       <SectionWrapper className="bg-gradient-to-b from-transparent via-cyber-purple/5 to-transparent">

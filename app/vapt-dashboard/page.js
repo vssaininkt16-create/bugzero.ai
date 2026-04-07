@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import DashboardSkeleton from '@/components/skeletons/DashboardSkeleton';
 
 export default function VaptDashboardPage() {
   const router = useRouter();
@@ -118,11 +119,7 @@ export default function VaptDashboardPage() {
   };
 
   if (!accessToken) {
-    return (
-      <div className="min-h-screen bg-cyber-bg flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-cyber-blue animate-spin" />
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   return (
