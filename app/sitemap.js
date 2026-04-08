@@ -6,13 +6,15 @@ export default function sitemap() {
 
   const staticPages = [
     { url: baseUrl, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
-    { url: `${baseUrl}/services`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/services`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/solutions`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
-    { url: `${baseUrl}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: 'daily', priority: 0.8 },
-    { url: `${baseUrl}/free-security-scan`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
-    { url: `${baseUrl}/get-proposal`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
+    { url: `${baseUrl}/free-security-scan`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/vapt-basic-999`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/get-proposal`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${baseUrl}/funding`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/privacy-policy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${baseUrl}/terms-of-service`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${baseUrl}/responsible-disclosure`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
@@ -37,16 +39,16 @@ export default function sitemap() {
   }));
 
   const blogSlugs = [
-    'vapt-testing-guide-india-2025',
-    'top-cybersecurity-threats-india-2025',
-    'bug-bounty-programs-guide',
-    'penetration-testing-vs-vulnerability-assessment',
-    'cloud-security-best-practices-india',
-  ].map((slug) => ({
+    { slug: 'vapt-testing-guide-india-2025', priority: 0.8 },
+    { slug: 'top-cybersecurity-threats-india-2025', priority: 0.8 },
+    { slug: 'bug-bounty-programs-guide', priority: 0.7 },
+    { slug: 'penetration-testing-vs-vulnerability-assessment', priority: 0.75 },
+    { slug: 'cloud-security-best-practices-india', priority: 0.7 },
+  ].map(({ slug, priority }) => ({
     url: `${baseUrl}/blog/${slug}`,
     lastModified: now,
     changeFrequency: 'monthly',
-    priority: 0.7,
+    priority,
   }));
 
   return [...staticPages, ...servicePages, ...blogSlugs];

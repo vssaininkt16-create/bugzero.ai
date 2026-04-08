@@ -28,8 +28,14 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
-  experimental: {},
+  compress: true,
+  poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
   images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 86400,
     remotePatterns: [
       {
         protocol: 'https',
@@ -47,36 +53,19 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/services/vapt',
-        destination: '/services/web-application-vapt',
-        permanent: true,
-      },
-      {
-        source: '/services/pentest',
-        destination: '/services/penetration-testing',
-        permanent: true,
-      },
-      {
-        source: '/services/cloud',
-        destination: '/services/cloud-security-audit',
-        permanent: true,
-      },
-      {
-        source: '/privacy',
-        destination: '/privacy-policy',
-        permanent: true,
-      },
-      {
-        source: '/terms',
-        destination: '/terms-of-service',
-        permanent: true,
-      },
-      {
-        source: '/disclosure',
-        destination: '/responsible-disclosure',
-        permanent: true,
-      },
+      { source: '/services/vapt', destination: '/services/web-application-vapt', permanent: true },
+      { source: '/services/pentest', destination: '/services/penetration-testing', permanent: true },
+      { source: '/services/cloud', destination: '/services/cloud-security-audit', permanent: true },
+      { source: '/services/api', destination: '/services/api-security-testing', permanent: true },
+      { source: '/services/mobile', destination: '/services/mobile-app-security', permanent: true },
+      { source: '/services/network', destination: '/services/network-security', permanent: true },
+      { source: '/services/compliance', destination: '/services/compliance-consulting', permanent: true },
+      { source: '/privacy', destination: '/privacy-policy', permanent: true },
+      { source: '/terms', destination: '/terms-of-service', permanent: true },
+      { source: '/disclosure', destination: '/responsible-disclosure', permanent: true },
+      { source: '/scan', destination: '/free-security-scan', permanent: true },
+      { source: '/vapt', destination: '/services/web-application-vapt', permanent: true },
+      { source: '/pentest', destination: '/services/penetration-testing', permanent: true },
     ];
   },
 };

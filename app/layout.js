@@ -13,11 +13,11 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL('https://bugzero.solutions'),
   title: {
-    default: 'BugZero Cyber Solutions | #1 Cybersecurity Company India | VAPT & Pen Testing',
-    template: '%s | BugZero Cyber Solutions',
+    default: 'BugZero Cyber | #1 Cybersecurity Company India | VAPT',
+    template: '%s | BugZero',
   },
   description:
-    "India's most trusted cybersecurity startup. DPIIT Recognized. Expert VAPT, penetration testing, cloud security, bug bounty, and compliance services for enterprises and government organizations.",
+    "India's #1 DPIIT-recognized cybersecurity startup. Expert VAPT, pen testing, cloud security & bug bounty for enterprises and government. 500+ audits completed.",
   keywords: [
     'cybersecurity company India',
     'VAPT testing India',
@@ -31,6 +31,14 @@ export const metadata = {
     'information security consulting India',
     'DPIIT recognized cybersecurity',
     'ISO 27001 compliance India',
+    'CERT-In compliance India',
+    'VAPT services India 2025',
+    'cybersecurity services India',
+    'security audit India',
+    'OWASP testing India',
+    'PCI DSS compliance India',
+    'SOC 2 readiness India',
+    'red team testing India',
   ],
   authors: [{ name: 'BugZero Cyber Solutions', url: 'https://bugzero.solutions' }],
   creator: 'BugZero Cyber Solutions',
@@ -107,6 +115,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://checkout.razorpay.com" />
+        <link rel="dns-prefetch" href="https://cdn.razorpay.com" />
+        <meta name="geo.region" content="IN" />
+        <meta name="geo.country" content="India" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="rating" content="general" />
+      </head>
       <body className="min-h-screen bg-cyber-bg antialiased">
         <Navigation />
         <main className="pt-16 lg:pt-20">

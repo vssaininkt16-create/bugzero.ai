@@ -31,6 +31,11 @@ const solutions = [
     challenges: ['RBI Cybersecurity Framework compliance', 'Core banking system security', 'UPI & payment gateway protection', 'Mobile banking app security', 'SWIFT network security'],
     services: ['VAPT for banking applications', 'PCI DSS compliance audit', 'ATM network security', 'Fraud detection system review', 'API security for fintech integrations'],
     compliance: ['RBI Guidelines', 'PCI DSS', 'ISO 27001', 'SEBI CSCRF'],
+    relatedServices: [
+      { label: 'Web Application VAPT', href: '/services/web-application-vapt' },
+      { label: 'API Security Testing', href: '/services/api-security-testing' },
+      { label: 'Compliance Consulting', href: '/services/compliance-consulting' },
+    ],
   },
   {
     id: 'healthcare',
@@ -44,6 +49,11 @@ const solutions = [
     challenges: ['Patient data (PHI/ePHI) protection', 'Medical device IoT security', 'EHR/EMR system vulnerabilities', 'Hospital network segmentation', 'Ransomware targeting healthcare'],
     services: ['Health app security testing', 'Medical device security audit', 'Healthcare data compliance', 'Network security for hospital IT', 'Telemedicine platform security'],
     compliance: ['HIPAA', 'ISO 27001', 'DPDP Act 2023', 'MoHFW Guidelines'],
+    relatedServices: [
+      { label: 'Mobile App Security', href: '/services/mobile-app-security' },
+      { label: 'Network Security Assessment', href: '/services/network-security' },
+      { label: 'Compliance Consulting', href: '/services/compliance-consulting' },
+    ],
   },
   {
     id: 'government',
@@ -57,6 +67,11 @@ const solutions = [
     challenges: ['Critical infrastructure protection', 'Citizen data privacy', 'E-governance portal security', 'Supply chain security for government IT', 'State-sponsored threat actors'],
     services: ['CERT-In compliant security audits', 'Government portal VAPT', 'Critical infrastructure assessment', 'Aadhaar & UIDAI system security', 'NIC network security review'],
     compliance: ['CERT-In Guidelines', 'NCSP 2020', 'ISO 27001', 'DPDP Act 2023'],
+    relatedServices: [
+      { label: 'Network Security Assessment', href: '/services/network-security' },
+      { label: 'Penetration Testing', href: '/services/penetration-testing' },
+      { label: 'Compliance Consulting', href: '/services/compliance-consulting' },
+    ],
   },
   {
     id: 'fintech',
@@ -70,6 +85,11 @@ const solutions = [
     challenges: ['Rapid development vs. security balance', 'API security for open banking', 'KYC/AML data protection', 'Fraud prevention systems', 'RBI fintech compliance'],
     services: ['Startup security program', 'API penetration testing', 'Bug bounty program setup', 'Security architecture review', 'Compliance readiness (PCI DSS, ISO 27001)'],
     compliance: ['RBI Fintech Guidelines', 'PCI DSS', 'SOC 2', 'ISO 27001'],
+    relatedServices: [
+      { label: 'API Security Testing', href: '/services/api-security-testing' },
+      { label: 'Bug Bounty Management', href: '/services/bug-bounty-management' },
+      { label: 'Mobile App Security', href: '/services/mobile-app-security' },
+    ],
   },
   {
     id: 'ecommerce',
@@ -83,6 +103,11 @@ const solutions = [
     challenges: ['Customer payment data protection', 'Account takeover (ATO) attacks', 'Bot attacks and inventory fraud', 'Third-party plugin vulnerabilities', 'Peak season DDoS protection'],
     services: ['E-commerce platform VAPT', 'Payment gateway security', 'Customer data protection audit', 'Fraud detection review', 'PCI DSS compliance assessment'],
     compliance: ['PCI DSS', 'DPDP Act 2023', 'ISO 27001', 'GDPR (for international)'],
+    relatedServices: [
+      { label: 'Web Application VAPT', href: '/services/web-application-vapt' },
+      { label: 'API Security Testing', href: '/services/api-security-testing' },
+      { label: 'Bug Bounty Management', href: '/services/bug-bounty-management' },
+    ],
   },
   {
     id: 'enterprise',
@@ -96,6 +121,11 @@ const solutions = [
     challenges: ['Complex hybrid IT infrastructure', 'Multi-cloud security governance', 'Insider threat management', 'Third-party vendor risk', 'Mergers & acquisitions security'],
     services: ['Enterprise security program', 'Managed VAPT services', 'Red team / Blue team exercises', 'Security awareness training', 'CISO advisory services'],
     compliance: ['ISO 27001', 'SOC 2', 'GDPR', 'DPDP Act 2023', 'Industry-specific'],
+    relatedServices: [
+      { label: 'Penetration Testing', href: '/services/penetration-testing' },
+      { label: 'Cloud Security Audit', href: '/services/cloud-security-audit' },
+      { label: 'Compliance Consulting', href: '/services/compliance-consulting' },
+    ],
   },
 ];
 
@@ -158,9 +188,20 @@ export default function SolutionsPage() {
                   </div>
                 </div>
 
-                <Link href="/contact" className="btn-primary inline-flex text-sm px-6 py-3">
-                  Get {sol.title.split(' ')[0]} Security Assessment <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="flex flex-wrap gap-3">
+                  <Link href="/contact" className="btn-primary inline-flex text-sm px-6 py-3">
+                    Get {sol.title.split(' ')[0]} Security Assessment <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  {sol.relatedServices && (
+                    <div className="flex flex-wrap gap-2 mt-2 w-full">
+                      {sol.relatedServices.map((srv) => (
+                        <Link key={srv.href} href={srv.href} className="text-xs text-gray-400 hover:text-cyber-blue transition-colors flex items-center gap-1 border border-cyber-border hover:border-cyber-blue/30 rounded-lg px-3 py-1.5">
+                          <CheckCircle className="w-3 h-3" /> {srv.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className={`space-y-4 ${i % 2 !== 0 ? 'lg:col-start-1' : ''}`}>

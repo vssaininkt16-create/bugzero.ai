@@ -2,8 +2,36 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getBlogPostBySlug, getAllBlogSlugs, blogPosts } from '@/lib/blogPosts';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { generateArticleSchema, generateBreadcrumbSchema, siteConfig } from '@/lib/seo';
-import { Calendar, Clock, Tag, ArrowRight, ChevronRight, BookOpen, User } from 'lucide-react';
+import { generateArticleSchema, generateBreadcrumbSchema, generateWebPageSchema, siteConfig } from '@/lib/seo';
+import { Calendar, Clock, Tag, ArrowRight, ChevronRight, BookOpen, User, Shield } from 'lucide-react';
+
+const categoryServiceLinks = {
+  VAPT: [
+    { label: 'Web Application VAPT', href: '/services/web-application-vapt' },
+    { label: 'Penetration Testing', href: '/services/penetration-testing' },
+    { label: 'Network Security Assessment', href: '/services/network-security' },
+  ],
+  'Threat Intelligence': [
+    { label: 'Security Consulting', href: '/services/compliance-consulting' },
+    { label: 'Penetration Testing', href: '/services/penetration-testing' },
+    { label: 'Cloud Security Audit', href: '/services/cloud-security-audit' },
+  ],
+  'Bug Bounty': [
+    { label: 'Bug Bounty Management', href: '/services/bug-bounty-management' },
+    { label: 'Web Application VAPT', href: '/services/web-application-vapt' },
+    { label: 'Responsible Disclosure', href: '/responsible-disclosure' },
+  ],
+  Education: [
+    { label: 'Web Application VAPT', href: '/services/web-application-vapt' },
+    { label: 'Penetration Testing', href: '/services/penetration-testing' },
+    { label: 'All Services', href: '/services' },
+  ],
+  'Cloud Security': [
+    { label: 'Cloud Security Audit', href: '/services/cloud-security-audit' },
+    { label: 'Penetration Testing', href: '/services/penetration-testing' },
+    { label: 'Compliance Consulting', href: '/services/compliance-consulting' },
+  ],
+};
 
 export async function generateStaticParams() {
   return getAllBlogSlugs().map((slug) => ({ slug }));
@@ -13,20 +41,36 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = getBlogPostBySlug(slug);
   if (!post) return {};
+  const title = post.metaTitle || `${post.title} | BugZero Blog`;
+  const description = post.metaDescription || post.excerpt;
   return {
-    title: `${post.title} | BugZero Cyber Blog`,
-    description: post.excerpt,
-    keywords: post.tags.join(', '),
+    title,
+    description,
+    keywords: post.tags.join(', ') + ', cybersecurity India, BugZero',
     alternates: { canonical: `${siteConfig.url}/blog/${slug}` },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title,
+      description,
       url: `${siteConfig.url}/blog/${slug}`,
       type: 'article',
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified,
       authors: [post.author],
       tags: post.tags,
+      images: [
+        {
+          url: post.image || '/opengraph-image.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [post.image || '/opengraph-image.png'],
     },
   };
 }
@@ -47,12 +91,18 @@ export default async function BlogPostPage({ params }) {
   const schemas = [
     generateArticleSchema({
       title: post.title,
-      description: post.excerpt,
+      description: post.metaDescription || post.excerpt,
       slug,
       datePublished: post.datePublished,
       dateModified: post.dateModified,
       author: post.author,
       image: post.image,
+    }),
+    generateWebPageSchema({
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      url: `/blog/${slug}`,
+      breadcrumbs,
     }),
   ];
 
@@ -139,7 +189,23 @@ export default async function BlogPostPage({ params }) {
                   ))}
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-cyber-border">
+                {categoryServiceLinks[post.category] && (
+                  <div className="mt-5 pt-4 border-t border-cyber-border">
+                    <h3 className="text-sm font-bold text-white font-heading mb-3 flex items-center gap-1.5">
+                      <Shield className="w-3.5 h-3.5 text-cyber-blue" /> Related Services
+                    </h3>
+                    <ul className="space-y-1.5 mb-4">
+                      {categoryServiceLinks[post.category].map((link) => (
+                        <li key={link.href}>
+                          <Link href={link.href} className="text-xs text-gray-400 hover:text-cyber-blue transition-colors flex items-center gap-1.5">
+                            <ChevronRight className="w-3 h-3" />{link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              <div className="mt-4 pt-4 border-t border-cyber-border">
                   <h3 className="text-sm font-bold text-white font-heading mb-3">Need a Security Assessment?</h3>
                   <p className="text-xs text-gray-400 mb-3">Get a free security consultation from our certified experts.</p>
                   <Link href="/contact" className="btn-primary w-full justify-center text-sm py-2.5">

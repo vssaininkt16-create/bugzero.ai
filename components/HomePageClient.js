@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion';
 import {
   Shield, ShieldCheck, Lock, Eye, Bug, Server, Cloud, Globe,
   ChevronRight, ArrowRight, Award, CheckCircle, Users, Target,
-  Zap, TrendingUp, Building2, Heart, Star, Quote, Flag
+  Zap, TrendingUp, Building2, Heart, Star, Quote, Flag, ChevronDown
 } from 'lucide-react';
 import MatrixRain from '@/components/MatrixRain';
 import SecurityScanPopup from '@/components/SecurityScanPopup';
@@ -138,6 +138,67 @@ const clientSectors = [
   'Banking & Finance', 'Healthcare', 'Government', 'Fintech',
   'E-Commerce', 'Insurance', 'Telecom', 'Education',
 ];
+
+const homeFAQs = [
+  {
+    question: 'What is VAPT testing and why does my business need it?',
+    answer: 'VAPT (Vulnerability Assessment and Penetration Testing) combines automated scanning and manual exploitation to identify real vulnerabilities before attackers do. CERT-In mandates periodic VAPT for critical sectors. BugZero offers VAPT for web apps, APIs, networks, and cloud infrastructure across India, starting at ₹25,000.',
+  },
+  {
+    question: 'How much does a cybersecurity audit cost in India?',
+    answer: 'BugZero cybersecurity audits start at ₹25,000 for a single web application VAPT. API security testing starts at ₹20,000, network assessments at ₹35,000, and cloud security audits at ₹40,000. Enterprise quarterly packages covering up to 3 VAPTs start at ₹75,000. Contact us for a custom quote.',
+  },
+  {
+    question: 'Is BugZero DPIIT recognized? What certifications do your testers hold?',
+    answer: 'Yes, BugZero is officially recognized by DPIIT under the Startup India initiative. Our ethical hackers hold CEH, OSCP, CISSP, and AWS Security Specialty certifications — ensuring enterprise-grade testing quality.',
+  },
+  {
+    question: 'What cybersecurity services does BugZero offer?',
+    answer: 'BugZero offers 10 specialized services: Web Application VAPT, Penetration Testing, API Security Testing, Network Security Assessment, Cloud Security Audit (AWS/Azure/GCP), Mobile App Security, Bug Bounty Management, Security Code Review, Database Security, and ISO 27001/PCI DSS/SOC 2 Compliance Consulting.',
+  },
+  {
+    question: 'How quickly does BugZero respond and how long does a VAPT take?',
+    answer: 'We guarantee a 2-hour response to all inquiries. A standard web application VAPT takes 3–7 business days; network assessments 5–10 days; full-scope penetration tests 2–4 weeks. All engagements include a re-test after remediation.',
+  },
+  {
+    question: 'Does BugZero help with CERT-In and RBI compliance?',
+    answer: 'Yes. We help organizations meet CERT-In cybersecurity directives (including mandatory 6-hour incident reporting), RBI/SEBI/IRDAI cybersecurity frameworks, and DPDP Act 2023 compliance. We serve government, BFSI, healthcare, fintech, and enterprise clients across 15+ Indian states.',
+  },
+];
+
+function FAQAccordion() {
+  const [openIndex, setOpenIndex] = useState(null);
+  return (
+    <div className="space-y-3">
+      {homeFAQs.map((faq, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.05 }}
+          className="cyber-card rounded-xl overflow-hidden"
+        >
+          <button
+            onClick={() => setOpenIndex(openIndex === i ? null : i)}
+            className="w-full flex items-center justify-between gap-4 p-5 text-left"
+            aria-expanded={openIndex === i}
+          >
+            <h3 className="text-sm sm:text-base font-semibold text-white font-heading pr-2">{faq.question}</h3>
+            <ChevronDown
+              className={`w-5 h-5 text-cyber-blue shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}
+            />
+          </button>
+          {openIndex === i && (
+            <div className="px-5 pb-5">
+              <p className="text-sm text-gray-400 leading-relaxed">{faq.answer}</p>
+            </div>
+          )}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 export default function HomePageClient() {
   return (
@@ -335,6 +396,25 @@ export default function HomePageClient() {
       </SectionWrapper>
 
       <TrustedLogoStrip />
+
+      {/* ─── FAQ ─── */}
+      <SectionWrapper className="bg-gradient-to-b from-transparent via-cyber-blue/5 to-transparent">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <span className="text-cyber-blue text-sm font-semibold tracking-wider uppercase">FAQ</span>
+            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Frequently Asked Questions</h2>
+            <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-sm">
+              Everything you need to know about cybersecurity services, VAPT pricing, and how BugZero protects Indian businesses.
+            </p>
+          </motion.div>
+          <FAQAccordion />
+          <div className="text-center mt-8">
+            <Link href="/contact" className="text-sm text-cyber-blue hover:underline font-medium">
+              Have more questions? Talk to our security experts →
+            </Link>
+          </div>
+        </div>
+      </SectionWrapper>
 
       {/* ─── CTA ─── */}
       <SectionWrapper>
