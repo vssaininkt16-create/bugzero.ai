@@ -8,7 +8,6 @@ import {
   ChevronRight, ArrowRight, Award, CheckCircle, Users, Target,
   Zap, TrendingUp, Building2, Heart, Star, Quote, Flag, ChevronDown
 } from 'lucide-react';
-import MatrixRain from '@/components/MatrixRain';
 import SecurityScanPopup from '@/components/SecurityScanPopup';
 import TrustBadges from '@/components/TrustBadges';
 import AnimatedCounter from '@/components/AnimatedCounter';
@@ -51,28 +50,15 @@ function TypingEffect({ texts, speed = 80, pause = 2000 }) {
 
 function FloatingShield() {
   return (
-    <motion.div
-      animate={{ y: [-10, 10, -10], rotateY: [0, 10, -10, 0] }}
-      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-      className="relative"
-    >
+    <div className="relative">
       <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-52 lg:h-52 relative">
-        <div className="absolute inset-0 rounded-full bg-cyber-blue/10 animate-pulse" />
-        <div className="absolute inset-2 rounded-full bg-cyber-blue/5 border border-cyber-blue/20" />
-        <div className="absolute inset-4 rounded-full bg-gradient-to-br from-cyber-blue/20 to-cyber-purple/20 border border-cyber-blue/30 flex items-center justify-center">
-          <ShieldCheck className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-cyber-blue drop-shadow-[0_0_15px_rgba(0,212,255,0.5)]" />
+        <div className="absolute inset-0 rounded-full bg-red-50" />
+        <div className="absolute inset-2 rounded-full bg-red-50/50 border border-red-100" />
+        <div className="absolute inset-4 rounded-full bg-white border border-red-200 flex items-center justify-center shadow-sm">
+          <ShieldCheck className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-red-600" />
         </div>
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-cyber-blue"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 4 + i * 2, repeat: Infinity, ease: 'linear' }}
-            style={{ top: '50%', left: '50%', transformOrigin: `${40 + i * 15}px 0px` }}
-          />
-        ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -90,33 +76,21 @@ const whyChoose = [
     icon: Zap,
     title: "India's Fastest Growing Cybersecurity Startup",
     desc: 'Recognized by DPIIT and backed by cutting-edge security research, we are scaling at 200% YoY.',
-    color: 'text-cyber-blue',
-    bg: 'bg-cyber-blue/10',
-    border: 'border-cyber-blue/20',
   },
   {
     icon: Users,
     title: 'Certified Ethical Hackers',
     desc: 'Our team holds CEH, OSCP, CISSP, and AWS Security Specialty certifications.',
-    color: 'text-cyber-purple',
-    bg: 'bg-cyber-purple/10',
-    border: 'border-cyber-purple/20',
   },
   {
     icon: Building2,
     title: 'Serving Critical Sectors',
     desc: 'Protecting government, BFSI, healthcare, fintech, and enterprise organizations.',
-    color: 'text-cyber-green',
-    bg: 'bg-cyber-green/10',
-    border: 'border-cyber-green/20',
   },
   {
     icon: Flag,
     title: 'Made in India - For Digital India',
     desc: "Supporting the PM's Digital India Mission with indigenous cybersecurity capabilities.",
-    color: 'text-cyber-saffron',
-    bg: 'bg-cyber-saffron/10',
-    border: 'border-cyber-saffron/20',
   },
 ];
 
@@ -177,21 +151,21 @@ function FAQAccordion() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.05 }}
-          className="cyber-card rounded-xl overflow-hidden"
+          className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-sm transition"
         >
           <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
             className="w-full flex items-center justify-between gap-4 p-5 text-left"
             aria-expanded={openIndex === i}
           >
-            <h3 className="text-sm sm:text-base font-semibold text-white font-heading pr-2">{faq.question}</h3>
+            <h3 className="text-sm sm:text-base font-semibold text-gray-900 font-heading pr-2">{faq.question}</h3>
             <ChevronDown
-              className={`w-5 h-5 text-cyber-blue shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}
+              className={`w-5 h-5 text-red-600 shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}
             />
           </button>
           {openIndex === i && (
             <div className="px-5 pb-5">
-              <p className="text-sm text-gray-400 leading-relaxed">{faq.answer}</p>
+              <p className="text-sm text-gray-600 leading-relaxed">{faq.answer}</p>
             </div>
           )}
         </motion.div>
@@ -204,28 +178,23 @@ export default function HomePageClient() {
   return (
     <div className="relative overflow-hidden">
       <SecurityScanPopup />
-      <MatrixRain />
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] radial-glow-blue" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] radial-glow-purple" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyber-blue/10 border border-cyber-blue/20 text-cyber-blue text-sm font-medium mb-6"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm font-medium mb-6"
               >
                 <Shield className="w-4 h-4" />
                 DPIIT Recognized Startup | ISO 27001
               </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-white leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-heading text-gray-900 leading-tight mb-6">
                 <TypingEffect
                   texts={["Securing India's Digital Future", 'Zero Vulnerabilities, Zero Compromises', 'Your Cyber Defense Partner']}
                   speed={70}
@@ -233,13 +202,13 @@ export default function HomePageClient() {
                 />
               </h1>
 
-              <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed max-w-xl">
-                <span className="text-white font-semibold">BugZero Cyber Solutions</span> — India&apos;s Most Trusted
+              <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
+                <span className="text-gray-900 font-semibold">BugZero Cyber Solutions</span> — India&apos;s Most Trusted
                 Cybersecurity Startup. Elite VAPT, penetration testing, and compliance services for enterprises and government.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <Link href="/contact" className="btn-primary text-base px-8 py-4 justify-center">
+                <Link href="/contact" className="bg-red-600 text-white text-base font-semibold px-8 py-4 rounded-lg hover:bg-red-700 transition-all inline-flex items-center justify-center gap-2">
                   Request Free Assessment <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link href="/services" className="btn-secondary text-base px-8 py-4 justify-center">
@@ -254,7 +223,7 @@ export default function HomePageClient() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5 + i * 0.1 }}
-                    className="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-400 font-medium"
+                    className="px-3 py-1 rounded-md bg-gray-50 border border-gray-200 text-xs text-gray-500 font-medium"
                   >
                     {badge}
                   </motion.span>
@@ -277,11 +246,11 @@ export default function HomePageClient() {
       <TrustBadges />
 
       {/* ─── STATS ─── */}
-      <SectionWrapper className="radial-glow-purple">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionWrapper className="bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <span className="text-cyber-blue text-sm font-semibold tracking-wider uppercase">Our Impact</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Numbers That Speak for Themselves</h2>
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Our Impact</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Numbers That Speak for Themselves</h2>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {stats.map((stat, i) => (
@@ -293,22 +262,22 @@ export default function HomePageClient() {
 
       {/* ─── WHY CHOOSE US ─── */}
       <SectionWrapper>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <span className="text-cyber-green text-sm font-semibold tracking-wider uppercase">Why BugZero</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Why Organizations Trust Us</h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Why BugZero</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Why Organizations Trust Us</h2>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
               We combine cutting-edge technology with certified expertise to deliver unmatched cybersecurity protection.
             </p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChoose.map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="cyber-card rounded-xl p-6">
-                <div className={`w-12 h-12 rounded-xl ${item.bg} border ${item.border} flex items-center justify-center mb-4`}>
-                  <item.icon className={`w-6 h-6 ${item.color}`} />
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition">
+                <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-red-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-white font-heading mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-gray-900 font-heading mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -319,25 +288,25 @@ export default function HomePageClient() {
       <SkillsSection />
 
       {/* ─── GOVERNMENT ALIGNMENT ─── */}
-      <SectionWrapper className="bg-gradient-to-b from-transparent via-cyber-purple/5 to-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionWrapper className="bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <span className="text-cyber-saffron text-sm font-semibold tracking-wider uppercase flex items-center justify-center gap-2">
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase flex items-center justify-center gap-2">
               <Flag className="w-4 h-4" /> Government Alignment
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">
               Aligned with India&apos;s Cybersecurity Vision
             </h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {govAlignment.map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="cyber-card rounded-xl p-6 flex gap-4">
-                <div className="w-12 h-12 shrink-0 rounded-xl bg-cyber-saffron/10 border border-cyber-saffron/20 flex items-center justify-center">
-                  <item.icon className="w-6 h-6 text-cyber-saffron" />
+              <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white border border-gray-200 rounded-xl p-6 flex gap-4 hover:shadow-md transition">
+                <div className="w-12 h-12 shrink-0 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center">
+                  <item.icon className="w-6 h-6 text-red-600" />
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-white font-heading mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-400">{item.desc}</p>
+                  <h3 className="text-base font-semibold text-gray-900 font-heading mb-1">{item.title}</h3>
+                  <p className="text-sm text-gray-600">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -347,16 +316,16 @@ export default function HomePageClient() {
 
       {/* ─── CLIENT SECTORS ─── */}
       <SectionWrapper>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <span className="text-cyber-blue text-sm font-semibold tracking-wider uppercase">Industries We Serve</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Trusted Across Critical Sectors</h2>
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Industries We Serve</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Trusted Across Critical Sectors</h2>
           </motion.div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {clientSectors.map((sector, i) => (
-              <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="cyber-card rounded-xl p-5 text-center group">
-                <Building2 className="w-8 h-8 text-cyber-blue/60 mx-auto mb-3 group-hover:text-cyber-blue transition-colors" />
-                <span className="text-sm font-medium text-gray-300">{sector}</span>
+              <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="bg-white border border-gray-200 rounded-xl p-5 text-center group hover:shadow-md hover:border-gray-300 transition">
+                <Building2 className="w-8 h-8 text-gray-400 mx-auto mb-3 group-hover:text-red-600 transition-colors" />
+                <span className="text-sm font-medium text-gray-700">{sector}</span>
               </motion.div>
             ))}
           </div>
@@ -364,24 +333,24 @@ export default function HomePageClient() {
       </SectionWrapper>
 
       {/* ─── TESTIMONIALS ─── */}
-      <SectionWrapper className="bg-gradient-to-b from-transparent via-cyber-blue/5 to-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionWrapper className="bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <span className="text-cyber-blue text-sm font-semibold tracking-wider uppercase">Testimonials</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">What Our Clients Say</h2>
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Testimonials</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">What Our Clients Say</h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {testimonials.map((t, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="cyber-card rounded-xl p-6">
-                <Quote className="w-8 h-8 text-cyber-blue/30 mb-4" />
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;{t.text}&rdquo;</p>
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition">
+                <Quote className="w-8 h-8 text-red-100 mb-4" />
+                <p className="text-gray-700 text-sm leading-relaxed mb-4">&ldquo;{t.text}&rdquo;</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyber-blue to-cyber-purple flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-sm">
                     {t.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white">{t.name}</div>
-                    <div className="text-xs text-gray-400">{t.role}</div>
+                    <div className="text-sm font-semibold text-gray-900">{t.name}</div>
+                    <div className="text-xs text-gray-500">{t.role}</div>
                   </div>
                   <div className="ml-auto flex gap-0.5">
                     {Array.from({ length: t.rating }).map((_, j) => (
@@ -398,18 +367,18 @@ export default function HomePageClient() {
       <TrustedLogoStrip />
 
       {/* ─── FAQ ─── */}
-      <SectionWrapper className="bg-gradient-to-b from-transparent via-cyber-blue/5 to-transparent">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionWrapper className="bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span className="text-cyber-blue text-sm font-semibold tracking-wider uppercase">FAQ</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Frequently Asked Questions</h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-sm">
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">FAQ</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Frequently Asked Questions</h2>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-sm">
               Everything you need to know about cybersecurity services, VAPT pricing, and how BugZero protects Indian businesses.
             </p>
           </motion.div>
           <FAQAccordion />
           <div className="text-center mt-8">
-            <Link href="/contact" className="text-sm text-cyber-blue hover:underline font-medium">
+            <Link href="/contact" className="text-sm text-red-600 hover:underline font-medium">
               Have more questions? Talk to our security experts →
             </Link>
           </div>
@@ -418,21 +387,18 @@ export default function HomePageClient() {
 
       {/* ─── CTA ─── */}
       <SectionWrapper>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative rounded-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-cyber-purple/20 to-cyber-green/20" />
-            <div className="absolute inset-0 grid-bg" />
-            <div className="absolute inset-[1px] rounded-2xl bg-cyber-bg/80 backdrop-blur-xl" />
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-200">
             <div className="relative z-10 p-8 sm:p-12 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mb-4">
+              <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mb-4">
                 Ready to Secure Your Organization?
               </h2>
-              <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+              <p className="text-gray-600 mb-8 max-w-xl mx-auto">
                 Get a free security assessment and discover how BugZero can protect your digital assets.
                 Our experts respond within 2 hours.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact" className="btn-primary text-base px-8 py-4 justify-center">
+                <Link href="/contact" className="bg-red-600 text-white text-base font-semibold px-8 py-4 rounded-lg hover:bg-red-700 transition-all inline-flex items-center justify-center gap-2">
                   Request Free Assessment <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link href="/services" className="btn-secondary text-base px-8 py-4 justify-center">

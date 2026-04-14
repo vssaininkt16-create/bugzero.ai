@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import { Shield, Award, CheckCircle, Flag, Globe } from 'lucide-react';
 
 const badges = [
-  { label: 'DPIIT Recognized Startup', icon: Award, variant: 'badge-saffron' },
+  { label: 'DPIIT Recognized Startup', icon: Award, variant: 'badge-blue' },
   { label: 'ISO 27001 Compliant', icon: CheckCircle, variant: 'badge-green' },
-  { label: 'Made in India', icon: Flag, variant: 'badge-saffron' },
+  { label: 'Made in India', icon: Flag, variant: 'badge-blue' },
   { label: 'Aligned with Digital India', icon: Globe, variant: 'badge-blue' },
-  { label: 'Cyber Surakshit Bharat Partner', icon: Shield, variant: 'badge-purple' },
+  { label: 'Cyber Surakshit Bharat Partner', icon: Shield, variant: 'badge-blue' },
   { label: 'NASSCOM Member', icon: Award, variant: 'badge-blue' },
   { label: 'OWASP Member', icon: Shield, variant: 'badge-green' },
 ];
@@ -35,7 +35,7 @@ export default function TrustBadges({ compact = false }) {
   }
 
   return (
-    <section className="py-8 border-y border-cyber-border bg-cyber-bg/50">
+    <section className="py-8 border-y border-gray-200 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-wrap items-center justify-center gap-4">
           {badges.map((badge, i) => (

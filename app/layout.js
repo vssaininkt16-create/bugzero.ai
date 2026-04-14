@@ -7,7 +7,7 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#000d1a',
+  themeColor: '#FFFFFF',
 };
 
 export const metadata = {
@@ -114,7 +114,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -127,7 +127,7 @@ export default function RootLayout({ children }) {
         <meta name="revisit-after" content="7 days" />
         <meta name="rating" content="general" />
       </head>
-      <body className="min-h-screen bg-cyber-bg antialiased">
+      <body className="min-h-screen bg-white antialiased">
         <Navigation />
         <main className="pt-16 lg:pt-20">
           {children}

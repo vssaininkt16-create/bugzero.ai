@@ -44,14 +44,14 @@ export default function AnimatedCounter({ target, suffix = '', prefix = '', labe
       className="text-center group"
     >
       {Icon && (
-        <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/20 flex items-center justify-center group-hover:bg-cyber-blue/20 transition-colors">
-          <Icon className="w-6 h-6 text-cyber-blue" />
+        <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center group-hover:bg-red-100 transition-colors">
+          <Icon className="w-6 h-6 text-red-600" />
         </div>
       )}
-      <div className="text-3xl sm:text-4xl font-bold font-heading text-white mb-1">
+      <div className="text-3xl sm:text-4xl font-bold font-heading text-gray-900 mb-1">
         {prefix}{count.toLocaleString()}{suffix}
       </div>
-      <div className="text-sm text-cyber-muted">{label}</div>
+      <div className="text-sm text-gray-500">{label}</div>
     </motion.div>
   );
 }

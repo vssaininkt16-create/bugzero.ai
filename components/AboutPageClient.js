@@ -12,19 +12,19 @@ import SectionWrapper from '@/components/SectionWrapper';
 import AnimatedCounter from '@/components/AnimatedCounter';
 
 const teamMembers = [
-  { name: 'Founder & CEO', role: 'Chief Executive Officer', bio: "Visionary cybersecurity leader with extensive experience in offensive security, building India's next-gen cybersecurity company.", certs: ['CEH', 'OSCP'], color: 'from-cyber-blue to-cyber-purple' },
-  { name: 'CTO', role: 'Chief Technology Officer', bio: 'Expert in building scalable security platforms. Leading the development of AI-powered threat detection systems.', certs: ['CISSP', 'AWS Security'], color: 'from-cyber-purple to-cyber-green' },
-  { name: 'Head of Operations', role: 'VP Operations', bio: 'Streamlining security delivery processes to ensure world-class service quality for every client engagement.', certs: ['PMP', 'ISO 27001 LA'], color: 'from-cyber-green to-cyber-blue' },
-  { name: 'Lead Security Researcher', role: 'Principal Researcher', bio: "Discovered critical vulnerabilities in major platforms. Leading BugZero's advanced security research team.", certs: ['OSCP', 'CRTP'], color: 'from-cyber-saffron to-cyber-blue' },
+  { name: 'Founder & CEO', role: 'Chief Executive Officer', bio: "Visionary cybersecurity leader with extensive experience in offensive security, building India's next-gen cybersecurity company.", certs: ['CEH', 'OSCP'] },
+  { name: 'CTO', role: 'Chief Technology Officer', bio: 'Expert in building scalable security platforms. Leading the development of AI-powered threat detection systems.', certs: ['CISSP', 'AWS Security'] },
+  { name: 'Head of Operations', role: 'VP Operations', bio: 'Streamlining security delivery processes to ensure world-class service quality for every client engagement.', certs: ['PMP', 'ISO 27001 LA'] },
+  { name: 'Lead Security Researcher', role: 'Principal Researcher', bio: "Discovered critical vulnerabilities in major platforms. Leading BugZero's advanced security research team.", certs: ['OSCP', 'CRTP'] },
 ];
 
 const timeline = [
-  { year: '2024', quarter: 'Q1', title: 'Company Founded', desc: "BugZero Cyber Solutions established with a mission to secure India's digital future.", icon: Rocket, color: 'text-cyber-blue' },
-  { year: '2024', quarter: 'Q3', title: 'First 10 Clients', desc: 'Secured first 10 enterprise clients across banking, healthcare, and fintech sectors.', icon: Building2, color: 'text-cyber-green' },
-  { year: '2025', quarter: 'Q1', title: 'DPIIT Recognition', desc: 'Officially recognized by DPIIT under the Startup India initiative.', icon: Award, color: 'text-cyber-saffron' },
-  { year: '2025', quarter: 'Q2', title: '50+ Enterprise Clients', desc: 'Crossed 50 enterprise clients milestone across 15+ states in India.', icon: TrendingUp, color: 'text-cyber-purple' },
-  { year: '2026', quarter: 'Target', title: '₹1 Crore Government Grant', desc: 'Targeting government grant funding to accelerate platform development and expansion.', icon: Target, color: 'text-cyber-blue' },
-  { year: '2027', quarter: 'Vision', title: 'Pan-India Expansion', desc: "Becoming India's #1 cybersecurity company securing 1000+ organizations.", icon: Globe, color: 'text-cyber-green' },
+  { year: '2024', quarter: 'Q1', title: 'Company Founded', desc: "BugZero Cyber Solutions established with a mission to secure India's digital future.", icon: Rocket },
+  { year: '2024', quarter: 'Q3', title: 'First 10 Clients', desc: 'Secured first 10 enterprise clients across banking, healthcare, and fintech sectors.', icon: Building2 },
+  { year: '2025', quarter: 'Q1', title: 'DPIIT Recognition', desc: 'Officially recognized by DPIIT under the Startup India initiative.', icon: Award },
+  { year: '2025', quarter: 'Q2', title: '50+ Enterprise Clients', desc: 'Crossed 50 enterprise clients milestone across 15+ states in India.', icon: TrendingUp },
+  { year: '2026', quarter: 'Target', title: '₹1 Crore Government Grant', desc: 'Targeting government grant funding to accelerate platform development and expansion.', icon: Target },
+  { year: '2027', quarter: 'Vision', title: 'Pan-India Expansion', desc: "Becoming India's #1 cybersecurity company securing 1000+ organizations.", icon: Globe },
 ];
 
 const impactStats = [
@@ -49,18 +49,16 @@ export default function AboutPageClient() {
   return (
     <div className="relative">
       {/* ─── HERO ─── */}
-      <section className="relative py-20 sm:py-28 overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] radial-glow-blue" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyber-purple/10 border border-cyber-purple/20 text-cyber-purple text-sm font-medium mb-6">
+      <section className="relative py-20 sm:py-28 overflow-hidden bg-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm font-medium mb-6">
             <Users className="w-4 h-4" />
             About BugZero Cyber Solutions
           </motion.span>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-white mb-6">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-heading text-gray-900 mb-6">
             Our <span className="gradient-text">Mission</span> & Story
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-lg text-gray-600 max-w-2xl mx-auto">
             Building India&apos;s most trusted cybersecurity company, one audit at a time.
           </motion.p>
         </div>
@@ -70,23 +68,23 @@ export default function AboutPageClient() {
 
       {/* ─── MISSION & VISION ─── */}
       <SectionWrapper>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
-            <motion.div {...fadeUp} className="cyber-card rounded-xl p-8">
-              <div className="w-14 h-14 rounded-xl bg-cyber-blue/10 border border-cyber-blue/20 flex items-center justify-center mb-6">
-                <Target className="w-7 h-7 text-cyber-blue" />
+            <motion.div {...fadeUp} className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition">
+              <div className="w-14 h-14 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-6">
+                <Target className="w-7 h-7 text-red-600" />
               </div>
-              <h2 className="text-2xl font-bold text-white font-heading mb-4">Our Mission</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <h2 className="text-2xl font-bold text-gray-900 font-heading mb-4">Our Mission</h2>
+              <p className="text-gray-600 leading-relaxed">
                 To make India&apos;s cyberspace the safest in the world by empowering organizations with elite security expertise, cutting-edge technology, and unwavering commitment to digital protection.
               </p>
             </motion.div>
-            <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="cyber-card rounded-xl p-8">
-              <div className="w-14 h-14 rounded-xl bg-cyber-purple/10 border border-cyber-purple/20 flex items-center justify-center mb-6">
-                <Eye className="w-7 h-7 text-cyber-purple" />
+            <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition">
+              <div className="w-14 h-14 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-6">
+                <Eye className="w-7 h-7 text-red-600" />
               </div>
-              <h2 className="text-2xl font-bold text-white font-heading mb-4">Our Vision</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <h2 className="text-2xl font-bold text-gray-900 font-heading mb-4">Our Vision</h2>
+              <p className="text-gray-600 leading-relaxed">
                 Become India&apos;s #1 cybersecurity company by 2027, securing 1,000+ organizations and training 10,000 cybersecurity professionals to build a safer digital India for future generations.
               </p>
             </motion.div>
@@ -95,22 +93,22 @@ export default function AboutPageClient() {
       </SectionWrapper>
 
       {/* ─── TEAM ─── */}
-      <SectionWrapper className="bg-gradient-to-b from-transparent via-cyber-purple/5 to-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionWrapper className="bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <span className="text-cyber-purple text-sm font-semibold tracking-wider uppercase">Our Team</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Leadership Team</h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">A team of certified security experts with decades of combined experience.</p>
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Our Team</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Leadership Team</h2>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">A team of certified security experts with decades of combined experience.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {teamMembers.map((member, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="cyber-card rounded-xl p-6 text-center">
-                <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${member.color} mx-auto mb-4 flex items-center justify-center`}>
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-md transition">
+                <div className="w-20 h-20 rounded-full bg-red-600 mx-auto mb-4 flex items-center justify-center">
                   <Users className="w-10 h-10 text-white/80" />
                 </div>
-                <h3 className="text-lg font-bold text-white font-heading">{member.name}</h3>
-                <p className="text-sm text-cyber-blue mb-2">{member.role}</p>
-                <p className="text-xs text-gray-400 mb-3">{member.bio}</p>
+                <h3 className="text-lg font-bold text-gray-900 font-heading">{member.name}</h3>
+                <p className="text-sm text-red-600 mb-2">{member.role}</p>
+                <p className="text-xs text-gray-500 mb-3">{member.bio}</p>
                 <div className="flex flex-wrap justify-center gap-1">
                   {member.certs.map((cert, j) => (
                     <span key={j} className="trust-badge badge-blue text-[10px]">{cert}</span>
@@ -124,27 +122,27 @@ export default function AboutPageClient() {
 
       {/* ─── TIMELINE ─── */}
       <SectionWrapper>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <span className="text-cyber-blue text-sm font-semibold tracking-wider uppercase">Our Journey</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Company Timeline</h2>
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Our Journey</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Company Timeline</h2>
           </motion.div>
           <div className="max-w-3xl mx-auto space-y-0">
             {timeline.map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex gap-4 pb-8 last:pb-0">
                 <div className="flex flex-col items-center">
-                  <div className={`w-10 h-10 rounded-full bg-cyber-card border border-cyber-border flex items-center justify-center shrink-0 ${item.color}`}>
+                  <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center shrink-0 text-red-600">
                     <item.icon className="w-5 h-5" />
                   </div>
-                  {i < timeline.length - 1 && <div className="w-px flex-1 bg-cyber-border mt-2" />}
+                  {i < timeline.length - 1 && <div className="w-px flex-1 bg-gray-200 mt-2" />}
                 </div>
-                <div className="cyber-card rounded-xl p-4 flex-1">
+                <div className="bg-white border border-gray-200 rounded-xl p-4 flex-1 hover:shadow-sm transition">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs font-bold text-cyber-blue">{item.year}</span>
-                    <span className="text-xs text-gray-500">{item.quarter}</span>
+                    <span className="text-xs font-bold text-red-600">{item.year}</span>
+                    <span className="text-xs text-gray-400">{item.quarter}</span>
                   </div>
-                  <h3 className="text-base font-semibold text-white font-heading mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-400">{item.desc}</p>
+                  <h3 className="text-base font-semibold text-gray-900 font-heading mb-1">{item.title}</h3>
+                  <p className="text-sm text-gray-600">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -153,11 +151,11 @@ export default function AboutPageClient() {
       </SectionWrapper>
 
       {/* ─── IMPACT NUMBERS ─── */}
-      <SectionWrapper className="bg-gradient-to-b from-transparent via-cyber-blue/5 to-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionWrapper className="bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <span className="text-cyber-green text-sm font-semibold tracking-wider uppercase">Our Impact</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Impact in Numbers</h2>
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Our Impact</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Impact in Numbers</h2>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {impactStats.map((stat, i) => (
@@ -169,20 +167,20 @@ export default function AboutPageClient() {
 
       {/* ─── CERTIFICATIONS ─── */}
       <SectionWrapper>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <span className="text-cyber-saffron text-sm font-semibold tracking-wider uppercase">Certifications & Awards</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-2">Recognition & Compliance</h2>
+            <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Certifications & Awards</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Recognition & Compliance</h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {certifications.map((cert, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="cyber-card rounded-xl p-5 flex gap-4">
-                <div className="w-10 h-10 shrink-0 rounded-xl bg-cyber-saffron/10 border border-cyber-saffron/20 flex items-center justify-center">
-                  <cert.icon className="w-5 h-5 text-cyber-saffron" />
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-white border border-gray-200 rounded-xl p-5 flex gap-4 hover:shadow-md transition">
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center">
+                  <cert.icon className="w-5 h-5 text-red-600" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white font-heading">{cert.name}</h3>
-                  <p className="text-xs text-gray-400 mt-1">{cert.desc}</p>
+                  <h3 className="text-sm font-semibold text-gray-900 font-heading">{cert.name}</h3>
+                  <p className="text-xs text-gray-500 mt-1">{cert.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -192,19 +190,17 @@ export default function AboutPageClient() {
 
       {/* ─── CTA ─── */}
       <SectionWrapper>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="relative rounded-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-cyber-purple/20 to-cyber-green/20" />
-            <div className="absolute inset-[1px] rounded-2xl bg-cyber-bg/80 backdrop-blur-xl" />
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeUp} className="relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-200">
             <div className="relative z-10 p-8 sm:p-12 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mb-4">
+              <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mb-4">
                 Join India&apos;s Cybersecurity Mission
               </h2>
-              <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+              <p className="text-gray-600 mb-8 max-w-xl mx-auto">
                 Partner with us to build a safer digital India. Whether you&apos;re an enterprise, government body, or investor, we&apos;d love to connect.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact" className="btn-primary text-base px-8 py-4 justify-center">
+                <Link href="/contact" className="bg-red-600 text-white text-base font-semibold px-8 py-4 rounded-lg hover:bg-red-700 transition-all inline-flex items-center justify-center gap-2">
                   Get in Touch <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link href="/funding" className="btn-secondary text-base px-8 py-4 justify-center">

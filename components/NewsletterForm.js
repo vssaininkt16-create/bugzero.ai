@@ -36,7 +36,7 @@ export default function NewsletterForm() {
 
   if (status === 'success') {
     return (
-      <div className="flex items-center gap-2 text-cyber-green text-sm">
+      <div className="flex items-center gap-2 text-green-600 text-sm">
         <CheckCircle className="w-4 h-4" />
         {message}
       </div>
@@ -46,20 +46,20 @@ export default function NewsletterForm() {
   return (
     <form onSubmit={handleSubmit} className="flex gap-2">
       <div className="relative flex-1">
-        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
           required
-          className="w-full pl-9 pr-3 py-2.5 rounded-lg bg-cyber-card border border-cyber-border text-white text-sm placeholder-gray-500 focus:border-cyber-blue outline-none"
+          className="w-full pl-9 pr-3 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none transition-colors"
         />
       </div>
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="px-4 py-2.5 rounded-lg bg-cyber-blue text-cyber-bg text-sm font-semibold hover:shadow-lg hover:shadow-cyber-blue/20 transition-all disabled:opacity-50 shrink-0"
+        className="px-4 py-2.5 rounded-lg bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-all disabled:opacity-50 shrink-0"
       >
         {status === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Subscribe'}
       </button>
