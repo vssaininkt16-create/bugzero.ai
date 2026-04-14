@@ -3,7 +3,7 @@ import { SkeletonBox, SkeletonText, SkeletonBadge, SkeletonButton } from '@/comp
 export default function HeroSkeleton() {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <div className="absolute inset-0 grid-bg" />
+      <div className="absolute inset-0 " />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -39,7 +39,7 @@ export default function HeroSkeleton() {
           {/* Right column - shield visual */}
           <div className="hidden lg:flex justify-center items-center">
             <div className="relative w-52 h-52">
-              <div className="skeleton absolute inset-0 rounded-full opacity-60" />
+              <div className="skeleton absolute inset-0 rounded-full " />
               <div className="skeleton absolute inset-4 rounded-full" />
               <div className="skeleton absolute inset-8 rounded-full" />
             </div>

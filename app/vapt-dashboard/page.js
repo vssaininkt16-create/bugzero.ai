@@ -133,7 +133,7 @@ export default function VaptDashboardPage() {
             </div>
             <div>
               <h1 className="text-lg font-bold text-gray-900 font-heading">VAPT Dashboard</h1>
-              <p className="text-xs text-gray-500">BugZero Automated Scanner</p>
+              <p className="text-xs text-gray-700">BugZero Automated Scanner</p>
             </div>
           </div>
           <button
@@ -156,7 +156,7 @@ export default function VaptDashboardPage() {
               <Zap className="w-4 h-4 text-red-600" />
               Start Your Security Scan
             </h2>
-            <p className="text-xs text-gray-600 mb-6">
+            <p className="text-xs text-gray-700 mb-6">
               Enter the URL of the website you own or have explicit permission to test.
             </p>
 
@@ -177,7 +177,7 @@ export default function VaptDashboardPage() {
                     onChange={(e) => setTargetUrl(e.target.value)}
                     placeholder="https://yourwebsite.com"
                     required
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-500 text-sm focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue outline-none transition-all"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-500 text-sm focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -197,7 +197,7 @@ export default function VaptDashboardPage() {
               <button
                 type="submit"
                 disabled={scanning || !authorized}
-                className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
+                className="btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowedcursor-not-allowed"
               >
                 {scanning ? (
                   <>
@@ -220,7 +220,7 @@ export default function VaptDashboardPage() {
                   <Loader2 className="w-4 h-4 animate-spin" />
                   Scanning in progress…
                 </div>
-                <p className="text-xs text-gray-600">
+                <p className="text-xs text-gray-700">
                   Checking SSL/TLS, security headers, DNS records, and more. This usually takes 10–30 seconds.
                 </p>
               </div>
@@ -243,7 +243,7 @@ export default function VaptDashboardPage() {
                     <CheckCircle className="w-4 h-4 text-green-600" />
                     <span className="text-sm font-semibold text-gray-900">Scan Complete</span>
                   </div>
-                  <p className="text-xs text-gray-600 break-all">{targetUrl}</p>
+                  <p className="text-xs text-gray-700 break-all">{targetUrl}</p>
                 </div>
                 <div className="text-center">
                   <div className={`text-4xl font-black ${gradeColor[scanResult.grade] || 'text-red-600'}`}>
@@ -264,7 +264,7 @@ export default function VaptDashboardPage() {
                   return (
                     <div key={risk} className={`rounded-xl border p-3 text-center ${colors[risk]}`}>
                       <div className="text-2xl font-bold">{scanResult.risk_summary?.[risk] || 0}</div>
-                      <div className="text-[10px] mt-0.5 opacity-80">{risk}</div>
+                      <div className="text-[10px] mt-0.5 ">{risk}</div>
                     </div>
                   );
                 })}
@@ -307,7 +307,7 @@ export default function VaptDashboardPage() {
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-gray-600 mt-3">
+                <p className="text-xs text-gray-700 mt-3">
                   +{Math.max(0, (scanResult.vulnerabilities?.length || 0) - 4)} more in full report
                 </p>
               </div>

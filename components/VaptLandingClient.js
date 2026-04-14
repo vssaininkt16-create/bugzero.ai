@@ -133,7 +133,7 @@ export default function VaptLandingClient() {
               VAPT Report for just{' '}
               <span className="text-red-600">₹999</span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               Get a professional OWASP-aligned vulnerability scan report in minutes. Identify security risks, get a grade, and download your PDF report instantly.
             </p>
           </motion.div>
@@ -230,7 +230,7 @@ export default function VaptLandingClient() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="bg-red-600 text-white w-full py-4 rounded-lg text-base font-semibold hover:bg-red-700 transition-all disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                    className="bg-red-600 text-white w-full py-4 rounded-lg text-base font-semibold hover:bg-red-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowedcursor-not-allowed inline-flex items-center justify-center gap-2"
                   >
                     {loading ? (
                       <>
@@ -246,7 +246,7 @@ export default function VaptLandingClient() {
                   </button>
                 </form>
 
-                <p className="mt-4 text-center text-xs text-gray-600">
+                <p className="mt-4 text-center text-xs text-gray-700">
                   By proceeding you agree to our{' '}
                   <Link href="/terms-of-service" className="text-red-600 hover:underline">Terms</Link>
                   {' '}and{' '}

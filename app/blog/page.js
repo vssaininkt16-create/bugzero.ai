@@ -68,9 +68,9 @@ export default function BlogPage() {
             Cybersecurity Insights
           </span>
           <h1 className="text-4xl sm:text-5xl font-bold font-heading text-gray-900 mb-6">
-            Security <span className="gradient-text">Blog</span>
+            Security <span className="text-red-600">Blog</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
             Expert cybersecurity insights, VAPT guides, threat intelligence, and security best practices from India&apos;s leading security team.
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function BlogPage() {
                       <span className="text-xs text-gray-500 flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 font-heading mb-3 group-hover:text-red-600 transition-colors leading-snug">{post.title}</h3>
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                    <p className="text-sm text-gray-700 mb-4 line-clamp-3">{post.excerpt}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-gray-500 flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{new Date(post.datePublished).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                       <span className="text-sm text-red-600 flex items-center gap-1 font-medium">Read More <ArrowRight className="w-4 h-4" /></span>
@@ -112,7 +112,7 @@ export default function BlogPage() {
                   <span className="text-xs text-gray-500 flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
                 </div>
                 <h3 className="text-base font-bold text-gray-900 font-heading mb-2 group-hover:text-red-600 transition-colors leading-snug flex-1">{post.title}</h3>
-                <p className="text-sm text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
+                <p className="text-sm text-gray-700 mb-4 line-clamp-2">{post.excerpt}</p>
                 <div className="flex flex-wrap gap-1 mb-3">
                   {post.tags.slice(0, 3).map((tag, i) => (
                     <span key={i} className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-red-50 border border-red-200 text-gray-600">
@@ -135,10 +135,10 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-2xl overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-red-50 to-gray-100" />
-            <div className="absolute inset-[1px] rounded-2xl bg-gray-50 backdrop-blur-xl" />
+            <div className="absolute inset-[1px] rounded-2xl bg-gray-50 " />
             <div className="relative z-10 p-8 sm:p-12 text-center">
               <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 mb-4">Want a Free Security Assessment?</h2>
-              <p className="text-gray-600 mb-6 max-w-xl mx-auto">Apply what you&apos;ve learned. Let our experts assess your security posture and give you a personalized roadmap.</p>
+              <p className="text-gray-700 mb-6 max-w-xl mx-auto">Apply what you&apos;ve learned. Let our experts assess your security posture and give you a personalized roadmap.</p>
               <Link href="/contact" className="btn-primary text-base px-8 py-4 inline-flex">
                 Get Free Assessment <ArrowRight className="w-5 h-5" />
               </Link>

@@ -76,7 +76,7 @@ export default function SkillsSection() {
           <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">
             Core Skills &amp; Capabilities
           </h2>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-base leading-relaxed">
+          <p className="text-gray-700 mt-4 max-w-2xl mx-auto text-base leading-relaxed">
             From vulnerability discovery to compliance consulting, our certified team delivers
             precision-grade security across every layer of your digital infrastructure.
           </p>
@@ -95,7 +95,7 @@ export default function SkillsSection() {
               className="group relative bg-white border border-gray-200 rounded-xl p-6 overflow-hidden hover:shadow-md hover:border-gray-300 transition"
             >
               {/* Colored top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-red-600 opacity-0 group-hover:0 transition-opacity duration-300" />
 
               {/* Icon */}
               <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
@@ -108,7 +108,7 @@ export default function SkillsSection() {
               </h3>
 
               {/* Description */}
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-700 leading-relaxed">
                 {skill.desc}
               </p>
             </motion.div>

@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }) {
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 mb-6 leading-tight">{post.title}</h1>
-          <p className="text-lg text-gray-600 mb-6 leading-relaxed">{post.excerpt}</p>
+          <p className="text-lg text-gray-700 mb-6 leading-relaxed">{post.excerpt}</p>
 
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gray-100 to-red-50 flex items-center justify-center">
@@ -161,7 +161,7 @@ export default async function BlogPostPage({ params }) {
                   const [intro, ...items] = block.split('\n- ');
                   return (
                     <div key={i}>
-                      {intro && <p className="text-gray-600 mb-2">{intro}</p>}
+                      {intro && <p className="text-gray-700 mb-2">{intro}</p>}
                       <ul className="space-y-2 list-none pl-0">
                         {items.map((item, j) => (
                           <li key={j} className="flex items-start gap-2 text-gray-600">
@@ -173,7 +173,7 @@ export default async function BlogPostPage({ params }) {
                     </div>
                   );
                 }
-                return <p key={i} className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: block.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') }} />;
+                return <p key={i} className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: block.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') }} />;
               })}
             </article>
 
@@ -207,7 +207,7 @@ export default async function BlogPostPage({ params }) {
                 )}
               <div className="mt-4 pt-4 border-t border-gray-200">
                   <h3 className="text-sm font-bold text-gray-900 font-heading mb-3">Need a Security Assessment?</h3>
-                  <p className="text-xs text-gray-600 mb-3">Get a free security consultation from our certified experts.</p>
+                  <p className="text-xs text-gray-700 mb-3">Get a free security consultation from our certified experts.</p>
                   <Link href="/contact" className="btn-primary w-full justify-center text-sm py-2.5">
                     Get Free Assessment <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -228,7 +228,7 @@ export default async function BlogPostPage({ params }) {
                 <Link key={p.slug} href={`/blog/${p.slug}`} className="bg-white border border-gray-200 shadow-sm rounded-xl p-5 group hover:border-red-200 transition-all block">
                   <span className="trust-badge badge-blue text-[10px] mb-3 inline-flex">{p.category}</span>
                   <h3 className="text-base font-bold text-gray-900 font-heading mb-2 group-hover:text-red-600 transition-colors">{p.title}</h3>
-                  <p className="text-sm text-gray-600 line-clamp-2">{p.excerpt}</p>
+                  <p className="text-sm text-gray-700 line-clamp-2">{p.excerpt}</p>
                   <span className="mt-3 text-xs text-red-600 flex items-center gap-1 font-medium">Read More <ArrowRight className="w-3.5 h-3.5" /></span>
                 </Link>
               ))}

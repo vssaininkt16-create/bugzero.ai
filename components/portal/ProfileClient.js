@@ -9,10 +9,10 @@ import {
 
 function InfoCard({ children, title, icon: Icon }) {
   return (
-    <div className="cyber-card rounded-2xl overflow-hidden">
-      <div className="px-6 py-4 border-b border-cyber-border flex items-center gap-2">
-        <Icon className="w-4 h-4 text-cyber-blue" />
-        <h2 className="text-sm font-semibold text-white">{title}</h2>
+    <div className="bg-white border border-gray-200 shadow-sm rounded-2xl overflow-hidden">
+      <div className="px-6 py-4 border-b border-gray-200 flex items-center gap-2">
+        <Icon className="w-4 h-4 text-red-600" />
+        <h2 className="text-sm font-semibold text-gray-900">{title}</h2>
       </div>
       <div className="p-6">{children}</div>
     </div>
@@ -22,13 +22,13 @@ function InfoCard({ children, title, icon: Icon }) {
 function InputField({ label, name, type = 'text', value, onChange, icon: Icon, placeholder, required }) {
   return (
     <div>
-      <label className="block text-xs text-cyber-muted uppercase tracking-wider mb-1.5">{label}{required && <span className="text-red-400 ml-0.5">*</span>}</label>
+      <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">{label}{required && <span className="text-red-400 ml-0.5">*</span>}</label>
       <div className="relative">
-        {Icon && <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyber-muted pointer-events-none" />}
+        {Icon && <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />}
         <input
           name={name} type={type} value={value} onChange={onChange} placeholder={placeholder}
           required={required}
-          className={`w-full ${Icon ? 'pl-10' : 'pl-4'} pr-4 py-2.5 rounded-xl bg-white/5 border border-cyber-border text-white placeholder-cyber-muted/50 text-sm focus:outline-none focus:border-cyber-blue/40 focus:bg-white/8 transition-all duration-200`}
+          className={`w-full ${Icon ? 'pl-10' : 'pl-4'} pr-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-cyber-muted/50 text-sm focus:outline-none focus:border-red-200 focus:bg-gray-50 transition-all duration-200`}
         />
       </div>
     </div>
@@ -115,8 +115,8 @@ export default function ProfileClient({ user }) {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-2xl font-bold font-heading text-white">My Profile</h1>
-        <p className="text-cyber-muted text-sm mt-1">Manage your personal information and public profile</p>
+        <h1 className="text-2xl font-bold font-heading text-gray-900">My Profile</h1>
+        <p className="text-gray-500 text-sm mt-1">Manage your personal information and public profile</p>
       </div>
 
       <form onSubmit={handleSave} className="space-y-6">
@@ -125,26 +125,26 @@ export default function ProfileClient({ user }) {
           <div className="flex items-center gap-6">
             <div className="relative shrink-0">
               {avatar ? (
-                <img src={avatar} alt="Avatar" className="w-24 h-24 rounded-2xl border-2 border-cyber-blue/30 object-cover shadow-[0_0_30px_rgba(0,212,255,0.15)]" referrerPolicy="no-referrer" />
+                <img src={avatar} alt="Avatar" className="w-24 h-24 rounded-2xl border-2 border-red-200 object-cover shadow-[0_0_30px_rgba(0,212,255,0.15)]" referrerPolicy="no-referrer" />
               ) : (
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-cyber-blue/20 to-cyber-purple/20 border-2 border-cyber-blue/30 flex items-center justify-center shadow-[0_0_30px_rgba(0,212,255,0.15)]">
-                  <span className="text-2xl font-bold text-cyber-blue font-heading">{initials}</span>
+                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-50 to-gray-50 border-2 border-red-200 flex items-center justify-center shadow-[0_0_30px_rgba(0,212,255,0.15)]">
+                  <span className="text-2xl font-bold text-red-600 font-heading">{initials}</span>
                 </div>
               )}
               {avatarUploading && (
                 <div className="absolute inset-0 rounded-2xl bg-black/60 flex items-center justify-center">
-                  <Loader2 className="w-6 h-6 text-cyber-blue animate-spin" />
+                  <Loader2 className="w-6 h-6 text-red-600 animate-spin" />
                 </div>
               )}
             </div>
             <div>
               <button type="button" onClick={() => fileRef.current?.click()}
                 disabled={avatarUploading}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyber-blue/10 border border-cyber-blue/20 text-cyber-blue text-sm font-medium hover:bg-cyber-blue/20 transition-all disabled:opacity-50">
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm font-medium hover:bg-red-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                 <Camera className="w-4 h-4" />
                 {avatarUploading ? 'Uploading...' : 'Upload Photo'}
               </button>
-              <p className="text-xs text-cyber-muted mt-2">JPG, PNG or WebP. Max 2MB.</p>
+              <p className="text-xs text-gray-500 mt-2">JPG, PNG or WebP. Max 2MB.</p>
               <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
             </div>
           </div>
@@ -161,12 +161,12 @@ export default function ProfileClient({ user }) {
             <InputField label="Company / Organization" name="company" value={form.company} onChange={handleChange} icon={Briefcase} placeholder="Company name" />
           </div>
           <div className="mt-4">
-            <label className="block text-xs text-cyber-muted uppercase tracking-wider mb-1.5">Bio</label>
+            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Bio</label>
             <div className="relative">
-              <FileText className="absolute left-3 top-3 w-4 h-4 text-cyber-muted pointer-events-none" />
+              <FileText className="absolute left-3 top-3 w-4 h-4 text-gray-500 pointer-events-none" />
               <textarea
                 name="bio" value={form.bio} onChange={handleChange} rows={3} placeholder="Tell us a bit about yourself..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-cyber-border text-white placeholder-cyber-muted/50 text-sm focus:outline-none focus:border-cyber-blue/40 transition-all duration-200 resize-none"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-cyber-muted/50 text-sm focus:outline-none focus:border-red-200 transition-all duration-200 resize-none"
               />
             </div>
           </div>
@@ -175,17 +175,17 @@ export default function ProfileClient({ user }) {
         {/* Account meta */}
         <InfoCard title="Account Info" icon={Shield}>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-4 rounded-xl bg-white/3 border border-cyber-border">
-              <p className="text-xs text-cyber-muted uppercase tracking-wider mb-1">Role</p>
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+              <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Role</p>
               <span className={`trust-badge ${user?.role === 'admin' ? 'badge-purple' : 'badge-blue'} capitalize`}>{user?.role || 'user'}</span>
             </div>
-            <div className="p-4 rounded-xl bg-white/3 border border-cyber-border">
-              <p className="text-xs text-cyber-muted uppercase tracking-wider mb-1">Auth Provider</p>
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+              <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Auth Provider</p>
               <span className="trust-badge badge-blue capitalize">{user?.provider || 'email'}</span>
             </div>
-            <div className="p-4 rounded-xl bg-white/3 border border-cyber-border">
-              <p className="text-xs text-cyber-muted uppercase tracking-wider mb-1">Member Since</p>
-              <p className="text-sm text-white font-medium">
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+              <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Member Since</p>
+              <p className="text-sm text-gray-900 font-medium">
                 {user?.createdAt ? new Date(user.createdAt).toLocaleDateString('en-IN', { dateStyle: 'medium' }) : 'N/A'}
               </p>
             </div>
@@ -200,14 +200,14 @@ export default function ProfileClient({ user }) {
           </div>
         )}
         {success && (
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-cyber-green/10 border border-cyber-green/20 text-cyber-green text-sm">
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50 border border-green-200 text-green-600 text-sm">
             <CheckCircle className="w-4 h-4 shrink-0" />{success}
           </div>
         )}
 
         <div className="flex justify-end">
           <button type="submit" disabled={saving}
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-cyber-blue/15 border border-cyber-blue/30 text-cyber-blue font-semibold text-sm hover:bg-cyber-blue/25 hover:shadow-[0_0_20px_rgba(0,212,255,0.15)] transition-all disabled:opacity-50">
+            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-red-50 border border-red-200 text-red-600 font-semibold text-sm hover:bg-red-50 hover:shadow-[0_0_20px_rgba(0,212,255,0.15)] transition-all disabled:opacity-50 disabled:cursor-not-allowed">
             {saving ? <><Loader2 className="w-4 h-4 animate-spin" />Saving...</> : <><Save className="w-4 h-4" />Save Changes</>}
           </button>
         </div>

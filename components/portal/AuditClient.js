@@ -18,13 +18,13 @@ const AUDIT_EVENTS = [
 ]
 
 const ACTION_META = {
-  login: { icon: LogIn, label: 'Login', color: 'text-cyber-green', bg: 'bg-cyber-green/10 border-cyber-green/20' },
-  password_change: { icon: Key, label: 'Password Change', color: 'text-cyber-blue', bg: 'bg-cyber-blue/10 border-cyber-blue/20' },
+  login: { icon: LogIn, label: 'Login', color: 'text-green-600', bg: 'bg-green-50 border-green-200' },
+  password_change: { icon: Key, label: 'Password Change', color: 'text-red-600', bg: 'bg-red-50 border-red-200' },
   login_failed: { icon: AlertTriangle, label: 'Failed Login', color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/20' },
-  profile_update: { icon: Settings, label: 'Profile Update', color: 'text-cyber-purple', bg: 'bg-cyber-purple/10 border-cyber-purple/20' },
-  '2fa_enabled': { icon: Shield, label: '2FA Enabled', color: 'text-cyber-green', bg: 'bg-cyber-green/10 border-cyber-green/20' },
+  profile_update: { icon: Settings, label: 'Profile Update', color: 'text-red-700', bg: 'bg-red-50 border-red-200' },
+  '2fa_enabled': { icon: Shield, label: '2FA Enabled', color: 'text-green-600', bg: 'bg-green-50 border-green-200' },
   session_revoke: { icon: Activity, label: 'Session Revoked', color: 'text-yellow-400', bg: 'bg-yellow-400/10 border-yellow-400/20' },
-  avatar_upload: { icon: Settings, label: 'Avatar Upload', color: 'text-cyber-blue', bg: 'bg-cyber-blue/10 border-cyber-blue/20' },
+  avatar_upload: { icon: Settings, label: 'Avatar Upload', color: 'text-red-600', bg: 'bg-red-50 border-red-200' },
 }
 
 function fmtTime(iso) {
@@ -51,10 +51,10 @@ export default function AuditClient() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-white">Audit Log</h1>
-          <p className="text-cyber-muted text-sm mt-1">Complete history of account activity and security events</p>
+          <h1 className="text-2xl font-bold font-heading text-gray-900">Audit Log</h1>
+          <p className="text-gray-500 text-sm mt-1">Complete history of account activity and security events</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyber-blue/10 border border-cyber-blue/20 text-cyber-blue text-sm font-medium hover:bg-cyber-blue/20 transition-all">
+        <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm font-medium hover:bg-red-50 transition-all">
           <Download className="w-4 h-4" />Export CSV
         </button>
       </div>
@@ -62,12 +62,12 @@ export default function AuditClient() {
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyber-muted pointer-events-none" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
           <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search events..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-cyber-border text-white placeholder-cyber-muted/50 text-sm focus:outline-none focus:border-cyber-blue/40 transition-all" />
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-cyber-muted/50 text-sm focus:outline-none focus:border-red-200 transition-all" />
         </div>
         <select value={filter} onChange={e => setFilter(e.target.value)}
-          className="px-4 py-2.5 rounded-xl bg-white/5 border border-cyber-border text-white text-sm focus:outline-none focus:border-cyber-blue/40 transition-all">
+          className="px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-red-200 transition-all">
           <option value="all">All Events</option>
           <option value="success">Successful</option>
           <option value="failed">Failed</option>
@@ -77,16 +77,16 @@ export default function AuditClient() {
       </div>
 
       {/* Table */}
-      <div className="cyber-card rounded-2xl overflow-hidden">
+      <div className="bg-white border border-gray-200 shadow-sm rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-cyber-border">
-                <th className="text-left px-6 py-3.5 text-[11px] text-cyber-muted uppercase tracking-wider">Event</th>
-                <th className="text-left px-4 py-3.5 text-[11px] text-cyber-muted uppercase tracking-wider hidden md:table-cell">Method</th>
-                <th className="text-left px-4 py-3.5 text-[11px] text-cyber-muted uppercase tracking-wider hidden lg:table-cell">Location</th>
-                <th className="text-left px-4 py-3.5 text-[11px] text-cyber-muted uppercase tracking-wider hidden lg:table-cell">Device</th>
-                <th className="text-right px-6 py-3.5 text-[11px] text-cyber-muted uppercase tracking-wider">Status</th>
+              <tr className="border-b border-gray-200">
+                <th className="text-left px-6 py-3.5 text-[11px] text-gray-500 uppercase tracking-wider">Event</th>
+                <th className="text-left px-4 py-3.5 text-[11px] text-gray-500 uppercase tracking-wider hidden md:table-cell">Method</th>
+                <th className="text-left px-4 py-3.5 text-[11px] text-gray-500 uppercase tracking-wider hidden lg:table-cell">Location</th>
+                <th className="text-left px-4 py-3.5 text-[11px] text-gray-500 uppercase tracking-wider hidden lg:table-cell">Device</th>
+                <th className="text-right px-6 py-3.5 text-[11px] text-gray-500 uppercase tracking-wider">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-cyber-border/50">
@@ -94,30 +94,30 @@ export default function AuditClient() {
                 const meta = ACTION_META[event.action] || ACTION_META.login
                 const Icon = meta.icon
                 return (
-                  <tr key={event.id} className="hover:bg-white/2 transition-colors group">
+                  <tr key={event.id} className="hover:bg-gray-50 transition-colors group">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border ${meta.bg}`}>
                           <Icon className={`w-3.5 h-3.5 ${meta.color}`} />
                         </div>
                         <div>
-                          <p className="text-sm text-white font-medium">{event.desc}</p>
-                          <p className="text-[11px] text-cyber-muted mt-0.5 flex items-center gap-1">
+                          <p className="text-sm text-gray-900 font-medium">{event.desc}</p>
+                          <p className="text-[11px] text-gray-500 mt-0.5 flex items-center gap-1">
                             <Clock className="w-3 h-3" />{fmtTime(event.time)}
                           </p>
                         </div>
                       </div>
                     </td>
                     <td className="px-4 py-4 hidden md:table-cell">
-                      <span className="text-xs text-cyber-muted">{event.method}</span>
+                      <span className="text-xs text-gray-500">{event.method}</span>
                     </td>
                     <td className="px-4 py-4 hidden lg:table-cell">
-                      <span className="text-xs text-cyber-muted flex items-center gap-1">
+                      <span className="text-xs text-gray-500 flex items-center gap-1">
                         <Globe className="w-3 h-3" />{event.location}
                       </span>
                     </td>
                     <td className="px-4 py-4 hidden lg:table-cell">
-                      <span className="text-xs text-cyber-muted">{event.device}</span>
+                      <span className="text-xs text-gray-500">{event.device}</span>
                     </td>
                     <td className="px-6 py-4 text-right">
                       {event.status === 'success' ? (
@@ -135,13 +135,13 @@ export default function AuditClient() {
 
         {filtered.length === 0 && (
           <div className="text-center py-12">
-            <Activity className="w-10 h-10 text-cyber-muted mx-auto mb-3" />
-            <p className="text-sm text-cyber-muted">No events match your filter</p>
+            <Activity className="w-10 h-10 text-gray-500 mx-auto mb-3" />
+            <p className="text-sm text-gray-500">No events match your filter</p>
           </div>
         )}
       </div>
 
-      <p className="text-xs text-cyber-muted text-center">Showing {filtered.length} of {AUDIT_EVENTS.length} events · Logs retained for 90 days</p>
+      <p className="text-xs text-gray-500 text-center">Showing {filtered.length} of {AUDIT_EVENTS.length} events · Logs retained for 90 days</p>
     </div>
   )
 }

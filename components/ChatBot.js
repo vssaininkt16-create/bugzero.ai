@@ -119,7 +119,7 @@ export default function ChatBot() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-7 h-7 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors"
+                className="w-7 h-7 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-700 transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -215,7 +215,7 @@ export default function ChatBot() {
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="w-9 h-9 rounded-lg bg-red-600 flex items-center justify-center text-white hover:bg-red-700 disabled:opacity-30 transition-colors shrink-0"
+                className="w-9 h-9 rounded-lg bg-red-600 flex items-center justify-center text-white hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shrink-0"
               >
                 <Send className="w-4 h-4" />
               </button>

@@ -64,7 +64,7 @@ export default function ContactPageClient() {
             Get in Touch
           </motion.span>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-heading text-gray-900 mb-6">
-            Contact <span className="gradient-text">BugZero</span>
+            Contact <span className="text-red-600">BugZero</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-lg text-gray-600 max-w-2xl mx-auto">
             Ready to secure your organization? Our security experts respond within 2 hours.
@@ -80,7 +80,7 @@ export default function ContactPageClient() {
           <div className="grid lg:grid-cols-5 gap-12">
             <motion.div {...fadeUp} className="lg:col-span-2">
               <h2 className="text-2xl font-bold text-gray-900 font-heading mb-6">Let&apos;s Talk Security</h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
+              <p className="text-gray-700 mb-8 leading-relaxed">
                 Whether you need a security assessment, have questions about our services, or want to discuss a partnership, we&apos;re here to help.
               </p>
               <div className="space-y-4 mb-8">
@@ -90,7 +90,7 @@ export default function ContactPageClient() {
                       <info.icon className="w-5 h-5 text-red-600" />
                     </div>
                     <div>
-                      <div className="text-xs text-gray-400">{info.label}</div>
+                      <div className="text-xs text-gray-600">{info.label}</div>
                       {info.link ? (
                         <a href={info.link} className="text-sm text-gray-700 hover:text-red-600 transition-colors">{info.value}</a>
                       ) : (
@@ -106,7 +106,7 @@ export default function ContactPageClient() {
                   <Building2 className="w-5 h-5 text-red-600" />
                   <h3 className="text-base font-semibold text-gray-900 font-heading">For Government Inquiries</h3>
                 </div>
-                <p className="text-sm text-gray-600 mb-3">
+                <p className="text-sm text-gray-700 mb-3">
                   For government department security audits, compliance requirements, and official partnerships.
                 </p>
                 <a href="mailto:government@bugzero.solutions" className="text-sm text-red-600 hover:underline">
@@ -127,7 +127,7 @@ export default function ContactPageClient() {
                   { Icon: Twitter, href: 'https://twitter.com/bugzerocyber', label: 'Twitter' },
                   { Icon: Globe, href: 'https://bugzero.solutions', label: 'Website' },
                 ].map(({ Icon, href, label }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="w-10 h-10 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-600 hover:border-red-200 transition-all">
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="w-10 h-10 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:text-red-600 hover:border-red-200 transition-all">
                     <Icon className="w-5 h-5" />
                   </a>
                 ))}
@@ -142,7 +142,7 @@ export default function ContactPageClient() {
                   <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16">
                     <CheckCircle className="w-20 h-20 text-green-600 mx-auto mb-6" />
                     <h4 className="text-2xl font-bold text-gray-900 mb-3">Thank You!</h4>
-                    <p className="text-gray-600 mb-6">Your request has been received. Our security experts will get back to you within 2 hours.</p>
+                    <p className="text-gray-700 mb-6">Your request has been received. Our security experts will get back to you within 2 hours.</p>
                     <Link href="/services" className="btn-secondary inline-flex">
                       Explore Our Services <ArrowRight className="w-4 h-4" />
                     </Link>
@@ -186,7 +186,7 @@ export default function ContactPageClient() {
 
                     {error && <div className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>}
 
-                    <button type="submit" disabled={submitting} className="bg-red-600 text-white w-full py-4 rounded-lg text-base font-semibold hover:bg-red-700 transition-all disabled:opacity-50 inline-flex items-center justify-center gap-2">
+                    <button type="submit" disabled={submitting} className="bg-red-600 text-white w-full py-4 rounded-lg text-base font-semibold hover:bg-red-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2">
                       {submitting ? (
                         <span className="flex items-center gap-2">
                           <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
@@ -200,7 +200,7 @@ export default function ContactPageClient() {
                       )}
                     </button>
 
-                    <p className="text-xs text-gray-400 text-center">
+                    <p className="text-xs text-gray-700 text-center">
                       By submitting, you agree to our <Link href="/privacy-policy" className="hover:text-gray-600 underline">privacy policy</Link>. We respond within 2 hours.
                     </p>
                   </form>
@@ -218,7 +218,7 @@ export default function ContactPageClient() {
             <div className="relative z-10 p-8 sm:p-12">
               <Shield className="w-12 h-12 text-red-600 mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-gray-900 font-heading mb-3">Serving Clients Across India</h2>
-              <p className="text-gray-600 mb-6">With remote-first operations, we serve clients across 15+ states in India and growing.</p>
+              <p className="text-gray-700 mb-6">With remote-first operations, we serve clients across 15+ states in India and growing.</p>
               <div className="flex flex-wrap justify-center gap-3">
                 {['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Pune', 'Kolkata'].map((city, i) => (
                   <span key={i} className="trust-badge badge-blue"><MapPin className="w-3 h-3" />{city}</span>

@@ -143,8 +143,8 @@ export default function PrivacyPolicyPage() {
             <Shield className="w-8 h-8 text-red-600" />
             <h1 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">Privacy Policy</h1>
           </div>
-          <p className="text-gray-600 text-sm">Last Updated: March 2025 | Effective Date: January 2025</p>
-          <p className="text-gray-600 mt-4 leading-relaxed">
+          <p className="text-gray-700 text-sm">Last Updated: March 2025 | Effective Date: January 2025</p>
+          <p className="text-gray-700 mt-4 leading-relaxed">
             BugZero Cyber Solutions (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your data in compliance with India&apos;s Digital Personal Data Protection Act 2023 and applicable cybersecurity regulations.
           </p>
         </div>

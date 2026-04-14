@@ -26,7 +26,7 @@ function ServiceCardSkeleton() {
       </div>
 
       {/* Price + link row */}
-      <div className="pt-4 border-t border-cyber-border flex items-center justify-between">
+      <div className="pt-4 border-t border-gray-200 flex items-center justify-between">
         <div className="skeleton h-6 w-20 rounded-md" />
         <div className="skeleton h-4 w-24 rounded-md" />
       </div>

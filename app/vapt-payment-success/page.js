@@ -71,7 +71,7 @@ function PaymentSuccessContent() {
           <>
             <Loader2 className="w-12 h-12 text-red-600 animate-spin mx-auto mb-4" />
             <h1 className="text-xl font-bold text-gray-900 mb-2">Verifying Payment…</h1>
-            <p className="text-gray-600 text-sm">Please wait while we confirm your payment.</p>
+            <p className="text-gray-700 text-sm">Please wait while we confirm your payment.</p>
           </>
         )}
 
@@ -79,7 +79,7 @@ function PaymentSuccessContent() {
           <>
             <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
             <h1 className="text-xl font-bold text-gray-900 mb-2">Payment Successful!</h1>
-            <p className="text-gray-600 text-sm mb-6">
+            <p className="text-gray-700 text-sm mb-6">
               Your VAPT access has been activated. Redirecting to dashboard…
             </p>
             <Link href="/vapt-dashboard" className="btn-primary text-sm justify-center w-full">
@@ -92,8 +92,8 @@ function PaymentSuccessContent() {
           <>
             <AlertTriangle className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
             <h1 className="text-xl font-bold text-gray-900 mb-2">Verification Issue</h1>
-            <p className="text-gray-600 text-sm mb-2">{error}</p>
-            <p className="text-xs text-gray-500 mb-6">
+            <p className="text-gray-700 text-sm mb-2">{error}</p>
+            <p className="text-xs text-gray-700 mb-6">
               If you completed payment, contact{' '}
               <a href="mailto:contact@bugzero.solutions" className="text-red-600 hover:underline">
                 contact@bugzero.solutions

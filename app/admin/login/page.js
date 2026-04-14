@@ -34,26 +34,26 @@ export default function AdminLoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="absolute inset-0 grid-bg" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] radial-glow-blue opacity-30" />
+      <div className="absolute inset-0 " />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]  " />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="relative w-full max-w-md"
       >
-        <div className="cyber-card rounded-2xl p-8">
+        <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-8">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 rounded-2xl bg-cyber-blue/10 border border-cyber-blue/20 flex items-center justify-center mx-auto mb-4">
-              <Shield className="w-8 h-8 text-cyber-blue" />
+            <div className="w-16 h-16 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center mx-auto mb-4">
+              <Shield className="w-8 h-8 text-red-600" />
             </div>
-            <h1 className="text-2xl font-bold text-white font-heading">Admin Dashboard</h1>
-            <p className="text-sm text-gray-400 mt-1">BugZero Cyber Solutions</p>
+            <h1 className="text-2xl font-bold text-gray-900 font-heading">Admin Dashboard</h1>
+            <p className="text-sm text-gray-700 mt-1">BugZero Cyber Solutions</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm text-gray-400 mb-1.5">Email</label>
+              <label className="block text-sm text-gray-600 mb-1.5">Email</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <input
@@ -61,14 +61,14 @@ export default function AdminLoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg bg-cyber-bg border border-cyber-border text-white placeholder-gray-600 focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue outline-none text-sm"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder-gray-600 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none text-sm"
                   placeholder="admin@bugzero.solutions"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm text-gray-400 mb-1.5">Password</label>
+              <label className="block text-sm text-gray-600 mb-1.5">Password</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <input
@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg bg-cyber-bg border border-cyber-border text-white placeholder-gray-600 focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue outline-none text-sm"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder-gray-600 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none text-sm"
                   placeholder="Enter password"
                 />
               </div>
@@ -91,7 +91,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary w-full justify-center py-3 disabled:opacity-50"
+              className="btn-primary w-full justify-center py-3 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Signing in...</> : <>Sign In <ArrowRight className="w-4 h-4" /></>}
             </button>

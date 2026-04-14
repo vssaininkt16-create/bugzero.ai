@@ -131,8 +131,8 @@ export default function TermsOfServicePage() {
             <FileText className="w-8 h-8 text-red-700" />
             <h1 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">Terms of Service</h1>
           </div>
-          <p className="text-gray-600 text-sm">Last Updated: March 2025 | Effective Date: January 2025</p>
-          <p className="text-gray-600 mt-4 leading-relaxed">
+          <p className="text-gray-700 text-sm">Last Updated: March 2025 | Effective Date: January 2025</p>
+          <p className="text-gray-700 mt-4 leading-relaxed">
             Please read these Terms of Service carefully before using BugZero Cyber Solutions&apos; website or engaging our cybersecurity services. These terms govern the relationship between BugZero Cyber Solutions and our clients and website visitors.
           </p>
         </div>

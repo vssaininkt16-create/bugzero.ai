@@ -123,39 +123,39 @@ function LoginForm() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg" />
-      <div className="absolute inset-0 radial-glow-blue" />
-      <div className="absolute top-1/4 -left-32 w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-cyber-purple/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 " />
+      <div className="absolute inset-0 " />
+      <div className="absolute top-1/4 -left-32 w-64 h-64 bg-red-50 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-red-50 rounded-full blur-3xl" />
 
       <div className="relative z-10 w-full max-w-md">
         {/* Brand */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyber-blue/10 border border-cyber-blue/20 mb-4">
-            <Shield className="w-8 h-8 text-cyber-blue" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-red-50 border border-red-200 mb-4">
+            <Shield className="w-8 h-8 text-red-600" />
           </div>
-          <h1 className="text-2xl font-bold font-heading text-white">
-            Welcome to <span className="gradient-text-blue">BugZero</span>
+          <h1 className="text-2xl font-bold font-heading text-gray-900">
+            Welcome to <span className="text-red-600-blue">BugZero</span>
           </h1>
-          <p className="text-cyber-muted mt-2 text-sm">
+          <p className="text-gray-500 mt-2 text-sm">
             Sign in to access your security dashboard
           </p>
         </div>
 
         {/* Card */}
-        <div className="cyber-card rounded-2xl p-8 relative">
+        <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-8 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyber-blue/50 to-transparent" />
 
           {/* Tabs */}
-          <div className="flex rounded-xl bg-white/5 border border-cyber-border p-1 mb-6">
+          <div className="flex rounded-xl bg-gray-50 border border-gray-200 p-1 mb-6">
             {['signin', 'signup'].map((t) => (
               <button
                 key={t}
                 onClick={() => switchTab(t)}
                 className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                   tab === t
-                    ? 'bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/30'
-                    : 'text-cyber-muted hover:text-white'
+                    ? 'bg-red-50 text-red-600 border border-red-200'
+                    : 'text-gray-500 hover:text-red-600'
                 }`}
               >
                 {t === 'signin' ? 'Sign In' : 'Sign Up'}
@@ -173,7 +173,7 @@ function LoginForm() {
                   className="mt-2 flex items-center justify-center gap-2 w-full py-2 rounded-lg
                              bg-red-500/10 border border-red-500/30 text-red-300
                              hover:bg-red-500/20 transition-all duration-200 text-xs font-medium
-                             disabled:opacity-50 disabled:cursor-not-allowed"
+                             disabled:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowedcursor-not-allowed"
                 >
                   {resendLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : null}
                   {resendLoading ? 'Sending...' : 'Resend confirmation email'}
@@ -182,7 +182,7 @@ function LoginForm() {
             </div>
           )}
           {success && (
-            <div className="mb-4 p-3 rounded-lg bg-cyber-green/10 border border-cyber-green/20 text-cyber-green text-sm text-center">
+            <div className="mb-4 p-3 rounded-lg bg-green-50 border border-green-200 text-green-600 text-sm text-center">
               {success}
             </div>
           )}
@@ -191,7 +191,7 @@ function LoginForm() {
           <form onSubmit={handleEmailAuth} className="space-y-3">
             {tab === 'signup' && (
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyber-muted pointer-events-none" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
                 <input
                   name="fullName"
                   type="text"
@@ -199,15 +199,15 @@ function LoginForm() {
                   value={form.fullName}
                   onChange={handleChange}
                   autoComplete="name"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-cyber-border
-                             text-white placeholder-cyber-muted/60 text-sm
-                             focus:outline-none focus:border-cyber-blue/40 transition-all duration-200"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200
+                             text-gray-900 placeholder-cyber-muted/60 text-sm
+                             focus:outline-none focus:border-red-200 transition-all duration-200"
                 />
               </div>
             )}
 
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyber-muted pointer-events-none" />
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
               <input
                 name="email"
                 type="email"
@@ -215,14 +215,14 @@ function LoginForm() {
                 value={form.email}
                 onChange={handleChange}
                 autoComplete="email"
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-cyber-border
-                           text-white placeholder-cyber-muted/60 text-sm
-                           focus:outline-none focus:border-cyber-blue/40 transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200
+                           text-gray-900 placeholder-cyber-muted/60 text-sm
+                           focus:outline-none focus:border-red-200 transition-all duration-200"
               />
             </div>
 
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyber-muted pointer-events-none" />
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
               <input
                 name="password"
                 type={showPassword ? 'text' : 'password'}
@@ -230,14 +230,14 @@ function LoginForm() {
                 value={form.password}
                 onChange={handleChange}
                 autoComplete={tab === 'signup' ? 'new-password' : 'current-password'}
-                className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/5 border border-cyber-border
-                           text-white placeholder-cyber-muted/60 text-sm
-                           focus:outline-none focus:border-cyber-blue/40 transition-all duration-200"
+                className="w-full pl-10 pr-10 py-3 rounded-xl bg-gray-50 border border-gray-200
+                           text-gray-900 placeholder-cyber-muted/60 text-sm
+                           focus:outline-none focus:border-red-200 transition-all duration-200"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-muted hover:text-white transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-600 transition-colors"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
@@ -245,7 +245,7 @@ function LoginForm() {
 
             {tab === 'signin' && (
               <div className="flex justify-end">
-                <a href="/forgot-password" className="text-xs text-cyber-muted hover:text-cyber-blue transition-colors">
+                <a href="/forgot-password" className="text-xs text-gray-500 hover:text-red-600 transition-colors">
                   Forgot password?
                 </a>
               </div>
@@ -255,9 +255,9 @@ function LoginForm() {
               type="submit"
               disabled={loading}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-xl
-                         bg-cyber-blue/20 border border-cyber-blue/30 text-cyber-blue font-medium text-sm
-                         hover:bg-cyber-blue/30 hover:border-cyber-blue/50
-                         transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
+                         bg-red-50 border border-red-200 text-red-600 font-medium text-sm
+                         hover:bg-red-50 hover:border-red-200
+                         transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowedcursor-not-allowed
                          hover:shadow-[0_0_20px_rgba(0,212,255,0.15)]"
             >
               {loading ? (
@@ -274,7 +274,7 @@ function LoginForm() {
           {/* Divider */}
           <div className="my-5 flex items-center gap-3">
             <div className="flex-1 h-px bg-cyber-border" />
-            <span className="text-xs text-cyber-muted uppercase tracking-wider">or</span>
+            <span className="text-xs text-gray-500 uppercase tracking-wider">or</span>
             <div className="flex-1 h-px bg-cyber-border" />
           </div>
 
@@ -283,10 +283,10 @@ function LoginForm() {
             onClick={handleGoogleLogin}
             disabled={loading}
             className="w-full flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl
-                       bg-white/5 border border-cyber-border hover:border-cyber-blue/40
-                       hover:bg-white/10 transition-all duration-300
-                       text-white font-medium text-sm
-                       disabled:opacity-50 disabled:cursor-not-allowed
+                       bg-gray-50 border border-gray-200 hover:border-red-200
+                       hover: transition-all duration-300
+                       text-gray-900 font-medium text-sm
+                       disabled:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowedcursor-not-allowed
                        hover:shadow-[0_0_20px_rgba(0,212,255,0.1)]"
           >
             <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
@@ -298,13 +298,13 @@ function LoginForm() {
             <span>Continue with Google</span>
           </button>
 
-          <p className="mt-5 text-center text-xs text-cyber-muted/60">
+          <p className="mt-5 text-center text-xs text-gray-500/60">
             Your data is encrypted end-to-end. We never share your information with third parties.
           </p>
         </div>
 
         <div className="text-center mt-6">
-          <a href="/" className="text-sm text-cyber-muted hover:text-cyber-blue transition-colors">
+          <a href="/" className="text-sm text-gray-500 hover:text-red-600 transition-colors">
             &larr; Back to home
           </a>
         </div>

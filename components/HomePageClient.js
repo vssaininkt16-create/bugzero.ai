@@ -165,7 +165,7 @@ function FAQAccordion() {
           </button>
           {openIndex === i && (
             <div className="px-5 pb-5">
-              <p className="text-sm text-gray-600 leading-relaxed">{faq.answer}</p>
+              <p className="text-sm text-gray-700 leading-relaxed">{faq.answer}</p>
             </div>
           )}
         </motion.div>
@@ -202,7 +202,7 @@ export default function HomePageClient() {
                 />
               </h1>
 
-              <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
+              <p className="text-lg sm:text-xl text-gray-700 mb-8 leading-relaxed max-w-xl">
                 <span className="text-gray-900 font-semibold">BugZero Cyber Solutions</span> — India&apos;s Most Trusted
                 Cybersecurity Startup. Elite VAPT, penetration testing, and compliance services for enterprises and government.
               </p>
@@ -266,7 +266,7 @@ export default function HomePageClient() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Why BugZero</span>
             <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Why Organizations Trust Us</h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            <p className="text-gray-700 mt-4 max-w-2xl mx-auto">
               We combine cutting-edge technology with certified expertise to deliver unmatched cybersecurity protection.
             </p>
           </motion.div>
@@ -277,7 +277,7 @@ export default function HomePageClient() {
                   <item.icon className="w-6 h-6 text-red-600" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 font-heading mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                <p className="text-sm text-gray-700 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -306,7 +306,7 @@ export default function HomePageClient() {
                 </div>
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 font-heading mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
+                  <p className="text-sm text-gray-700">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -324,7 +324,7 @@ export default function HomePageClient() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {clientSectors.map((sector, i) => (
               <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="bg-white border border-gray-200 rounded-xl p-5 text-center group hover:shadow-md hover:border-gray-300 transition">
-                <Building2 className="w-8 h-8 text-gray-400 mx-auto mb-3 group-hover:text-red-600 transition-colors" />
+                <Building2 className="w-8 h-8 text-gray-600 mx-auto mb-3 group-hover:text-red-600 transition-colors" />
                 <span className="text-sm font-medium text-gray-700">{sector}</span>
               </motion.div>
             ))}
@@ -372,7 +372,7 @@ export default function HomePageClient() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">FAQ</span>
             <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Frequently Asked Questions</h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-sm">
+            <p className="text-gray-700 mt-4 max-w-2xl mx-auto text-sm">
               Everything you need to know about cybersecurity services, VAPT pricing, and how BugZero protects Indian businesses.
             </p>
           </motion.div>
@@ -393,7 +393,7 @@ export default function HomePageClient() {
               <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mb-4">
                 Ready to Secure Your Organization?
               </h2>
-              <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+              <p className="text-gray-700 mb-8 max-w-xl mx-auto">
                 Get a free security assessment and discover how BugZero can protect your digital assets.
                 Our experts respond within 2 hours.
               </p>

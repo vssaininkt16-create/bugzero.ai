@@ -61,14 +61,14 @@ export async function POST(request) {
       subject: `Your Security Proposal ${proposalId} - BugZero Cyber Solutions`,
       body: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
         <h2 style="color:#00d4ff">Your Security Proposal</h2>
-        <p>Dear ${name},</p>
-        <p>Thank you for your interest! Here's your proposal summary:</p>
-        <p><strong>Proposal ID:</strong> ${proposalId}</p>
-        <p><strong>Services:</strong> ${selectedServices.map(s => s.name).join(', ')}</p>
-        <p><strong>Timeline:</strong> ${timeline || 'To be discussed'}</p>
-        <p>Our team will send you a detailed proposal within 24 hours.</p>
-        <p><a href="https://bugzero.solutions/contact" style="color:#00d4ff">Schedule a call</a> to discuss further.</p>
-        <p>Stay Secure!<br/><strong>Team BugZero</strong></p>
+        <p className="text-gray-700">Dear ${name},</p>
+        <p className="text-gray-700">Thank you for your interest! Here's your proposal summary:</p>
+        <p className="text-gray-700"><strong>Proposal ID:</strong> ${proposalId}</p>
+        <p className="text-gray-700"><strong>Services:</strong> ${selectedServices.map(s => s.name).join(', ')}</p>
+        <p className="text-gray-700"><strong>Timeline:</strong> ${timeline || 'To be discussed'}</p>
+        <p className="text-gray-700">Our team will send you a detailed proposal within 24 hours.</p>
+        <p className="text-gray-700"><a href="https://bugzero.solutions/contact" style="color:#00d4ff">Schedule a call</a> to discuss further.</p>
+        <p className="text-gray-700">Stay Secure!<br/><strong>Team BugZero</strong></p>
       </div>`,
       type: 'proposal',
       metadata: { proposalId },

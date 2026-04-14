@@ -56,7 +56,7 @@ export default function AboutPageClient() {
             About BugZero Cyber Solutions
           </motion.span>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-heading text-gray-900 mb-6">
-            Our <span className="gradient-text">Mission</span> & Story
+            Our <span className="text-red-600">Mission</span> & Story
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-lg text-gray-600 max-w-2xl mx-auto">
             Building India&apos;s most trusted cybersecurity company, one audit at a time.
@@ -75,7 +75,7 @@ export default function AboutPageClient() {
                 <Target className="w-7 h-7 text-red-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 font-heading mb-4">Our Mission</h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 To make India&apos;s cyberspace the safest in the world by empowering organizations with elite security expertise, cutting-edge technology, and unwavering commitment to digital protection.
               </p>
             </motion.div>
@@ -84,7 +84,7 @@ export default function AboutPageClient() {
                 <Eye className="w-7 h-7 text-red-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 font-heading mb-4">Our Vision</h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Become India&apos;s #1 cybersecurity company by 2027, securing 1,000+ organizations and training 10,000 cybersecurity professionals to build a safer digital India for future generations.
               </p>
             </motion.div>
@@ -98,17 +98,17 @@ export default function AboutPageClient() {
           <motion.div {...fadeUp} className="text-center mb-14">
             <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Our Team</span>
             <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Leadership Team</h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">A team of certified security experts with decades of combined experience.</p>
+            <p className="text-gray-700 mt-4 max-w-2xl mx-auto">A team of certified security experts with decades of combined experience.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {teamMembers.map((member, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-md transition">
                 <div className="w-20 h-20 rounded-full bg-red-600 mx-auto mb-4 flex items-center justify-center">
-                  <Users className="w-10 h-10 text-white/80" />
+                  <Users className="w-10 h-10 text-gray-600" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 font-heading">{member.name}</h3>
                 <p className="text-sm text-red-600 mb-2">{member.role}</p>
-                <p className="text-xs text-gray-500 mb-3">{member.bio}</p>
+                <p className="text-xs text-gray-700 mb-3">{member.bio}</p>
                 <div className="flex flex-wrap justify-center gap-1">
                   {member.certs.map((cert, j) => (
                     <span key={j} className="trust-badge badge-blue text-[10px]">{cert}</span>
@@ -139,10 +139,10 @@ export default function AboutPageClient() {
                 <div className="bg-white border border-gray-200 rounded-xl p-4 flex-1 hover:shadow-sm transition">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-xs font-bold text-red-600">{item.year}</span>
-                    <span className="text-xs text-gray-400">{item.quarter}</span>
+                    <span className="text-xs text-gray-600">{item.quarter}</span>
                   </div>
                   <h3 className="text-base font-semibold text-gray-900 font-heading mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
+                  <p className="text-sm text-gray-700">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -180,7 +180,7 @@ export default function AboutPageClient() {
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900 font-heading">{cert.name}</h3>
-                  <p className="text-xs text-gray-500 mt-1">{cert.desc}</p>
+                  <p className="text-xs text-gray-700 mt-1">{cert.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -196,7 +196,7 @@ export default function AboutPageClient() {
               <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mb-4">
                 Join India&apos;s Cybersecurity Mission
               </h2>
-              <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+              <p className="text-gray-700 mb-8 max-w-xl mx-auto">
                 Partner with us to build a safer digital India. Whether you&apos;re an enterprise, government body, or investor, we&apos;d love to connect.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

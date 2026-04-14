@@ -9,16 +9,16 @@ import {
 
 function SectionCard({ title, subtitle, icon: Icon, children, badge }) {
   return (
-    <div className="cyber-card rounded-2xl overflow-hidden">
-      <div className="px-6 py-4 border-b border-cyber-border">
+    <div className="bg-white border border-gray-200 shadow-sm rounded-2xl overflow-hidden">
+      <div className="px-6 py-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-cyber-blue/10 border border-cyber-blue/20 flex items-center justify-center">
-              <Icon className="w-4 h-4 text-cyber-blue" />
+            <div className="w-8 h-8 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center">
+              <Icon className="w-4 h-4 text-red-600" />
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-white">{title}</h2>
-              {subtitle && <p className="text-[11px] text-cyber-muted mt-0.5">{subtitle}</p>}
+              <h2 className="text-sm font-semibold text-gray-900">{title}</h2>
+              {subtitle && <p className="text-[11px] text-gray-500 mt-0.5">{subtitle}</p>}
             </div>
           </div>
           {badge}
@@ -31,7 +31,7 @@ function SectionCard({ title, subtitle, icon: Icon, children, badge }) {
 
 function Alert({ type, msg, onClose }) {
   const styles = type === 'success'
-    ? 'bg-cyber-green/10 border-cyber-green/20 text-cyber-green'
+    ? 'bg-green-50 border-green-200 text-green-600'
     : 'bg-red-500/10 border-red-500/20 text-red-400'
   const Icon = type === 'success' ? CheckCircle : AlertTriangle
   return (
@@ -61,7 +61,7 @@ function PasswordSection() {
   }
 
   const strengthLabel = ['', 'Weak', 'Fair', 'Good', 'Strong']
-  const strengthColor = ['', 'bg-red-500', 'bg-yellow-400', 'bg-cyber-blue', 'bg-cyber-green']
+  const strengthColor = ['', 'bg-red-500', 'bg-yellow-400', 'bg-red-600', 'bg-green-50']
   const s = strength(form.password)
 
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }))
@@ -88,15 +88,15 @@ function PasswordSection() {
 
   const PwdInput = ({ name, label, placeholder }) => (
     <div>
-      <label className="block text-xs text-cyber-muted uppercase tracking-wider mb-1.5">{label}</label>
+      <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">{label}</label>
       <div className="relative">
-        <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyber-muted pointer-events-none" />
+        <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
         <input
           name={name} type={show[name] ? 'text' : 'password'} value={form[name]} onChange={handleChange}
           placeholder={placeholder} autoComplete="new-password"
-          className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-white/5 border border-cyber-border text-white placeholder-cyber-muted/50 text-sm focus:outline-none focus:border-cyber-blue/40 transition-all"
+          className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-cyber-muted/50 text-sm focus:outline-none focus:border-red-200 transition-all"
         />
-        <button type="button" onClick={() => toggleShow(name)} className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-muted hover:text-white transition-colors">
+        <button type="button" onClick={() => toggleShow(name)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-600 transition-colors">
           {show[name] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
         </button>
       </div>
@@ -117,7 +117,7 @@ function PasswordSection() {
                 <div key={i} className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${i <= s ? strengthColor[s] : 'bg-cyber-border'}`} />
               ))}
             </div>
-            <p className="text-[11px] text-cyber-muted">Strength: <span className={`font-medium ${s >= 3 ? 'text-cyber-green' : s === 2 ? 'text-yellow-400' : 'text-red-400'}`}>{strengthLabel[s]}</span></p>
+            <p className="text-[11px] text-gray-500">Strength: <span className={`font-medium ${s >= 3 ? 'text-green-600' : s === 2 ? 'text-yellow-400' : 'text-red-400'}`}>{strengthLabel[s]}</span></p>
           </div>
         )}
 
@@ -127,7 +127,7 @@ function PasswordSection() {
 
         <div className="flex justify-end pt-1">
           <button type="submit" disabled={loading}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyber-blue/15 border border-cyber-blue/30 text-cyber-blue text-sm font-semibold hover:bg-cyber-blue/25 transition-all disabled:opacity-50">
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm font-semibold hover:bg-red-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
             {loading ? <><Loader2 className="w-4 h-4 animate-spin" />Updating...</> : <><Key className="w-4 h-4" />Update Password</>}
           </button>
         </div>
@@ -199,57 +199,57 @@ function TwoFASection({ user }) {
       }>
       <div className="space-y-4">
         {!showSetup ? (
-          <div className="flex items-center justify-between p-4 rounded-xl bg-white/3 border border-cyber-border">
+          <div className="flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-gray-200">
             <div className="flex items-center gap-3">
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${enabled ? 'bg-cyber-green/15 border border-cyber-green/20' : 'bg-yellow-400/10 border border-yellow-400/20'}`}>
-                <Fingerprint className={`w-5 h-5 ${enabled ? 'text-cyber-green' : 'text-yellow-400'}`} />
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${enabled ? 'bg-green-50 border border-green-200' : 'bg-yellow-400/10 border border-yellow-400/20'}`}>
+                <Fingerprint className={`w-5 h-5 ${enabled ? 'text-green-600' : 'text-yellow-400'}`} />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white">Authenticator App</p>
-                <p className="text-[11px] text-cyber-muted">Google Authenticator, Authy, etc.</p>
+                <p className="text-sm font-semibold text-gray-900">Authenticator App</p>
+                <p className="text-[11px] text-gray-500">Google Authenticator, Authy, etc.</p>
               </div>
             </div>
             <button onClick={handleToggle} disabled={loading}
-              className={`relative w-12 h-6 rounded-full transition-all duration-300 ${enabled ? 'bg-cyber-green' : 'bg-cyber-border'}`}>
+              className={`relative w-12 h-6 rounded-full transition-all duration-300 ${enabled ? 'bg-green-50' : 'bg-cyber-border'}`}>
               <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-300 ${enabled ? 'left-7' : 'left-1'}`} />
             </button>
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-cyber-blue/5 border border-cyber-blue/15">
-              <p className="text-sm font-semibold text-white mb-3">Setup Instructions</p>
-              <ol className="space-y-2 text-xs text-cyber-muted list-decimal list-inside">
+            <div className="p-4 rounded-xl bg-red-50 border border-red-200">
+              <p className="text-sm font-semibold text-gray-900 mb-3">Setup Instructions</p>
+              <ol className="space-y-2 text-xs text-gray-500 list-decimal list-inside">
                 <li>Install Google Authenticator or Authy on your mobile device</li>
                 <li>Scan the QR code below or enter the secret key manually</li>
                 <li>Enter the 6-digit code from your app to complete setup</li>
               </ol>
             </div>
-            <div className="flex flex-col sm:flex-row items-center gap-6 p-5 rounded-xl bg-white/3 border border-cyber-border">
+            <div className="flex flex-col sm:flex-row items-center gap-6 p-5 rounded-xl bg-gray-50 border border-gray-200">
               <div className="p-2 bg-white rounded-xl shrink-0">
                 <img src={qrUrl} alt="2FA QR Code" className="w-36 h-36" />
               </div>
               <div className="flex-1 space-y-3 w-full">
                 <div>
-                  <p className="text-xs text-cyber-muted uppercase tracking-wider mb-1.5">Manual Entry Key</p>
-                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-cyber-border/30 border border-cyber-border font-mono text-sm text-white">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1.5">Manual Entry Key</p>
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-cyber-border/30 border border-gray-200 font-mono text-sm text-gray-900">
                     <span className="flex-1 tracking-widest">{secret}</span>
-                    <button type="button" onClick={copySecret} className="text-cyber-muted hover:text-cyber-blue transition-colors">
-                      {copied ? <CheckCircle className="w-4 h-4 text-cyber-green" /> : <Copy className="w-4 h-4" />}
+                    <button type="button" onClick={copySecret} className="text-gray-500 hover:text-red-600 transition-colors">
+                      {copied ? <CheckCircle className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}
                     </button>
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs text-cyber-muted uppercase tracking-wider mb-1.5">Verification Code</label>
+                  <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Verification Code</label>
                   <input
                     type="text" value={code} onChange={e => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                     placeholder="000000" maxLength={6}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-cyber-border text-white placeholder-cyber-muted/50 text-sm text-center tracking-[0.5em] focus:outline-none focus:border-cyber-blue/40 transition-all font-mono"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-cyber-muted/50 text-sm text-center tracking-[0.5em] focus:outline-none focus:border-red-200 transition-all font-mono"
                   />
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => setShowSetup(false)} className="flex-1 py-2.5 rounded-xl border border-cyber-border text-cyber-muted hover:text-white text-sm transition-all">Cancel</button>
+                  <button onClick={() => setShowSetup(false)} className="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-500 hover:text-red-600 text-sm transition-all">Cancel</button>
                   <button onClick={handleEnable} disabled={loading}
-                    className="flex-1 py-2.5 rounded-xl bg-cyber-green/15 border border-cyber-green/30 text-cyber-green text-sm font-semibold hover:bg-cyber-green/25 transition-all disabled:opacity-50 flex items-center justify-center gap-2">
+                    className="flex-1 py-2.5 rounded-xl bg-green-50 border border-green-200 text-green-600 text-sm font-semibold hover:bg-green-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                     {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
                     {loading ? 'Verifying...' : 'Enable 2FA'}
                   </button>
@@ -283,15 +283,15 @@ function LoginMethodsSection({ provider }) {
         ].map((m, i) => {
           const Icon = m.icon
           return (
-            <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-white/3 border border-cyber-border">
+            <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-gray-200">
               <div className="flex items-center gap-3">
                 <Icon />
-                <p className="text-sm text-white">{m.label}</p>
+                <p className="text-sm text-gray-900">{m.label}</p>
               </div>
               {m.active ? (
                 <span className="trust-badge badge-green text-[10px]"><CheckCircle className="w-3 h-3" /> Connected</span>
               ) : (
-                <button className="trust-badge badge-blue text-[10px] cursor-pointer hover:bg-cyber-blue/20 transition-all">Connect</button>
+                <button className="trust-badge badge-blue text-[10px] cursor-pointer hover:bg-red-50 transition-all">Connect</button>
               )}
             </div>
           )
@@ -314,13 +314,13 @@ function SecurityAlertsSection() {
         {alerts.map((a, i) => {
           const Icon = a.icon
           return (
-            <div key={i} className={`flex items-start gap-3 p-3 rounded-xl border ${a.type === 'warning' ? 'bg-yellow-400/5 border-yellow-400/15' : 'bg-white/3 border-cyber-border'}`}>
-              <Icon className={`w-4 h-4 shrink-0 mt-0.5 ${a.type === 'warning' ? 'text-yellow-400' : 'text-cyber-green'}`} />
+            <div key={i} className={`flex items-start gap-3 p-3 rounded-xl border ${a.type === 'warning' ? 'bg-yellow-400/5 border-yellow-400/15' : 'bg-gray-50 border-gray-200'}`}>
+              <Icon className={`w-4 h-4 shrink-0 mt-0.5 ${a.type === 'warning' ? 'text-yellow-400' : 'text-green-600'}`} />
               <div className="flex-1 min-w-0">
-                <p className="text-sm text-white">{a.msg}</p>
-                <p className="text-[11px] text-cyber-muted mt-0.5">{a.time}</p>
+                <p className="text-sm text-gray-900">{a.msg}</p>
+                <p className="text-[11px] text-gray-500 mt-0.5">{a.time}</p>
               </div>
-              {a.type === 'warning' && <ChevronRight className="w-4 h-4 text-cyber-muted shrink-0 mt-0.5" />}
+              {a.type === 'warning' && <ChevronRight className="w-4 h-4 text-gray-500 shrink-0 mt-0.5" />}
             </div>
           )
         })}
@@ -333,8 +333,8 @@ export default function SecurityClient({ user }) {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-2xl font-bold font-heading text-white">Security Settings</h1>
-        <p className="text-cyber-muted text-sm mt-1">Manage your password, 2FA, and account security preferences</p>
+        <h1 className="text-2xl font-bold font-heading text-gray-900">Security Settings</h1>
+        <p className="text-gray-500 text-sm mt-1">Manage your password, 2FA, and account security preferences</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

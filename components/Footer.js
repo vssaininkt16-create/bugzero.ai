@@ -70,7 +70,7 @@ export default function Footer() {
               <Shield className="w-7 h-7 text-red-600" />
               <span className="text-lg font-bold font-heading text-gray-900">Bug<span className="text-red-600">Zero</span></span>
             </Link>
-            <p className="text-sm text-gray-500 mb-4 max-w-xs leading-relaxed">
+            <p className="text-sm text-gray-700 mb-4 max-w-xs leading-relaxed">
               India&apos;s most trusted cybersecurity startup, securing the nation&apos;s digital future with elite security expertise.
             </p>
             <div className="space-y-2 text-sm text-gray-500">
@@ -100,7 +100,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-600 hover:border-red-200 transition-all"
+                  className="w-9 h-9 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:text-red-600 hover:border-red-200 transition-all"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -159,10 +159,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="py-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-700">
             &copy; {new Date().getFullYear()} BugZero Cyber Solutions. All rights reserved. Made with pride in India.
           </p>
-          <div className="flex items-center gap-4 text-xs text-gray-400">
+          <div className="flex items-center gap-4 text-xs text-gray-600">
             <Link href="/privacy-policy" className="hover:text-gray-600 transition-colors">Privacy Policy</Link>
             <Link href="/terms-of-service" className="hover:text-gray-600 transition-colors">Terms of Service</Link>
             <Link href="/responsible-disclosure" className="hover:text-gray-600 transition-colors">Responsible Disclosure</Link>

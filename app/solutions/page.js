@@ -158,9 +158,9 @@ export default function SolutionsPage() {
             Industry-Specific Solutions
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-gray-900 mb-6">
-            Cybersecurity <span className="gradient-text">Solutions</span>
+            Cybersecurity <span className="text-red-600">Solutions</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
             Tailored cybersecurity solutions for every industry. From BFSI to healthcare, government to fintech — we understand your sector&apos;s unique threats and compliance requirements.
           </p>
         </div>
@@ -177,10 +177,10 @@ export default function SolutionsPage() {
                 </div>
                 <span className={`text-xs font-semibold tracking-wider uppercase ${sol.color}`}>{sol.subtitle}</span>
                 <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 mt-1 mb-4">{sol.title}</h2>
-                <p className="text-gray-600 leading-relaxed mb-6">{sol.description}</p>
+                <p className="text-gray-700 leading-relaxed mb-6">{sol.description}</p>
 
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">Compliance We Address</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">Compliance We Address</h3>
                   <div className="flex flex-wrap gap-2">
                     {sol.compliance.map((c, j) => (
                       <span key={j} className="trust-badge badge-blue text-xs">{c}</span>
@@ -210,7 +210,7 @@ export default function SolutionsPage() {
                   <ul className="space-y-2">
                     {sol.challenges.map((c, j) => (
                       <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
-                        <Lock className="w-3.5 h-3.5 text-red-600/70 shrink-0 mt-0.5" />
+                        <Lock className="w-3.5 h-3.5 text-red-600 shrink-0 mt-0.5" />
                         {c}
                       </li>
                     ))}
@@ -238,10 +238,10 @@ export default function SolutionsPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-2xl overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-red-50 to-gray-100" />
-            <div className="absolute inset-[1px] rounded-2xl bg-gray-50 backdrop-blur-xl" />
+            <div className="absolute inset-[1px] rounded-2xl bg-gray-50 " />
             <div className="relative z-10 p-8 sm:p-12 text-center">
               <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 mb-4">Don&apos;t See Your Industry?</h2>
-              <p className="text-gray-600 mb-8 max-w-xl mx-auto">We serve organizations across all sectors. Contact us to discuss your specific security requirements and get a custom solution.</p>
+              <p className="text-gray-700 mb-8 max-w-xl mx-auto">We serve organizations across all sectors. Contact us to discuss your specific security requirements and get a custom solution.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="btn-primary text-base px-8 py-4 justify-center">
                   Discuss Your Requirements <ArrowRight className="w-5 h-5" />

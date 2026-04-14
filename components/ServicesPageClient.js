@@ -147,7 +147,7 @@ export default function ServicesPageClient() {
             Comprehensive Cybersecurity Services
           </motion.span>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-heading text-gray-900 mb-6">
-            Elite Security <span className="gradient-text">Services</span>
+            Elite Security <span className="text-red-600">Services</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-lg text-gray-600 max-w-2xl mx-auto">
             From penetration testing to compliance consulting, we offer end-to-end cybersecurity solutions trusted by enterprises and government organizations.
@@ -182,7 +182,7 @@ export default function ServicesPageClient() {
                   )}
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 font-heading mb-2">{service.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">{service.desc}</p>
+                <p className="text-sm text-gray-700 leading-relaxed mb-4">{service.desc}</p>
                 <ul className="space-y-1.5 mb-4 flex-1">
                   {service.features.map((f, j) => (
                     <li key={j} className="flex items-center gap-2 text-xs text-gray-700">
@@ -214,7 +214,7 @@ export default function ServicesPageClient() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <span className="text-red-600 text-sm font-semibold tracking-wider uppercase">Pricing Plans</span>
             <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mt-2">Flexible Pricing for Every Scale</h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            <p className="text-gray-700 mt-4 max-w-2xl mx-auto">
               Choose a plan that fits your security needs. All plans include detailed reporting and remediation guidance.
             </p>
           </motion.div>
@@ -231,7 +231,7 @@ export default function ServicesPageClient() {
                     <tier.icon className="w-6 h-6 text-red-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 font-heading">{tier.name}</h3>
-                  <p className="text-xs text-gray-500 mt-1">{tier.desc}</p>
+                  <p className="text-xs text-gray-700 mt-1">{tier.desc}</p>
                   <div className="mt-4">
                     <span className="text-3xl font-bold text-gray-900 font-heading">{tier.price}</span>
                     <span className="text-sm text-gray-600 block mt-1">{tier.period}</span>
@@ -261,7 +261,7 @@ export default function ServicesPageClient() {
             <div className="relative z-10 p-8 sm:p-12 text-center">
               <Lock className="w-12 h-12 text-red-600 mx-auto mb-4" />
               <h2 className="text-3xl lg:text-5xl font-semibold font-heading text-gray-900 mb-4">Not Sure Which Service You Need?</h2>
-              <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+              <p className="text-gray-700 mb-8 max-w-xl mx-auto">
                 Our security experts will analyze your infrastructure and recommend the most effective security strategy. Free 30-minute consultation included.
               </p>
               <Link href="/contact" className="bg-red-600 text-white text-base font-semibold px-8 py-4 rounded-lg hover:bg-red-700 transition-all inline-flex items-center gap-2">

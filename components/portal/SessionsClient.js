@@ -27,7 +27,7 @@ const DEMO_SESSIONS = [
 ]
 
 function DeviceIcon({ type }) {
-  const cls = "w-5 h-5 text-cyber-blue"
+  const cls = "w-5 h-5 text-red-600"
   if (type === 'mobile') return <Smartphone className={cls} />
   if (type === 'tablet') return <Tablet className={cls} />
   return <Monitor className={cls} />
@@ -56,11 +56,11 @@ export default function SessionsClient() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-white">Active Sessions</h1>
-          <p className="text-cyber-muted text-sm mt-1">Manage all devices where your account is signed in</p>
+          <h1 className="text-2xl font-bold font-heading text-gray-900">Active Sessions</h1>
+          <p className="text-gray-500 text-sm mt-1">Manage all devices where your account is signed in</p>
         </div>
         <button onClick={revokeAll} disabled={revokingAll || sessions.filter(s => !s.current).length === 0}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-semibold hover:bg-red-500/20 transition-all disabled:opacity-40">
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-semibold hover:bg-red-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
           {revokingAll ? <><Loader2 className="w-4 h-4 animate-spin" />Revoking...</> : <><LogOut className="w-4 h-4" />Revoke All Others</>}
         </button>
       </div>
@@ -74,10 +74,10 @@ export default function SessionsClient() {
         ].map((stat, i) => {
           const Icon = stat.icon
           return (
-            <div key={i} className="cyber-card rounded-2xl p-4 text-center">
+            <div key={i} className="bg-white border border-gray-200 shadow-sm rounded-2xl p-4 text-center">
               <Icon className={`w-5 h-5 text-${stat.color} mx-auto mb-2`} />
-              <p className="text-2xl font-bold text-white font-heading">{stat.value}</p>
-              <p className="text-[11px] text-cyber-muted mt-0.5">{stat.label}</p>
+              <p className="text-2xl font-bold text-gray-900 font-heading">{stat.value}</p>
+              <p className="text-[11px] text-gray-500 mt-0.5">{stat.label}</p>
             </div>
           )
         })}
@@ -86,33 +86,33 @@ export default function SessionsClient() {
       {/* Session list */}
       <div className="space-y-3">
         {sessions.map(session => (
-          <div key={session.id} className={`cyber-card rounded-2xl p-5 ${session.current ? 'border-cyber-blue/20' : !session.trusted ? 'border-yellow-400/15' : ''}`}>
+          <div key={session.id} className={`bg-white border border-gray-200 shadow-sm rounded-2xl p-5 ${session.current ? 'border-red-200' : !session.trusted ? 'border-yellow-400/15' : ''}`}>
             <div className="flex items-start gap-4">
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                session.current ? 'bg-cyber-blue/15 border border-cyber-blue/20' :
+                session.current ? 'bg-red-50 border border-red-200' :
                 !session.trusted ? 'bg-yellow-400/10 border border-yellow-400/20' :
-                'bg-white/5 border border-cyber-border'
+                'bg-gray-50 border border-gray-200'
               }`}>
                 <DeviceIcon type={session.type} />
               </div>
 
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-2 mb-1">
-                  <p className="text-sm font-semibold text-white">{session.device}</p>
+                  <p className="text-sm font-semibold text-gray-900">{session.device}</p>
                   {session.current && <span className="trust-badge badge-green text-[10px]"><CheckCircle className="w-3 h-3" /> Current</span>}
                   {!session.trusted && !session.current && <span className="trust-badge badge-saffron text-[10px]"><AlertTriangle className="w-3 h-3" /> Unrecognized</span>}
                 </div>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-cyber-muted">
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-gray-500">
                   <span className="flex items-center gap-1"><Globe className="w-3 h-3" />{session.ip}</span>
                   <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{session.location}</span>
                   <span className="flex items-center gap-1"><Clock className="w-3 h-3" />Active {session.lastActive}</span>
                 </div>
-                <p className="text-[11px] text-cyber-muted/60 mt-1">{session.os} · {session.browser} · Signed in {session.createdAt}</p>
+                <p className="text-[11px] text-gray-500/60 mt-1">{session.os} · {session.browser} · Signed in {session.createdAt}</p>
               </div>
 
               {!session.current && (
                 <button onClick={() => revokeSession(session.id)} disabled={revoking === session.id}
-                  className="shrink-0 px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium hover:bg-red-500/20 transition-all disabled:opacity-50 flex items-center gap-1.5">
+                  className="shrink-0 px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium hover:bg-red-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5">
                   {revoking === session.id ? <Loader2 className="w-3 h-3 animate-spin" /> : <LogOut className="w-3 h-3" />}
                   {revoking === session.id ? '' : 'Revoke'}
                 </button>
@@ -123,9 +123,9 @@ export default function SessionsClient() {
       </div>
 
       {sessions.length === 1 && (
-        <div className="text-center py-8 text-cyber-muted">
-          <CheckCircle className="w-10 h-10 mx-auto mb-2 text-cyber-green" />
-          <p className="text-sm font-medium text-white">All other sessions revoked</p>
+        <div className="text-center py-8 text-gray-500">
+          <CheckCircle className="w-10 h-10 mx-auto mb-2 text-green-600" />
+          <p className="text-sm font-medium text-gray-900">All other sessions revoked</p>
           <p className="text-xs mt-1">Only your current session is active</p>
         </div>
       )}

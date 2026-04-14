@@ -83,10 +83,10 @@ const slides = [
     type: 'business',
     content: {
       streams: [
-        { label: 'Project Revenue (VAPT)', pct: 45, color: 'bg-cyber-blue' },
-        { label: 'SaaS Subscriptions', pct: 30, color: 'bg-cyber-purple' },
-        { label: 'Training & Certification', pct: 15, color: 'bg-cyber-green' },
-        { label: 'Government Contracts', pct: 10, color: 'bg-cyber-saffron' },
+        { label: 'Project Revenue (VAPT)', pct: 45, color: 'bg-red-600' },
+        { label: 'SaaS Subscriptions', pct: 30, color: 'bg-red-50' },
+        { label: 'Training & Certification', pct: 15, color: 'bg-green-50' },
+        { label: 'Government Contracts', pct: 10, color: 'bg-orange-50' },
       ],
       pricing: 'Starting from ₹20,000 per assessment to enterprise annual contracts',
     },
@@ -183,17 +183,17 @@ function SlideContent({ slide }) {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: 'spring', stiffness: 200 }}
-            className="w-24 h-24 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-cyber-blue/20 to-cyber-purple/20 border border-cyber-blue/30 flex items-center justify-center"
+            className="w-24 h-24 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-red-50 to-gray-50 border border-red-200 flex items-center justify-center"
           >
-            <Shield className="w-12 h-12 text-cyber-blue" />
+            <Shield className="w-12 h-12 text-red-600" />
           </motion.div>
-          <p className="text-xl text-gray-300 mb-8">{slide.content.tagline}</p>
+          <p className="text-xl text-gray-700 mb-8">{slide.content.tagline}</p>
           <div className="flex flex-wrap justify-center gap-3">
             {slide.content.badges.map((b, i) => (
               <span key={i} className="trust-badge badge-blue">{b}</span>
             ))}
           </div>
-          <p className="text-gray-400 mt-8 max-w-lg mx-auto">{slide.content.desc}</p>
+          <p className="text-gray-700 mt-8 max-w-lg mx-auto">{slide.content.desc}</p>
         </div>
       );
     case 'problem':
@@ -206,16 +206,16 @@ function SlideContent({ slide }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.15 }}
-                className="cyber-card rounded-xl p-4 text-center"
+                className="bg-white border border-gray-200 shadow-sm rounded-xl p-4 text-center"
               >
                 <div className="text-2xl font-bold text-red-400 font-heading">{s.value}</div>
-                <div className="text-xs text-gray-400 mt-1">{s.label}</div>
+                <div className="text-xs text-gray-600 mt-1">{s.label}</div>
               </motion.div>
             ))}
           </div>
-          <div className="cyber-card rounded-xl p-4 text-center">
+          <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-4 text-center">
             <AlertTriangle className="w-6 h-6 text-yellow-400 mx-auto mb-2" />
-            <p className="text-sm text-gray-300 italic">&ldquo;{slide.content.quote}&rdquo;</p>
+            <p className="text-sm text-gray-700 italic">&ldquo;{slide.content.quote}&rdquo;</p>
           </div>
         </div>
       );
@@ -228,11 +228,11 @@ function SlideContent({ slide }) {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1 }}
-              className="cyber-card rounded-xl p-4"
+              className="bg-white border border-gray-200 shadow-sm rounded-xl p-4"
             >
-              <item.icon className="w-8 h-8 text-cyber-green mb-2" />
-              <h3 className="text-sm font-semibold text-white">{item.title}</h3>
-              <p className="text-xs text-gray-400">{item.desc}</p>
+              <item.icon className="w-8 h-8 text-green-600 mb-2" />
+              <h3 className="text-sm font-semibold text-gray-900">{item.title}</h3>
+              <p className="text-xs text-gray-700">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -246,14 +246,14 @@ function SlideContent({ slide }) {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.2 }}
-              className="cyber-card rounded-xl p-4 flex items-center gap-4"
+              className="bg-white border border-gray-200 shadow-sm rounded-xl p-4 flex items-center gap-4"
             >
               <div className={`text-2xl font-bold font-heading ${
-                i === 0 ? 'text-cyber-blue' : i === 1 ? 'text-cyber-purple' : 'text-cyber-green'
+                i === 0 ? 'text-red-600' : i === 1 ? 'text-red-700' : 'text-green-600'
               }`}>
                 {m.value}
               </div>
-              <div className="text-sm text-gray-300">{m.label}</div>
+              <div className="text-sm text-gray-700">{m.label}</div>
             </motion.div>
           ))}
         </div>
@@ -267,9 +267,9 @@ function SlideContent({ slide }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: i * 0.05 }}
-              className="flex items-center gap-2 text-sm text-gray-300 py-1"
+              className="flex items-center gap-2 text-sm text-gray-700 py-1"
             >
-              <CheckCircle className="w-4 h-4 text-cyber-green shrink-0" />
+              <CheckCircle className="w-4 h-4 text-green-600 shrink-0" />
               {s}
             </motion.div>
           ))}
@@ -287,10 +287,10 @@ function SlideContent({ slide }) {
                 transition={{ delay: i * 0.1 }}
               >
                 <div className="flex justify-between text-sm mb-1">
-                  <span className="text-gray-300">{s.label}</span>
-                  <span className="text-white font-bold">{s.pct}%</span>
+                  <span className="text-gray-700">{s.label}</span>
+                  <span className="text-gray-900 font-bold">{s.pct}%</span>
                 </div>
-                <div className="w-full h-2.5 rounded-full bg-cyber-card border border-cyber-border overflow-hidden">
+                <div className="w-full h-2.5 rounded-full bg-white border border-gray-200 shadow-sm border border-gray-200 overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${s.pct}%` }}
@@ -301,7 +301,7 @@ function SlideContent({ slide }) {
               </motion.div>
             ))}
           </div>
-          <p className="text-xs text-gray-500 text-center">{slide.content.pricing}</p>
+          <p className="text-xs text-gray-700 text-center">{slide.content.pricing}</p>
         </div>
       );
     case 'traction':
@@ -313,10 +313,10 @@ function SlideContent({ slide }) {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1 }}
-              className="cyber-card rounded-xl p-3 text-center"
+              className="bg-white border border-gray-200 shadow-sm rounded-xl p-3 text-center"
             >
-              <div className="text-xl font-bold text-cyber-blue font-heading">{m.value}</div>
-              <div className="text-[10px] text-gray-400 mt-1">{m.label}</div>
+              <div className="text-xl font-bold text-red-600 font-heading">{m.value}</div>
+              <div className="text-[10px] text-gray-600 mt-1">{m.label}</div>
             </motion.div>
           ))}
         </div>
@@ -331,21 +331,21 @@ function SlideContent({ slide }) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-2 text-sm text-gray-300"
+                className="flex items-center gap-2 text-sm text-gray-700"
               >
-                <Award className="w-4 h-4 text-cyber-saffron shrink-0" />
+                <Award className="w-4 h-4 text-red-600 shrink-0" />
                 {c}
               </motion.div>
             ))}
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="cyber-card rounded-xl p-4 text-center">
-              <Users className="w-6 h-6 text-cyber-blue mx-auto mb-1" />
-              <div className="text-lg font-bold text-white">{slide.content.teamSize}</div>
+            <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-4 text-center">
+              <Users className="w-6 h-6 text-red-600 mx-auto mb-1" />
+              <div className="text-lg font-bold text-gray-900">{slide.content.teamSize}</div>
             </div>
-            <div className="cyber-card rounded-xl p-4 text-center">
-              <TrendingUp className="w-6 h-6 text-cyber-green mx-auto mb-1" />
-              <div className="text-sm font-bold text-white">{slide.content.experience}</div>
+            <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-4 text-center">
+              <TrendingUp className="w-6 h-6 text-green-600 mx-auto mb-1" />
+              <div className="text-sm font-bold text-gray-900">{slide.content.experience}</div>
             </div>
           </div>
         </div>
@@ -359,13 +359,13 @@ function SlideContent({ slide }) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.2 }}
-              className="cyber-card rounded-xl p-4"
+              className="bg-white border border-gray-200 shadow-sm rounded-xl p-4"
             >
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-cyber-blue">{y.year}</span>
-                <span className="text-lg font-bold text-white font-heading">{y.revenue}</span>
+                <span className="text-sm font-bold text-red-600">{y.year}</span>
+                <span className="text-lg font-bold text-gray-900 font-heading">{y.revenue}</span>
               </div>
-              <div className="flex gap-4 mt-2 text-xs text-gray-400">
+              <div className="flex gap-4 mt-2 text-xs text-gray-600">
                 <span>{y.clients} clients</span>
                 <span>{y.team} team members</span>
               </div>
@@ -377,8 +377,8 @@ function SlideContent({ slide }) {
       return (
         <div>
           <div className="text-center mb-6">
-            <div className="text-4xl font-bold text-cyber-blue font-heading">₹1 Crore</div>
-            <div className="text-sm text-gray-400">Seed Funding Ask</div>
+            <div className="text-4xl font-bold text-red-600 font-heading">₹1 Crore</div>
+            <div className="text-sm text-gray-600">Seed Funding Ask</div>
           </div>
           <div className="space-y-3">
             {slide.content.allocation.map((a, i) => (
@@ -387,11 +387,11 @@ function SlideContent({ slide }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: i * 0.15 }}
-                className="flex items-center justify-between text-sm cyber-card rounded-lg p-3"
+                className="flex items-center justify-between text-sm bg-white border border-gray-200 shadow-sm rounded-lg p-3"
               >
-                <span className="text-gray-300">{a.label}</span>
+                <span className="text-gray-700">{a.label}</span>
                 <div className="flex items-center gap-3">
-                  <span className="text-white font-bold">{a.amount}</span>
+                  <span className="text-gray-900 font-bold">{a.amount}</span>
                   <span className="text-xs text-gray-500">({a.pct}%)</span>
                 </div>
               </motion.div>
@@ -408,10 +408,10 @@ function SlideContent({ slide }) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="flex items-center gap-3 cyber-card rounded-xl p-4"
+              className="flex items-center gap-3 bg-white border border-gray-200 shadow-sm rounded-xl p-4"
             >
-              <Flag className="w-5 h-5 text-cyber-saffron shrink-0" />
-              <span className="text-sm text-gray-300">{p}</span>
+              <Flag className="w-5 h-5 text-red-600 shrink-0" />
+              <span className="text-sm text-gray-700">{p}</span>
             </motion.div>
           ))}
         </div>
@@ -420,14 +420,14 @@ function SlideContent({ slide }) {
       return (
         <div className="text-center space-y-6">
           <div className="space-y-3">
-            <div className="flex items-center justify-center gap-2 text-gray-300">
-              <Mail className="w-4 h-4 text-cyber-blue" /> {slide.content.email}
+            <div className="flex items-center justify-center gap-2 text-gray-700">
+              <Mail className="w-4 h-4 text-red-600" /> {slide.content.email}
             </div>
-            <div className="flex items-center justify-center gap-2 text-gray-300">
-              <Phone className="w-4 h-4 text-cyber-blue" /> {slide.content.phone}
+            <div className="flex items-center justify-center gap-2 text-gray-700">
+              <Phone className="w-4 h-4 text-red-600" /> {slide.content.phone}
             </div>
-            <div className="flex items-center justify-center gap-2 text-gray-300">
-              <Globe className="w-4 h-4 text-cyber-blue" /> {slide.content.website}
+            <div className="flex items-center justify-center gap-2 text-gray-700">
+              <Globe className="w-4 h-4 text-red-600" /> {slide.content.website}
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
@@ -462,15 +462,15 @@ export default function PitchDeckPage() {
   return (
     <div className="relative min-h-screen">
       {/* Background */}
-      <div className="absolute inset-0 grid-bg" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] radial-glow-blue opacity-50" />
+      <div className="absolute inset-0 " />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px]  " />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-2">
-            <Shield className="w-6 h-6 text-cyber-blue" />
-            <span className="font-bold font-heading text-white">Bug<span className="text-cyber-blue">Zero</span></span>
+            <Shield className="w-6 h-6 text-red-600" />
+            <span className="font-bold font-heading text-gray-900">Bug<span className="text-red-600">Zero</span></span>
             <span className="text-xs text-gray-500 ml-2">Pitch Deck</span>
           </div>
           <div className="flex items-center gap-3">
@@ -486,14 +486,14 @@ export default function PitchDeckPage() {
         </div>
 
         {/* Slide */}
-        <div className="cyber-card rounded-2xl overflow-hidden" style={{ minHeight: '500px' }}>
+        <div className="bg-white border border-gray-200 shadow-sm rounded-2xl overflow-hidden" style={{ minHeight: '500px' }}>
           {/* Slide header bar */}
-          <div className="flex items-center justify-between px-6 py-3 border-b border-cyber-border bg-cyber-dark/50">
+          <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 bg-gray-100">
             <span className="text-xs text-gray-500">Slide {currentSlide + 1} of {slides.length}</span>
             {/* Progress bar */}
-            <div className="flex-1 mx-4 h-1 bg-cyber-card rounded-full overflow-hidden">
+            <div className="flex-1 mx-4 h-1 bg-white border border-gray-200 shadow-sm rounded-full overflow-hidden">
               <div
-                className="h-full bg-cyber-blue rounded-full transition-all duration-500"
+                className="h-full bg-red-600 rounded-full transition-all duration-500"
                 style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
               />
             </div>
@@ -511,8 +511,8 @@ export default function PitchDeckPage() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="text-center mb-8">
-                  <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mb-2">{slide.title}</h2>
-                  <p className="text-lg text-gray-400">{slide.subtitle}</p>
+                  <h2 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900 mb-2">{slide.title}</h2>
+                  <p className="text-lg text-gray-700">{slide.subtitle}</p>
                 </div>
                 <div className="max-w-xl mx-auto">
                   <SlideContent slide={slide} />
@@ -527,7 +527,7 @@ export default function PitchDeckPage() {
           <button
             onClick={() => goTo(currentSlide - 1)}
             disabled={currentSlide === 0}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowedcursor-not-allowed transition-all"
           >
             <ChevronLeft className="w-5 h-5" /> Previous
           </button>
@@ -539,7 +539,7 @@ export default function PitchDeckPage() {
                 key={i}
                 onClick={() => goTo(i)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === currentSlide ? 'bg-cyber-blue w-6' : 'bg-gray-600 hover:bg-gray-400'
+                  i === currentSlide ? 'bg-red-600 w-6' : 'bg-gray-600 hover:bg-gray-400'
                 }`}
               />
             ))}
@@ -548,7 +548,7 @@ export default function PitchDeckPage() {
           <button
             onClick={() => goTo(currentSlide + 1)}
             disabled={currentSlide === slides.length - 1}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowedcursor-not-allowed transition-all"
           >
             Next <ChevronRight className="w-5 h-5" />
           </button>
@@ -562,11 +562,11 @@ export default function PitchDeckPage() {
               onClick={() => goTo(i)}
               className={`p-2 rounded-lg text-center transition-all ${
                 i === currentSlide
-                  ? 'bg-cyber-blue/10 border border-cyber-blue/30'
-                  : 'bg-cyber-card/50 border border-cyber-border hover:border-cyber-blue/20'
+                  ? 'bg-red-50 border border-red-200'
+                  : 'bg-white border border-gray-200 shadow-sm border border-gray-200 hover:border-red-200'
               }`}
             >
-              <span className={`text-[10px] font-medium ${i === currentSlide ? 'text-cyber-blue' : 'text-gray-500'}`}>
+              <span className={`text-[10px] font-medium ${i === currentSlide ? 'text-red-600' : 'text-gray-500'}`}>
                 {i + 1}
               </span>
             </button>

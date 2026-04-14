@@ -29,7 +29,7 @@ function BlogCardSkeleton({ featured = false }) {
       )}
 
       {/* Footer row */}
-      <div className="flex items-center justify-between pt-3 border-t border-cyber-border mt-auto">
+      <div className="flex items-center justify-between pt-3 border-t border-gray-200 mt-auto">
         <div className="skeleton h-3.5 w-24 rounded-md" />
         <div className="skeleton h-3.5 w-20 rounded-md" />
       </div>

@@ -65,7 +65,7 @@ export default function BookingWidget({ buttonText = 'Book Free Consultation', b
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[60] flex items-center justify-center p-4"
           >
-            <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
+            <div className="absolute inset-0 bg-black/30 " onClick={() => setIsOpen(false)} />
             <motion.div
               initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
@@ -75,9 +75,9 @@ export default function BookingWidget({ buttonText = 'Book Free Consultation', b
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 font-heading">Book Free Consultation</h3>
-                  <p className="text-xs text-gray-500">30-minute security consultation with our experts</p>
+                  <p className="text-xs text-gray-700">30-minute security consultation with our experts</p>
                 </div>
-                <button onClick={() => setIsOpen(false)} className="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-400">
+                <button onClick={() => setIsOpen(false)} className="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-600">
                   <X className="w-5 h-5" />
                 </button>
               </div>
@@ -87,8 +87,8 @@ export default function BookingWidget({ buttonText = 'Book Free Consultation', b
                   <div className="text-center py-8">
                     <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
                     <h4 className="text-xl font-bold text-gray-900 mb-2">Booking Confirmed!</h4>
-                    <p className="text-gray-500 mb-4">Your booking ID: <span className="text-red-600 font-mono">{success.bookingId}</span></p>
-                    <p className="text-sm text-gray-400">Check your email for confirmation details.</p>
+                    <p className="text-gray-700 mb-4">Your booking ID: <span className="text-red-600 font-mono">{success.bookingId}</span></p>
+                    <p className="text-sm text-gray-700">Check your email for confirmation details.</p>
                     <button onClick={() => setIsOpen(false)} className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-all mt-6 inline-flex items-center gap-2">
                       Done <CheckCircle className="w-4 h-4" />
                     </button>
@@ -148,7 +148,7 @@ export default function BookingWidget({ buttonText = 'Book Free Consultation', b
                         className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:border-red-600 outline-none resize-none" placeholder="Tell us briefly..." />
                     </div>
                     {error && <p className="text-red-600 text-xs bg-red-50 border border-red-200 rounded-lg p-2">{error}</p>}
-                    <button type="submit" disabled={loading} className="bg-red-600 text-white w-full py-3 rounded-lg font-semibold hover:bg-red-700 transition-all disabled:opacity-50 inline-flex items-center justify-center gap-2">
+                    <button type="submit" disabled={loading} className="bg-red-600 text-white w-full py-3 rounded-lg font-semibold hover:bg-red-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2">
                       {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Booking...</> : <>Book Consultation <ArrowRight className="w-4 h-4" /></>}
                     </button>
                   </form>

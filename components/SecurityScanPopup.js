@@ -91,7 +91,7 @@ export default function SecurityScanPopup() {
                 <button
                   onClick={handleClose}
                   aria-label="Close popup"
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-all duration-200"
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-700 hover:bg-gray-200 transition-all duration-200"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -114,7 +114,7 @@ export default function SecurityScanPopup() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                <p className="text-gray-700 text-sm leading-relaxed mb-6">
                   Get your website&apos;s{' '}
                   <span className="text-gray-900 font-medium">security score in seconds</span>. Our AI-powered scanner
                   checks for common vulnerabilities, exposed endpoints, and misconfigurations.
@@ -140,7 +140,7 @@ export default function SecurityScanPopup() {
                 {!scanned ? (
                   <form onSubmit={handleScan} className="space-y-3">
                     <div className="relative">
-                      <Globe className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                      <Globe className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600 pointer-events-none" />
                       <input
                         type="url"
                         value={url}
@@ -154,7 +154,7 @@ export default function SecurityScanPopup() {
                     <button
                       type="submit"
                       disabled={isScanning}
-                      className="w-full relative overflow-hidden rounded-xl py-3 px-6 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 transition-all duration-200 disabled:opacity-70"
+                      className="w-full relative overflow-hidden rounded-xl py-3 px-6 text-sm font-semibold text-gray-900 bg-red-600 hover:bg-red-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isScanning ? (
                         <span className="flex items-center justify-center gap-2">
@@ -177,14 +177,14 @@ export default function SecurityScanPopup() {
                     className="rounded-xl bg-green-50 border border-green-200 p-4 text-center"
                   >
                     <div className="text-green-600 text-2xl font-bold mb-1">✓ Scan Initiated</div>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-700 text-sm">
                       Our team will send the full report to your inbox within{' '}
                       <span className="text-gray-900 font-medium">2 hours</span>.
                     </p>
                   </motion.div>
                 )}
 
-                <p className="text-center text-gray-400 text-xs mt-4">
+                <p className="text-center text-gray-700 text-xs mt-4">
                   By scanning you agree to our{' '}
                   <a href="/terms-of-service" className="text-gray-500 hover:text-red-600 underline underline-offset-2 transition-colors">
                     Terms

@@ -36,7 +36,7 @@ function ResetForm() {
 
   const s = strength(form.password)
   const strengthLabel = ['', 'Weak', 'Fair', 'Good', 'Strong']
-  const strengthColor = ['', 'bg-red-500', 'bg-yellow-400', 'bg-cyber-blue', 'bg-cyber-green']
+  const strengthColor = ['', 'bg-red-500', 'bg-yellow-400', 'bg-red-600', 'bg-green-50']
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -59,49 +59,49 @@ function ResetForm() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg" />
-      <div className="absolute inset-0 radial-glow-blue" />
-      <div className="absolute top-1/3 -left-32 w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/3 -right-32 w-64 h-64 bg-cyber-purple/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 " />
+      <div className="absolute inset-0 " />
+      <div className="absolute top-1/3 -left-32 w-64 h-64 bg-red-50 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/3 -right-32 w-64 h-64 bg-red-50 rounded-full blur-3xl" />
 
       <div className="relative z-10 w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyber-blue/10 border border-cyber-blue/20 mb-4">
-            <Shield className="w-8 h-8 text-cyber-blue" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-red-50 border border-red-200 mb-4">
+            <Shield className="w-8 h-8 text-red-600" />
           </div>
-          <h1 className="text-2xl font-bold font-heading text-white">
-            Reset <span className="gradient-text-blue">Password</span>
+          <h1 className="text-2xl font-bold font-heading text-gray-900">
+            Reset <span className="text-red-600-blue">Password</span>
           </h1>
-          <p className="text-cyber-muted mt-2 text-sm">Create a new strong password for your account</p>
+          <p className="text-gray-500 mt-2 text-sm">Create a new strong password for your account</p>
         </div>
 
-        <div className="cyber-card rounded-2xl p-8 relative">
+        <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-8 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyber-blue/50 to-transparent" />
 
           {success ? (
             <div className="text-center py-4">
-              <div className="w-14 h-14 rounded-2xl bg-cyber-green/10 border border-cyber-green/20 flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-7 h-7 text-cyber-green" />
+              <div className="w-14 h-14 rounded-2xl bg-green-50 border border-green-200 flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-7 h-7 text-green-600" />
               </div>
-              <h3 className="text-lg font-bold text-white font-heading mb-2">Password Reset!</h3>
-              <p className="text-sm text-cyber-muted">Your password has been updated successfully.</p>
-              <p className="text-xs text-cyber-muted/60 mt-2">Redirecting to sign in...</p>
+              <h3 className="text-lg font-bold text-gray-900 font-heading mb-2">Password Reset!</h3>
+              <p className="text-sm text-gray-500">Your password has been updated successfully.</p>
+              <p className="text-xs text-gray-500/60 mt-2">Redirecting to sign in...</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs text-cyber-muted uppercase tracking-wider mb-1.5">New Password</label>
+                <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">New Password</label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyber-muted pointer-events-none" />
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
                   <input
                     type={show.password ? 'text' : 'password'}
                     value={form.password}
                     onChange={e => setForm(prev => ({ ...prev, password: e.target.value }))}
                     placeholder="Minimum 8 characters" autoComplete="new-password"
-                    className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/5 border border-cyber-border text-white placeholder-cyber-muted/60 text-sm focus:outline-none focus:border-cyber-blue/40 transition-all"
+                    className="w-full pl-10 pr-10 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-cyber-muted/60 text-sm focus:outline-none focus:border-red-200 transition-all"
                   />
                   <button type="button" onClick={() => setShow(p => ({ ...p, password: !p.password }))}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-muted hover:text-white transition-colors">
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-600 transition-colors">
                     {show.password ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
@@ -112,24 +112,24 @@ function ResetForm() {
                         <div key={i} className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${i <= s ? strengthColor[s] : 'bg-cyber-border'}`} />
                       ))}
                     </div>
-                    <p className="text-[11px] text-cyber-muted">Strength: <span className={`font-medium ${s >= 3 ? 'text-cyber-green' : s === 2 ? 'text-yellow-400' : 'text-red-400'}`}>{strengthLabel[s]}</span></p>
+                    <p className="text-[11px] text-gray-500">Strength: <span className={`font-medium ${s >= 3 ? 'text-green-600' : s === 2 ? 'text-yellow-400' : 'text-red-400'}`}>{strengthLabel[s]}</span></p>
                   </div>
                 )}
               </div>
 
               <div>
-                <label className="block text-xs text-cyber-muted uppercase tracking-wider mb-1.5">Confirm Password</label>
+                <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Confirm Password</label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyber-muted pointer-events-none" />
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
                   <input
                     type={show.confirm ? 'text' : 'password'}
                     value={form.confirm}
                     onChange={e => setForm(prev => ({ ...prev, confirm: e.target.value }))}
                     placeholder="Repeat new password" autoComplete="new-password"
-                    className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/5 border border-cyber-border text-white placeholder-cyber-muted/60 text-sm focus:outline-none focus:border-cyber-blue/40 transition-all"
+                    className="w-full pl-10 pr-10 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-cyber-muted/60 text-sm focus:outline-none focus:border-red-200 transition-all"
                   />
                   <button type="button" onClick={() => setShow(p => ({ ...p, confirm: !p.confirm }))}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-muted hover:text-white transition-colors">
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-600 transition-colors">
                     {show.confirm ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
@@ -145,7 +145,7 @@ function ResetForm() {
               )}
 
               <button type="submit" disabled={loading || !form.password || !form.confirm}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-cyber-blue/20 border border-cyber-blue/30 text-cyber-blue font-semibold text-sm hover:bg-cyber-blue/30 hover:border-cyber-blue/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-[0_0_20px_rgba(0,212,255,0.15)]">
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-red-50 border border-red-200 text-red-600 font-semibold text-sm hover:bg-red-50 hover:border-red-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowedcursor-not-allowed hover:shadow-[0_0_20px_rgba(0,212,255,0.15)]">
                 {loading ? <><Loader2 className="w-4 h-4 animate-spin" />Updating...</> : 'Update Password'}
               </button>
             </form>
@@ -153,7 +153,7 @@ function ResetForm() {
         </div>
 
         <div className="text-center mt-6">
-          <Link href="/login" className="text-sm text-cyber-muted hover:text-cyber-blue transition-colors">
+          <Link href="/login" className="text-sm text-gray-500 hover:text-red-600 transition-colors">
             ← Back to Sign In
           </Link>
         </div>
