@@ -24,9 +24,9 @@ const solutions = [
     title: 'BFSI Cybersecurity',
     subtitle: 'Banking, Financial Services & Insurance',
     icon: Building2,
-    color: 'text-cyber-blue',
-    bg: 'bg-cyber-blue/10',
-    border: 'border-cyber-blue/20',
+    color: 'text-red-600',
+    bg: 'bg-red-50',
+    border: 'border-red-200',
     description: 'Comprehensive cybersecurity solutions for banks, NBFCs, insurance companies, and financial institutions. RBI-compliant security audits, PCI DSS certification support, and 24/7 fraud monitoring.',
     challenges: ['RBI Cybersecurity Framework compliance', 'Core banking system security', 'UPI & payment gateway protection', 'Mobile banking app security', 'SWIFT network security'],
     services: ['VAPT for banking applications', 'PCI DSS compliance audit', 'ATM network security', 'Fraud detection system review', 'API security for fintech integrations'],
@@ -42,9 +42,9 @@ const solutions = [
     title: 'Healthcare Cybersecurity',
     subtitle: 'Hospitals, Clinics & Health Tech',
     icon: Heart,
-    color: 'text-red-400',
-    bg: 'bg-red-500/10',
-    border: 'border-red-500/20',
+    color: 'text-red-600',
+    bg: 'bg-red-50',
+    border: 'border-red-200',
     description: 'Specialized cybersecurity for hospitals, diagnostic labs, health tech platforms, and pharmaceutical companies. Protect patient data, medical devices, and critical healthcare infrastructure.',
     challenges: ['Patient data (PHI/ePHI) protection', 'Medical device IoT security', 'EHR/EMR system vulnerabilities', 'Hospital network segmentation', 'Ransomware targeting healthcare'],
     services: ['Health app security testing', 'Medical device security audit', 'Healthcare data compliance', 'Network security for hospital IT', 'Telemedicine platform security'],
@@ -60,9 +60,9 @@ const solutions = [
     title: 'Government & PSU Security',
     subtitle: 'Central & State Government, PSUs',
     icon: Shield,
-    color: 'text-cyber-saffron',
-    bg: 'bg-cyber-saffron/10',
-    border: 'border-cyber-saffron/20',
+    color: 'text-red-600',
+    bg: 'bg-red-50',
+    border: 'border-red-200',
     description: 'Government-grade cybersecurity solutions for central ministries, state departments, PSUs, and critical national infrastructure. CERT-In compliant audits with highest security standards.',
     challenges: ['Critical infrastructure protection', 'Citizen data privacy', 'E-governance portal security', 'Supply chain security for government IT', 'State-sponsored threat actors'],
     services: ['CERT-In compliant security audits', 'Government portal VAPT', 'Critical infrastructure assessment', 'Aadhaar & UIDAI system security', 'NIC network security review'],
@@ -78,9 +78,9 @@ const solutions = [
     title: 'Fintech Cybersecurity',
     subtitle: 'Startups, Payment & Lending Platforms',
     icon: Zap,
-    color: 'text-cyber-green',
-    bg: 'bg-cyber-green/10',
-    border: 'border-cyber-green/20',
+    color: 'text-green-600',
+    bg: 'bg-green-50',
+    border: 'border-green-200',
     description: 'Tailored security for fintech startups, lending platforms, wealth management apps, and payment processors. Build security-first products that earn customer trust from day one.',
     challenges: ['Rapid development vs. security balance', 'API security for open banking', 'KYC/AML data protection', 'Fraud prevention systems', 'RBI fintech compliance'],
     services: ['Startup security program', 'API penetration testing', 'Bug bounty program setup', 'Security architecture review', 'Compliance readiness (PCI DSS, ISO 27001)'],
@@ -96,9 +96,9 @@ const solutions = [
     title: 'E-Commerce & Retail',
     subtitle: 'Online Retail, Marketplaces & D2C Brands',
     icon: Globe,
-    color: 'text-cyber-purple',
-    bg: 'bg-cyber-purple/10',
-    border: 'border-cyber-purple/20',
+    color: 'text-red-700',
+    bg: 'bg-red-50',
+    border: 'border-red-200',
     description: 'End-to-end security for e-commerce platforms, online marketplaces, and D2C brands. Protect customer payment data, prevent fraud, and ensure PCI DSS compliance.',
     challenges: ['Customer payment data protection', 'Account takeover (ATO) attacks', 'Bot attacks and inventory fraud', 'Third-party plugin vulnerabilities', 'Peak season DDoS protection'],
     services: ['E-commerce platform VAPT', 'Payment gateway security', 'Customer data protection audit', 'Fraud detection review', 'PCI DSS compliance assessment'],
@@ -114,8 +114,8 @@ const solutions = [
     title: 'Enterprise Security',
     subtitle: 'Large Corporations & Multinationals',
     icon: Award,
-    color: 'text-white',
-    bg: 'bg-white/5',
+    color: 'text-gray-900',
+    bg: 'bg-gray-50',
     border: 'border-white/10',
     description: 'Comprehensive enterprise security programs for large corporations, IT companies, and multinationals operating in India. Managed security services, dedicated security teams, and boardroom-ready reporting.',
     challenges: ['Complex hybrid IT infrastructure', 'Multi-cloud security governance', 'Insider threat management', 'Third-party vendor risk', 'Mergers & acquisitions security'],
@@ -150,17 +150,17 @@ export default function SolutionsPage() {
 
       {/* ─── HERO ─── */}
       <section className="relative py-20 sm:py-28 overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] radial-glow-blue" />
+        <div className="absolute inset-0 " />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] " />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyber-green/10 border border-cyber-green/20 text-cyber-green text-sm font-medium mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-600 text-sm font-medium mb-6">
             <ShieldCheck className="w-4 h-4" />
             Industry-Specific Solutions
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-gray-900 mb-6">
             Cybersecurity <span className="gradient-text">Solutions</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Tailored cybersecurity solutions for every industry. From BFSI to healthcare, government to fintech — we understand your sector&apos;s unique threats and compliance requirements.
           </p>
         </div>
@@ -176,11 +176,11 @@ export default function SolutionsPage() {
                   <sol.icon className={`w-7 h-7 ${sol.color}`} />
                 </div>
                 <span className={`text-xs font-semibold tracking-wider uppercase ${sol.color}`}>{sol.subtitle}</span>
-                <h2 className="text-2xl sm:text-3xl font-bold font-heading text-white mt-1 mb-4">{sol.title}</h2>
-                <p className="text-gray-300 leading-relaxed mb-6">{sol.description}</p>
+                <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 mt-1 mb-4">{sol.title}</h2>
+                <p className="text-gray-600 leading-relaxed mb-6">{sol.description}</p>
 
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Compliance We Address</h3>
+                  <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">Compliance We Address</h3>
                   <div className="flex flex-wrap gap-2">
                     {sol.compliance.map((c, j) => (
                       <span key={j} className="trust-badge badge-blue text-xs">{c}</span>
@@ -195,7 +195,7 @@ export default function SolutionsPage() {
                   {sol.relatedServices && (
                     <div className="flex flex-wrap gap-2 mt-2 w-full">
                       {sol.relatedServices.map((srv) => (
-                        <Link key={srv.href} href={srv.href} className="text-xs text-gray-400 hover:text-cyber-blue transition-colors flex items-center gap-1 border border-cyber-border hover:border-cyber-blue/30 rounded-lg px-3 py-1.5">
+                        <Link key={srv.href} href={srv.href} className="text-xs text-gray-600 hover:text-red-600 transition-colors flex items-center gap-1 border border-gray-200 hover:border-red-200 rounded-lg px-3 py-1.5">
                           <CheckCircle className="w-3 h-3" /> {srv.label}
                         </Link>
                       ))}
@@ -205,23 +205,23 @@ export default function SolutionsPage() {
               </div>
 
               <div className={`space-y-4 ${i % 2 !== 0 ? 'lg:col-start-1' : ''}`}>
-                <div className="cyber-card rounded-xl p-5">
-                  <h3 className="text-sm font-semibold text-white font-heading mb-3">Key Challenges We Solve</h3>
+                <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-5">
+                  <h3 className="text-sm font-semibold text-gray-900 font-heading mb-3">Key Challenges We Solve</h3>
                   <ul className="space-y-2">
                     {sol.challenges.map((c, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-gray-400">
-                        <Lock className="w-3.5 h-3.5 text-red-400/70 shrink-0 mt-0.5" />
+                      <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
+                        <Lock className="w-3.5 h-3.5 text-red-600/70 shrink-0 mt-0.5" />
                         {c}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div className="cyber-card rounded-xl p-5">
-                  <h3 className="text-sm font-semibold text-white font-heading mb-3">Services We Provide</h3>
+                <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-5">
+                  <h3 className="text-sm font-semibold text-gray-900 font-heading mb-3">Services We Provide</h3>
                   <ul className="space-y-2">
                     {sol.services.map((s, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-gray-300">
-                        <CheckCircle className="w-3.5 h-3.5 text-cyber-green shrink-0 mt-0.5" />
+                      <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
+                        <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0 mt-0.5" />
                         {s}
                       </li>
                     ))}
@@ -237,11 +237,11 @@ export default function SolutionsPage() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-cyber-purple/20 to-cyber-green/20" />
-            <div className="absolute inset-[1px] rounded-2xl bg-cyber-bg/80 backdrop-blur-xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-red-50 to-gray-100" />
+            <div className="absolute inset-[1px] rounded-2xl bg-gray-50 backdrop-blur-xl" />
             <div className="relative z-10 p-8 sm:p-12 text-center">
-              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-white mb-4">Don&apos;t See Your Industry?</h2>
-              <p className="text-gray-300 mb-8 max-w-xl mx-auto">We serve organizations across all sectors. Contact us to discuss your specific security requirements and get a custom solution.</p>
+              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 mb-4">Don&apos;t See Your Industry?</h2>
+              <p className="text-gray-600 mb-8 max-w-xl mx-auto">We serve organizations across all sectors. Contact us to discuss your specific security requirements and get a custom solution.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="btn-primary text-base px-8 py-4 justify-center">
                   Discuss Your Requirements <ArrowRight className="w-5 h-5" />

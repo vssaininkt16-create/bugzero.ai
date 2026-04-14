@@ -112,32 +112,32 @@ export default async function BlogPostPage({ params }) {
 
       {/* ─── HERO ─── */}
       <section className="relative py-16 sm:py-24 overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] radial-glow-blue" />
+        <div className="absolute inset-0 " />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] " />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-gray-400 mb-8 flex-wrap">
-            <Link href="/" className="hover:text-cyber-blue transition-colors">Home</Link>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-gray-600 mb-8 flex-wrap">
+            <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <Link href="/blog" className="hover:text-cyber-blue transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-red-600 transition-colors">Blog</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-white truncate max-w-[200px]">{post.title}</span>
+            <span className="text-gray-900 truncate max-w-[200px]">{post.title}</span>
           </nav>
 
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <span className="trust-badge badge-blue text-xs">{post.category}</span>
-            <span className="text-sm text-gray-400 flex items-center gap-1.5"><Clock className="w-4 h-4" />{post.readTime}</span>
-            <span className="text-sm text-gray-400 flex items-center gap-1.5"><Calendar className="w-4 h-4" />{new Date(post.datePublished).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span className="text-sm text-gray-600 flex items-center gap-1.5"><Clock className="w-4 h-4" />{post.readTime}</span>
+            <span className="text-sm text-gray-600 flex items-center gap-1.5"><Calendar className="w-4 h-4" />{new Date(post.datePublished).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-white mb-6 leading-tight">{post.title}</h1>
-          <p className="text-lg text-gray-300 mb-6 leading-relaxed">{post.excerpt}</p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 mb-6 leading-tight">{post.title}</h1>
+          <p className="text-lg text-gray-600 mb-6 leading-relaxed">{post.excerpt}</p>
 
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyber-blue to-cyber-purple flex items-center justify-center">
-              <User className="w-4 h-4 text-white" />
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gray-100 to-red-50 flex items-center justify-center">
+              <User className="w-4 h-4 text-gray-900" />
             </div>
             <div>
-              <div className="text-sm font-semibold text-white">{post.author}</div>
+              <div className="text-sm font-semibold text-gray-900">{post.author}</div>
               <div className="text-xs text-gray-500">BugZero Cyber Solutions</div>
             </div>
           </div>
@@ -149,55 +149,55 @@ export default async function BlogPostPage({ params }) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-10">
             {/* Article body */}
-            <article className="lg:col-span-2 prose prose-invert prose-headings:font-heading prose-headings:text-white prose-p:text-gray-300 prose-li:text-gray-300 prose-strong:text-white prose-a:text-cyber-blue max-w-none">
+            <article className="lg:col-span-2 prose  prose-headings:font-heading prose-headings:text-gray-900 prose-p:text-gray-600 prose-li:text-gray-600 prose-strong:text-gray-900 prose-a:text-red-600 max-w-none">
               {post.content.split('\n\n').map((block, i) => {
                 if (block.startsWith('## ')) {
-                  return <h2 key={i} className="text-2xl font-bold font-heading text-white mt-10 mb-4">{block.slice(3)}</h2>;
+                  return <h2 key={i} className="text-2xl font-bold font-heading text-gray-900 mt-10 mb-4">{block.slice(3)}</h2>;
                 }
                 if (block.startsWith('**') && block.endsWith('**')) {
-                  return <p key={i} className="text-base font-semibold text-white mt-4">{block.slice(2, -2)}</p>;
+                  return <p key={i} className="text-base font-semibold text-gray-900 mt-4">{block.slice(2, -2)}</p>;
                 }
                 if (block.includes('\n- ')) {
                   const [intro, ...items] = block.split('\n- ');
                   return (
                     <div key={i}>
-                      {intro && <p className="text-gray-300 mb-2">{intro}</p>}
+                      {intro && <p className="text-gray-600 mb-2">{intro}</p>}
                       <ul className="space-y-2 list-none pl-0">
                         {items.map((item, j) => (
-                          <li key={j} className="flex items-start gap-2 text-gray-300">
-                            <span className="w-1.5 h-1.5 rounded-full bg-cyber-blue mt-2 shrink-0" />
-                            <span dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
+                          <li key={j} className="flex items-start gap-2 text-gray-600">
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2 shrink-0" />
+                            <span dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') }} />
                           </li>
                         ))}
                       </ul>
                     </div>
                   );
                 }
-                return <p key={i} className="text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: block.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />;
+                return <p key={i} className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: block.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') }} />;
               })}
             </article>
 
             {/* Sidebar */}
             <aside className="lg:col-span-1 space-y-6">
-              <div className="cyber-card rounded-xl p-5 sticky top-24">
-                <h3 className="text-sm font-bold text-white font-heading mb-3">Topics Covered</h3>
+              <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-5 sticky top-24">
+                <h3 className="text-sm font-bold text-gray-900 font-heading mb-3">Topics Covered</h3>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag, i) => (
-                    <span key={i} className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg bg-cyber-blue/5 border border-cyber-blue/10 text-gray-400">
+                    <span key={i} className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg bg-red-50 border border-red-200 text-gray-600">
                       <Tag className="w-3 h-3" />{tag}
                     </span>
                   ))}
                 </div>
 
                 {categoryServiceLinks[post.category] && (
-                  <div className="mt-5 pt-4 border-t border-cyber-border">
-                    <h3 className="text-sm font-bold text-white font-heading mb-3 flex items-center gap-1.5">
-                      <Shield className="w-3.5 h-3.5 text-cyber-blue" /> Related Services
+                  <div className="mt-5 pt-4 border-t border-gray-200">
+                    <h3 className="text-sm font-bold text-gray-900 font-heading mb-3 flex items-center gap-1.5">
+                      <Shield className="w-3.5 h-3.5 text-red-600" /> Related Services
                     </h3>
                     <ul className="space-y-1.5 mb-4">
                       {categoryServiceLinks[post.category].map((link) => (
                         <li key={link.href}>
-                          <Link href={link.href} className="text-xs text-gray-400 hover:text-cyber-blue transition-colors flex items-center gap-1.5">
+                          <Link href={link.href} className="text-xs text-gray-600 hover:text-red-600 transition-colors flex items-center gap-1.5">
                             <ChevronRight className="w-3 h-3" />{link.label}
                           </Link>
                         </li>
@@ -205,9 +205,9 @@ export default async function BlogPostPage({ params }) {
                     </ul>
                   </div>
                 )}
-              <div className="mt-4 pt-4 border-t border-cyber-border">
-                  <h3 className="text-sm font-bold text-white font-heading mb-3">Need a Security Assessment?</h3>
-                  <p className="text-xs text-gray-400 mb-3">Get a free security consultation from our certified experts.</p>
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                  <h3 className="text-sm font-bold text-gray-900 font-heading mb-3">Need a Security Assessment?</h3>
+                  <p className="text-xs text-gray-600 mb-3">Get a free security consultation from our certified experts.</p>
                   <Link href="/contact" className="btn-primary w-full justify-center text-sm py-2.5">
                     Get Free Assessment <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -220,16 +220,16 @@ export default async function BlogPostPage({ params }) {
 
       {/* ─── RELATED POSTS ─── */}
       {related.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-cyber-border">
+        <section className="py-12 sm:py-16 border-t border-gray-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-xl font-bold text-white font-heading mb-6">Related Articles</h2>
+            <h2 className="text-xl font-bold text-gray-900 font-heading mb-6">Related Articles</h2>
             <div className="grid sm:grid-cols-2 gap-6">
               {related.map((p) => (
-                <Link key={p.slug} href={`/blog/${p.slug}`} className="cyber-card rounded-xl p-5 group hover:border-cyber-blue/40 transition-all block">
+                <Link key={p.slug} href={`/blog/${p.slug}`} className="bg-white border border-gray-200 shadow-sm rounded-xl p-5 group hover:border-red-200 transition-all block">
                   <span className="trust-badge badge-blue text-[10px] mb-3 inline-flex">{p.category}</span>
-                  <h3 className="text-base font-bold text-white font-heading mb-2 group-hover:text-cyber-blue transition-colors">{p.title}</h3>
-                  <p className="text-sm text-gray-400 line-clamp-2">{p.excerpt}</p>
-                  <span className="mt-3 text-xs text-cyber-blue flex items-center gap-1 font-medium">Read More <ArrowRight className="w-3.5 h-3.5" /></span>
+                  <h3 className="text-base font-bold text-gray-900 font-heading mb-2 group-hover:text-red-600 transition-colors">{p.title}</h3>
+                  <p className="text-sm text-gray-600 line-clamp-2">{p.excerpt}</p>
+                  <span className="mt-3 text-xs text-red-600 flex items-center gap-1 font-medium">Read More <ArrowRight className="w-3.5 h-3.5" /></span>
                 </Link>
               ))}
             </div>

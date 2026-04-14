@@ -195,7 +195,7 @@ export default function ServicesPageClient() {
                   <div>
                     <span className="text-xl font-bold text-gray-900 font-heading">{service.price}</span>
                     {service.price !== 'Custom' && service.price !== 'Contact Us' && (
-                      <span className="text-xs text-gray-400 ml-1">onwards</span>
+                      <span className="text-xs text-gray-600 ml-1">onwards</span>
                     )}
                   </div>
                   <Link href={`/services/${service.slug}`} className="text-sm font-semibold text-red-600 hover:text-red-700 flex items-center gap-1 transition-colors">
@@ -234,7 +234,7 @@ export default function ServicesPageClient() {
                   <p className="text-xs text-gray-500 mt-1">{tier.desc}</p>
                   <div className="mt-4">
                     <span className="text-3xl font-bold text-gray-900 font-heading">{tier.price}</span>
-                    <span className="text-sm text-gray-400 block mt-1">{tier.period}</span>
+                    <span className="text-sm text-gray-600 block mt-1">{tier.period}</span>
                   </div>
                 </div>
                 <ul className="space-y-2.5 mb-6 flex-1">

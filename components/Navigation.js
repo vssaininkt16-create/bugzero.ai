@@ -55,7 +55,7 @@ export default function Navigation() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
+          ? 'bg-gray-50 backdrop-blur-sm border-b border-gray-200 shadow-sm'
           : 'bg-white border-b border-gray-100'
           }`}
       >
@@ -120,7 +120,7 @@ export default function Navigation() {
                                 href={item.href}
                                 className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
                               >
-                                <item.icon className="w-4 h-4 text-gray-400 shrink-0" />
+                                <item.icon className="w-4 h-4 text-gray-600 shrink-0" />
                                 {item.label}
                               </Link>
                             ))}
@@ -219,7 +219,7 @@ export default function Navigation() {
                             href={item.href}
                             className="flex items-center gap-2 px-3 py-2 text-xs text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
                           >
-                            <item.icon className="w-3.5 h-3.5 text-gray-400" />
+                            <item.icon className="w-3.5 h-3.5 text-gray-600" />
                             {item.label}
                           </Link>
                         ))}

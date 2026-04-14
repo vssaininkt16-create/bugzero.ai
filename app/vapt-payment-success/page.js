@@ -61,25 +61,25 @@ function PaymentSuccessContent() {
   }, [searchParams, router]);
 
   return (
-    <div className="min-h-screen bg-cyber-bg grid-bg flex items-center justify-center px-4">
+    <div className="min-h-screen bg-white  flex items-center justify-center px-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="max-w-md w-full cyber-card rounded-2xl p-8 text-center"
+        className="max-w-md w-full bg-white border border-gray-200 shadow-sm rounded-2xl p-8 text-center"
       >
         {status === 'verifying' && (
           <>
-            <Loader2 className="w-12 h-12 text-cyber-blue animate-spin mx-auto mb-4" />
-            <h1 className="text-xl font-bold text-white mb-2">Verifying Payment…</h1>
-            <p className="text-gray-400 text-sm">Please wait while we confirm your payment.</p>
+            <Loader2 className="w-12 h-12 text-red-600 animate-spin mx-auto mb-4" />
+            <h1 className="text-xl font-bold text-gray-900 mb-2">Verifying Payment…</h1>
+            <p className="text-gray-600 text-sm">Please wait while we confirm your payment.</p>
           </>
         )}
 
         {status === 'success' && (
           <>
-            <CheckCircle className="w-12 h-12 text-cyber-green mx-auto mb-4" />
-            <h1 className="text-xl font-bold text-white mb-2">Payment Successful!</h1>
-            <p className="text-gray-400 text-sm mb-6">
+            <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
+            <h1 className="text-xl font-bold text-gray-900 mb-2">Payment Successful!</h1>
+            <p className="text-gray-600 text-sm mb-6">
               Your VAPT access has been activated. Redirecting to dashboard…
             </p>
             <Link href="/vapt-dashboard" className="btn-primary text-sm justify-center w-full">
@@ -91,11 +91,11 @@ function PaymentSuccessContent() {
         {status === 'error' && (
           <>
             <AlertTriangle className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
-            <h1 className="text-xl font-bold text-white mb-2">Verification Issue</h1>
-            <p className="text-gray-400 text-sm mb-2">{error}</p>
+            <h1 className="text-xl font-bold text-gray-900 mb-2">Verification Issue</h1>
+            <p className="text-gray-600 text-sm mb-2">{error}</p>
             <p className="text-xs text-gray-500 mb-6">
               If you completed payment, contact{' '}
-              <a href="mailto:contact@bugzero.solutions" className="text-cyber-blue hover:underline">
+              <a href="mailto:contact@bugzero.solutions" className="text-red-600 hover:underline">
                 contact@bugzero.solutions
               </a>
             </p>
@@ -117,8 +117,8 @@ function PaymentSuccessContent() {
 export default function VaptPaymentSuccessPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-cyber-bg flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-cyber-blue animate-spin" />
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-red-600 animate-spin" />
       </div>
     }>
       <PaymentSuccessContent />

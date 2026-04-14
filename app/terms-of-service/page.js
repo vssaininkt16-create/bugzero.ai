@@ -120,19 +120,19 @@ export default function TermsOfServicePage() {
       <SchemaMarkup schema={schemas} />
 
       <section className="relative py-20 sm:py-24 overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
+        <div className="absolute inset-0 " />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-gray-400 mb-8">
-            <Link href="/" className="hover:text-cyber-blue transition-colors">Home</Link>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-gray-600 mb-8">
+            <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-white">Terms of Service</span>
+            <span className="text-gray-900">Terms of Service</span>
           </nav>
           <div className="flex items-center gap-3 mb-4">
-            <FileText className="w-8 h-8 text-cyber-purple" />
-            <h1 className="text-3xl sm:text-4xl font-bold font-heading text-white">Terms of Service</h1>
+            <FileText className="w-8 h-8 text-red-700" />
+            <h1 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">Terms of Service</h1>
           </div>
-          <p className="text-gray-400 text-sm">Last Updated: March 2025 | Effective Date: January 2025</p>
-          <p className="text-gray-300 mt-4 leading-relaxed">
+          <p className="text-gray-600 text-sm">Last Updated: March 2025 | Effective Date: January 2025</p>
+          <p className="text-gray-600 mt-4 leading-relaxed">
             Please read these Terms of Service carefully before using BugZero Cyber Solutions&apos; website or engaging our cybersecurity services. These terms govern the relationship between BugZero Cyber Solutions and our clients and website visitors.
           </p>
         </div>
@@ -141,11 +141,11 @@ export default function TermsOfServicePage() {
       <section className="pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {sections.map((section, i) => (
-            <div key={i} className="cyber-card rounded-xl p-6">
-              <h2 className="text-lg font-bold text-white font-heading mb-4">{section.title}</h2>
-              <div className="text-gray-300 text-sm leading-relaxed space-y-3">
+            <div key={i} className="bg-white border border-gray-200 shadow-sm rounded-xl p-6">
+              <h2 className="text-lg font-bold text-gray-900 font-heading mb-4">{section.title}</h2>
+              <div className="text-gray-600 text-sm leading-relaxed space-y-3">
                 {section.content.split('\n\n').map((para, j) => (
-                  <p key={j} dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>').replace(/\n/g, '<br/>') }} />
+                  <p key={j} dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>').replace(/\n/g, '<br/>') }} />
                 ))}
               </div>
             </div>

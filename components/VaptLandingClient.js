@@ -170,7 +170,7 @@ export default function VaptLandingClient() {
                 </ul>
               </div>
 
-              <div className="mt-6 flex items-center gap-2 text-xs text-gray-400">
+              <div className="mt-6 flex items-center gap-2 text-xs text-gray-600">
                 <Lock className="w-3.5 h-3.5 text-red-600" />
                 Secured by Razorpay · SSL encrypted · DPIIT Recognized
               </div>
@@ -193,7 +193,7 @@ export default function VaptLandingClient() {
                     {[1, 2, 3, 4, 5].map(i => (
                       <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
                     ))}
-                    <span className="text-xs text-gray-400 ml-1">500+ scans done</span>
+                    <span className="text-xs text-gray-600 ml-1">500+ scans done</span>
                   </div>
                 </div>
 
@@ -246,7 +246,7 @@ export default function VaptLandingClient() {
                   </button>
                 </form>
 
-                <p className="mt-4 text-center text-xs text-gray-400">
+                <p className="mt-4 text-center text-xs text-gray-600">
                   By proceeding you agree to our{' '}
                   <Link href="/terms-of-service" className="text-red-600 hover:underline">Terms</Link>
                   {' '}and{' '}
